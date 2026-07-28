@@ -38,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
         <Navbar />
         <main className="flex-1">{children}</main>
+        <div className="h-16 bg-white" />
         <Footer />
       </body>
     </html>

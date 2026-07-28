@@ -47,7 +47,7 @@ export default function ServiceContent({ slug }: { slug: string }) {
               <div className="mt-5 pt-5 border-t border-gray-200">
                 <a
                   href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold text-sm px-6 py-3 rounded-sm hover:bg-[#b8911f] transition-colors w-full justify-center"
+                  className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold text-sm px-6 py-3 rounded-full hover:bg-[#b8911f] transition-colors w-full justify-center"
                 >
                   {service.cta}
                 </a>

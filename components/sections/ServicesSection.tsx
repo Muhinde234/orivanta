@@ -65,7 +65,7 @@ export default function ServicesSection() {
         >
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 border-2 border-[#10243B] text-[#10243B] font-bold px-8 py-4 rounded-sm hover:bg-[#10243B] hover:text-white transition-all duration-300 text-sm"
+            className="inline-flex items-center gap-2 border-2 border-[#10243B] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#10243B] hover:text-white transition-all duration-300 text-sm"
           >
             View All Services <ArrowRight size={16} />
           </Link>

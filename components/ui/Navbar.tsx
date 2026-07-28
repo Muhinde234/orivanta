@@ -117,7 +117,7 @@ export default function Navbar() {
               </a>
               <Link
                 href="/contact"
-                className="bg-[#C9A227] text-[#10243B] text-sm font-bold px-6 py-3 rounded-sm hover:bg-[#b8911f] transition-colors"
+                className="bg-[#C9A227] text-[#10243B] text-sm font-bold px-6 py-3 rounded-full hover:bg-[#b8911f] transition-colors"
               >
                 Request Consultation
               </Link>
@@ -174,7 +174,7 @@ export default function Navbar() {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="block w-full text-center bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-sm hover:bg-[#b8911f] transition-colors"
+                className="block w-full text-center bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors"
               >
                 Request Consultation
               </Link>

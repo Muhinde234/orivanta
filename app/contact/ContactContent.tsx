@@ -223,7 +223,7 @@ export default function ContactContent() {
 
                     <button
                       type="submit"
-                      className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-sm hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
+                      className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
                     >
                       <Send size={16} />
                       Submit Inquiry
@@ -280,12 +280,12 @@ export default function ContactContent() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href={`tel:${BRAND.phone}`}
-                className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-sm hover:bg-[#b8911f] transition-colors text-sm">
+                className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#b8911f] transition-colors text-sm">
                 <Phone size={16} />
                 Book a Consultation
               </a>
               <a href={`mailto:${BRAND.email}`}
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-sm hover:border-white hover:bg-white/5 transition-all text-sm">
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-all text-sm">
                 <Mail size={16} />
                 Request a Quote
               </a>

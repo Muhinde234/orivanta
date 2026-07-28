@@ -50,10 +50,10 @@ export default function TeamContent() {
                 </div>
                 {/* Social */}
                 <div className="flex gap-3 mt-5 justify-center">
-                                  <a href={member.linkedin} aria-label="LinkedIn" className="w-10 h-10 rounded-sm bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300 text-white hover:text-[#10243B] text-xs font-bold">
+                                  <a href={member.linkedin} aria-label="LinkedIn" className="w-10 h-10 rounded-full bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300 text-white hover:text-[#10243B] text-xs font-bold">
                     in
                   </a>
-                  <a href={`mailto:${member.email}`} aria-label="Email" className="w-10 h-10 rounded-sm bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300">
+                  <a href={`mailto:${member.email}`} aria-label="Email" className="w-10 h-10 rounded-full bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300">
                     <Mail size={16} className="text-white" />
                   </a>
                 </div>

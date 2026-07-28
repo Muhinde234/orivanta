@@ -19,6 +19,8 @@ export default function Footer() {
     <footer className="bg-[#0d1e30] text-white" aria-label="Site footer">
       {/* Gold top accent */}
       <div className="h-[3px] bg-gradient-to-r from-transparent via-[#C9A227] to-transparent" />
+      {/* Extra visual separator */}
+      <div className="h-px bg-white/[0.06]" />
 
       <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
 

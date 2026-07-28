@@ -52,14 +52,14 @@ export default function CTASection({
           <div className="flex flex-wrap justify-center gap-4">
             <Link
               href={primaryHref}
-              className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-sm hover:bg-[#b8911f] transition-all duration-300 hover:gap-3 text-sm"
+              className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#b8911f] transition-all duration-300 hover:gap-3 text-sm"
             >
               <Phone size={16} />
               {primaryLabel}
             </Link>
             <Link
               href={secondaryHref}
-              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-sm hover:border-white hover:bg-white/5 transition-all duration-300 text-sm"
+              className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 text-sm"
             >
               {secondaryLabel} <ArrowRight size={16} />
             </Link>

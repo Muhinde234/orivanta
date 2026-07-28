@@ -18,7 +18,7 @@ export default function Button({
   children, variant = 'primary', size = 'md', href, onClick,
   className = '', type = 'button', disabled, external
 }: ButtonProps) {
-  const base = 'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 rounded-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C9A227] disabled:opacity-50 disabled:cursor-not-allowed';
+  const base = 'inline-flex items-center justify-center gap-2 font-semibold transition-all duration-300 rounded-full cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C9A227] disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variants = {
     primary: 'bg-[#C9A227] text-[#10243B] hover:bg-[#b8911f] active:scale-[0.98]',

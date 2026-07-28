@@ -6,16 +6,17 @@ export default function NewsletterForm() {
     <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
       <input
         type="email"
-        placeholder="Your email"
-        className="flex-1 bg-white/10 border border-white/20 rounded-sm px-3 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#C9A227] transition-colors"
+        placeholder="Your email address"
+        className="flex-1 min-w-0 bg-white/[0.06] border border-white/[0.12] rounded px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227] transition-colors"
+        style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}
         aria-label="Email for newsletter"
       />
       <button
         type="submit"
-        className="bg-[#C9A227] text-[#10243B] px-4 py-2.5 rounded-sm font-bold text-sm hover:bg-[#b8911f] transition-colors"
-        aria-label="Subscribe"
+        className="flex-shrink-0 bg-[#C9A227] text-[#10243B] w-10 h-10 rounded flex items-center justify-center hover:bg-[#b8911f] transition-colors"
+        aria-label="Subscribe to newsletter"
       >
-        <ArrowRight size={16} />
+        <ArrowRight size={15} />
       </button>
     </form>
   );

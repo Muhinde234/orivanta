@@ -85,14 +85,14 @@ export default function Hero() {
             >
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-sm hover:bg-[#b8911f] transition-all duration-300 hover:gap-3 text-sm"
+                className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#b8911f] transition-all duration-300 hover:gap-3 text-sm"
               >
                 Request Consultation
                 <ArrowRight size={16} />
               </Link>
               <Link
                 href="/services"
-                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-sm hover:border-white hover:bg-white/5 transition-all duration-300 text-sm"
+                className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 text-sm"
               >
                 Explore Our Services
               </Link>

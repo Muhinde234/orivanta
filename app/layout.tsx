@@ -1,20 +1,20 @@
 import type { Metadata } from 'next';
-import { Poppins, Inter } from 'next/font/google';
+import { Poppins, Mulish } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 
 const poppins = Poppins({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  weight: ['400', '500', '600', '700', '800'],
   variable: '--font-poppins',
   display: 'swap',
 });
 
-const inter = Inter({
+const mulish = Mulish({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-inter',
+  variable: '--font-mulish',
   display: 'swap',
 });
 
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${inter.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-inter), Inter, sans-serif' }}>
+    <html lang="en" className={`${poppins.variable} ${mulish.variable}`}>
+      <body className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -1,6 +1,7 @@
 import Link from 'next/link';
-import { Mail, Phone, MapPin, Linkedin, Facebook, Instagram, Youtube, Twitter, ArrowRight } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 import Logo from './Logo';
+import NewsletterForm from './NewsletterForm';
 import { BRAND, SERVICES } from '@/lib/data';
 
 export default function Footer() {
@@ -21,19 +22,19 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 mt-6">
               {[
-                { icon: Linkedin, href: BRAND.linkedin, label: 'LinkedIn' },
-                { icon: Facebook, href: BRAND.facebook, label: 'Facebook' },
-                { icon: Instagram, href: BRAND.instagram, label: 'Instagram' },
-                { icon: Youtube, href: BRAND.youtube, label: 'YouTube' },
-                { icon: Twitter, href: BRAND.twitter, label: 'X (Twitter)' },
-              ].map(({ icon: Icon, href, label }) => (
+                { label: 'in', href: BRAND.linkedin, title: 'LinkedIn' },
+                { label: 'f', href: BRAND.facebook, title: 'Facebook' },
+                { label: 'ig', href: BRAND.instagram, title: 'Instagram' },
+                { label: 'yt', href: BRAND.youtube, title: 'YouTube' },
+                { label: 'x', href: BRAND.twitter, title: 'X (Twitter)' },
+              ].map(({ label, href, title }) => (
                 <a
-                  key={label}
+                  key={title}
                   href={href}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-sm bg-white/10 flex items-center justify-center hover:bg-[#C9A227] hover:text-[#10243B] transition-all duration-300"
+                  aria-label={title}
+                  className="w-9 h-9 rounded-sm bg-white/10 flex items-center justify-center hover:bg-[#C9A227] hover:text-[#10243B] transition-all duration-300 text-white hover:text-[#10243B] text-xs font-bold"
                 >
-                  <Icon size={15} />
+                  {label}
                 </a>
               ))}
             </div>
@@ -108,21 +109,7 @@ export default function Footer() {
             {/* Newsletter */}
             <div>
               <p className="text-xs font-semibold text-white/80 uppercase tracking-widest mb-3">Newsletter</p>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  className="flex-1 bg-white/10 border border-white/20 rounded-sm px-3 py-2.5 text-sm text-white placeholder-white/40 focus:outline-none focus:border-[#C9A227] transition-colors"
-                  aria-label="Email for newsletter"
-                />
-                <button
-                  type="submit"
-                  className="bg-[#C9A227] text-[#10243B] px-4 py-2.5 rounded-sm font-bold text-sm hover:bg-[#b8911f] transition-colors"
-                  aria-label="Subscribe"
-                >
-                  <ArrowRight size={16} />
-                </button>
-              </form>
+              <NewsletterForm />
             </div>
           </div>
         </div>

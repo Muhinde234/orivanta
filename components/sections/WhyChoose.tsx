@@ -47,10 +47,10 @@ export default function WhyChoose() {
                   <div className="w-10 h-10 rounded-sm bg-[#10243B]/5 group-hover:bg-[#C9A227]/10 flex items-center justify-center mb-4 transition-colors duration-300">
                     <Icon size={18} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-300" />
                   </div>
-                  <h3 className="font-heading font-bold text-[#10243B] text-sm mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  <h3 className="font-heading font-bold text-[#10243B] text-base mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-xs leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               );
             })}

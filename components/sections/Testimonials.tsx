@@ -25,7 +25,7 @@ export default function Testimonials() {
               className="bg-[#F8FAFC] border border-gray-100 rounded-sm p-8 hover:shadow-lg hover:border-[#C9A227]/20 transition-all duration-300 relative group"
             >
               <Quote size={28} className="text-[#C9A227]/20 group-hover:text-[#C9A227]/40 transition-colors mb-4" aria-hidden="true" />
-              <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
+              <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-6 italic">&ldquo;{t.quote}&rdquo;</p>
               <div className="flex items-center gap-1 mb-5">
                 {Array.from({ length: t.rating }).map((_, j) => (
                   <Star key={j} size={13} className="text-[#C9A227] fill-[#C9A227]" aria-hidden="true" />
@@ -36,8 +36,8 @@ export default function Testimonials() {
                   <span className="text-white font-bold text-sm">{t.name[0]}</span>
                 </div>
                 <div>
-                  <div className="font-heading font-bold text-[#10243B] text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>{t.name}</div>
-                  <div className="text-gray-400 text-xs">{t.role} · {t.company}</div>
+                  <div className="font-heading font-bold text-[#10243B] text-sm sm:text-base">{t.name}</div>
+                  <div className="text-gray-400 text-xs sm:text-sm">{t.role} · {t.company}</div>
                 </div>
               </div>
             </motion.div>

@@ -43,13 +43,13 @@ export default function ValuesSection() {
                   <div className="w-11 h-11 rounded-sm bg-[#C9A227]/10 group-hover:bg-[#C9A227]/20 flex items-center justify-center mb-5 transition-colors duration-300">
                     <Icon size={20} className="text-[#C9A227]" />
                   </div>
-                  <div className="text-[#C9A227] font-heading font-black text-3xl mb-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  <div className="text-[#C9A227] font-heading font-black text-2xl sm:text-3xl mb-1">
                     {value.letter}
                   </div>
-                  <h3 className="font-heading font-bold text-white text-sm mb-3" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                  <h3 className="font-heading font-bold text-white text-base mb-3">
                     {value.title}
                   </h3>
-                  <p className="text-white/55 text-xs leading-relaxed">{value.desc}</p>
+                  <p className="text-white/55 text-sm leading-relaxed">{value.desc}</p>
                 </div>
               </motion.div>
             );

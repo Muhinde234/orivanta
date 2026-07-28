@@ -10,18 +10,28 @@
 
   --font-heading: var(--font-poppins), 'Poppins', sans-serif;
   --font-body: var(--font-mulish), 'Mulish', sans-serif;
+
+  /* Type scale — mobile-first, fluid via clamp */
+  --text-display:  clamp(2.25rem, 5vw, 4rem);      /* h1 hero */
+  --text-h1:       clamp(2rem, 4vw, 3.25rem);       /* page banner h1 */
+  --text-h2:       clamp(1.5rem, 3vw, 2.25rem);     /* section headings */
+  --text-h3:       clamp(1.125rem, 2vw, 1.375rem);  /* card / sub-headings */
+  --text-h4:       1rem;                             /* small headings */
+  --text-body-lg:  clamp(1rem, 1.5vw, 1.125rem);    /* lead / subtitle */
+  --text-body:     0.9375rem;                        /* 15px — standard body */
+  --text-body-sm:  0.875rem;                         /* 14px — secondary body */
+  --text-caption:  0.8125rem;                        /* 13px — captions, labels */
+  --text-label:    0.75rem;                          /* 12px — badges, overlines */
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-mulish), 'Mulish', sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.7;
   color: #1F2937;
   background: #ffffff;
   -webkit-font-smoothing: antialiased;
@@ -30,7 +40,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-poppins), 'Poppins', sans-serif;
+  line-height: 1.2;
 }
+
+p { line-height: 1.75; }
 
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #F8FAFC; }

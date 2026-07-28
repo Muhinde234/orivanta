@@ -47,20 +47,17 @@ export default function MDSection() {
           >
             <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">Leadership</span>
             <div className="w-10 h-0.5 bg-[#C9A227] mt-3 mb-5" />
-            <h2
-              className="font-heading font-bold text-[#10243B] leading-tight mb-6"
-              style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)', fontFamily: 'Poppins, sans-serif' }}
-            >
+            <h2 className="font-heading font-bold text-[#10243B] leading-tight mb-6 text-2xl sm:text-3xl lg:text-4xl">
               A Message From Our Founder
             </h2>
 
             {/* Quote block */}
             <div className="relative bg-[#10243B] rounded-sm p-7 mb-7">
               <Quote size={32} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
-              <p className="text-white/80 leading-relaxed text-sm relative z-10 pl-4 italic">
+              <p className="text-white/80 leading-relaxed text-sm sm:text-base relative z-10 pl-4 italic">
                 Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.
               </p>
-              <p className="text-white/60 leading-relaxed text-sm mt-4 pl-4">
+              <p className="text-white/60 leading-relaxed text-sm sm:text-base mt-4 pl-4">
                 At AXIOM, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.
               </p>
             </div>
@@ -68,13 +65,10 @@ export default function MDSection() {
             {/* Signature */}
             <div className="flex items-center gap-4">
               <div>
-                <div
-                  className="font-heading font-bold text-[#10243B] text-lg"
-                  style={{ fontFamily: 'Poppins, sans-serif', fontStyle: 'italic' }}
-                >
+                <div className="font-heading font-bold text-[#10243B] text-lg sm:text-xl" style={{ fontStyle: 'italic' }}>
                   Daniel NGARUKIYIMANA
                 </div>
-                <div className="text-gray-500 text-sm">Founder & Managing Director, AXIOM Realty Consultant Ltd</div>
+                <div className="text-gray-500 text-sm sm:text-base">Founder & Managing Director, AXIOM Realty Consultant Ltd</div>
               </div>
             </div>
           </motion.div>

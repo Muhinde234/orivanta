@@ -37,10 +37,7 @@ export default function ServicesSection() {
                     <div className="w-12 h-12 rounded-sm bg-[#F8FAFC] group-hover:bg-[#C9A227]/20 flex items-center justify-center mb-5 transition-colors duration-300">
                       <Icon size={22} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-300" />
                     </div>
-                    <h3
-                      className="font-heading font-bold text-[#10243B] group-hover:text-white mb-3 leading-snug transition-colors duration-300"
-                      style={{ fontFamily: 'Poppins, sans-serif', fontSize: '0.95rem' }}
-                    >
+                    <h3 className="font-heading font-bold text-[#10243B] group-hover:text-white mb-3 leading-snug transition-colors duration-300 text-base">
                       {service.title}
                     </h3>
                     <p className="text-gray-500 group-hover:text-white/65 text-sm leading-relaxed mb-5 transition-colors duration-300">

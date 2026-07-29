@@ -1,9 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins, Mulish } from 'next/font/google';
 import './globals.css';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
-
 const poppins = Poppins({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700', '800'],
@@ -35,11 +32,8 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${poppins.variable} ${mulish.variable}`}>
-      <body className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <div className="h-16 bg-white" />
-        <Footer />
+      <body suppressHydrationWarning className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
+        {children}
       </body>
     </html>
   );

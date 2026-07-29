@@ -7,7 +7,7 @@ export default function NewsletterForm() {
       <input
         type="email"
         placeholder="Your email address"
-        className="flex-1 min-w-0 bg-white/[0.06] border border-white/[0.12] rounded px-3 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227] transition-colors"
+        className="flex-1 min-w-0 bg-white/[0.06] border border-white/[0.12] rounded-full px-4 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227] transition-colors"
         style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}
         aria-label="Email for newsletter"
       />

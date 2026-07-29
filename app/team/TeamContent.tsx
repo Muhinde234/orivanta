@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Mail, CheckCircle } from 'lucide-react';
+import { Mail, User, CheckCircle } from 'lucide-react';
 import { useCMS } from '@/lib/useCMS';
 
 const TEAM = [

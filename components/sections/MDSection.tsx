@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Quote } from 'lucide-react';
 import { useCMS } from '@/lib/useCMS';
+import { useLang } from '@/lib/LangContext';
 
 export default function MDSection() {
   const { data } = useCMS(['md_name','md_role','md_quote','md_body','md_photo']);
+  const { t } = useLang();
 
   const name = data.md_name || 'Daniel NGARUKIYIMANA';
   const role = data.md_role || 'Founder & Managing Director';
@@ -51,19 +53,19 @@ export default function MDSection() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="pt-8 lg:pt-0"
           >
-            <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">Leadership</span>
+            <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">{t('md_badge')}</span>
             <div className="w-10 h-0.5 bg-[#C9A227] mt-3 mb-5" />
             <h2 className="font-heading font-bold text-[#10243B] leading-tight mb-6 text-2xl sm:text-3xl lg:text-4xl">
-              A Message From Our Founder
+              {t('md_heading')}
             </h2>
 
             {/* Quote block */}
             <div className="relative bg-[#10243B] rounded-sm p-7 mb-7">
               <Quote size={32} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
-              <p className="text-white/80 leading-relaxed text-[15px] relative z-10 pl-4 italic">
+              <p className="text-white/80 leading-relaxed text-[17px] relative z-10 pl-4 italic">
                 {quote}
               </p>
-              <p className="text-white/60 leading-relaxed text-[15px] mt-4 pl-4">
+              <p className="text-white/60 leading-relaxed text-[17px] mt-4 pl-4">
                 {body}
               </p>
             </div>

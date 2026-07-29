@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle, ExternalLink } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import FAQ from '@/components/ui/FAQ';
 import { BRAND } from '@/lib/data';
 
@@ -92,15 +92,19 @@ export default function ContactContent() {
                 <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Connect With AXIOM</div>
                 <div className="flex gap-3">
                   {[
-                    { label: 'in', href: BRAND.linkedin, title: 'LinkedIn' },
-                    { label: 'f', href: BRAND.facebook, title: 'Facebook' },
-                    { label: 'ig', href: BRAND.instagram, title: 'Instagram' },
-                    { label: 'yt', href: BRAND.youtube, title: 'YouTube' },
-                    { label: 'x', href: BRAND.twitter, title: 'X (Twitter)' },
-                  ].map(({ label, href, title }) => (
+                    { title: 'LinkedIn', href: BRAND.linkedin, d: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z' },
+                    { title: 'Facebook', href: BRAND.facebook, d: 'M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z' },
+                    { title: 'Instagram', href: BRAND.instagram, d: null },
+                    { title: 'YouTube', href: BRAND.youtube, d: null },
+                    { title: 'X', href: BRAND.twitter, d: 'M18 6 6 18M6 6l12 12' },
+                  ].map(({ title, href, d }) => (
                     <a key={title} href={href} aria-label={title}
-                      className="w-9 h-9 rounded-sm bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300 text-white hover:text-[#10243B] text-xs font-bold">
-                      {label}
+                      className="w-9 h-9 rounded-sm bg-[#10243B] flex items-center justify-center hover:bg-[#C9A227] transition-colors duration-300 text-white hover:text-[#10243B]">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        {title === 'Instagram' ? <><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></> :
+                         title === 'YouTube' ? <><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></> :
+                         <path d={d!}/>}
+                      </svg>
                     </a>
                   ))}
                 </div>

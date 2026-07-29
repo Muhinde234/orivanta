@@ -2,8 +2,10 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { VALUES } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 export default function ValuesSection() {
+  const { t } = useLang();
   return (
     <section className="py-28 bg-[#10243B] relative overflow-hidden" aria-labelledby="values-heading">
       {/* Background grid */}
@@ -12,10 +14,10 @@ export default function ValuesSection() {
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge="Our Principles"
-          title="The AXIOM Principles"
+          badge={t('values_badge')}
+          title={t('values_title')}
           highlight="AXIOM"
-          subtitle="Our name represents more than a brand — it represents the principles that guide our decisions, our services, and our relationships with clients."
+          subtitle={t('values_subtitle')}
           light
         />
 
@@ -55,7 +57,7 @@ export default function ValuesSection() {
                   <h3 className="font-heading font-bold text-white text-base mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-white/55 text-[15px] leading-relaxed">{value.desc}</p>
+                  <p className="text-white/55 text-[17px] leading-relaxed">{value.desc}</p>
                 </div>
               </motion.div>
             );

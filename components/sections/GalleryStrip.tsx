@@ -1,6 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import { useLang } from '@/lib/LangContext';
 
 const IMAGES = [
   { src: '/images/1.jpg', alt: 'Kigali real estate' },
@@ -14,10 +15,11 @@ const IMAGES = [
 ];
 
 export default function GalleryStrip() {
+  const { t } = useLang();
   return (
     <section className="py-16 bg-[#F8FAFC] overflow-hidden" aria-label="Photo gallery">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-8 text-center">
-        <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">Our Work</span>
+        <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">{t('gallery_badge')}</span>
         <div className="w-10 h-0.5 bg-[#C9A227] mx-auto mt-3" />
       </div>
       <div className="flex gap-4 overflow-x-auto pb-2 px-6 lg:px-8 max-w-7xl mx-auto scrollbar-hide">

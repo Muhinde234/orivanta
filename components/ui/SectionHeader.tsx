@@ -114,7 +114,7 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className={`mt-5 text-base sm:text-lg leading-relaxed max-w-2xl ${isCenter ? 'mx-auto' : ''} ${
+          className={`mt-5 text-[15px] leading-relaxed max-w-2xl ${isCenter ? 'mx-auto' : ''} ${
             light ? 'text-white/65' : 'text-gray-500'
           }`}
         >

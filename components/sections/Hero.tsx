@@ -5,11 +5,17 @@ import Link from 'next/link';
 import { ArrowRight, ChevronDown, Building2, TrendingUp, Award } from 'lucide-react';
 import { STATS } from '@/lib/data';
 import { useCMS } from '@/lib/useCMS';
+import { useLang } from '@/lib/LangContext';
 
 export default function Hero() {
   const { data } = useCMS(['hero_title','hero_tagline','hero_body','hero_cta_primary','hero_cta_secondary','hero_image']);
+  const { t } = useLang();
 
   const heroImage = data.hero_image || '/images/1.jpg';
+  const tagline = data.hero_tagline || t('hero_tagline');
+  const body = data.hero_body || t('hero_body');
+  const ctaPrimary = data.hero_cta_primary || t('hero_cta_primary');
+  const ctaSecondary = data.hero_cta_secondary || t('hero_cta_secondary');
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-label="Hero">
@@ -51,15 +57,15 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/75 text-lg sm:text-xl font-medium mb-3"
             >
-              {data.hero_tagline || 'Where Property Meets Professional Expertise'}
+              {tagline}
             </motion.p>
 
             {/* Body copy — standard body */}
             <motion.p
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white/55 text-[15px] leading-relaxed mb-10 max-w-lg"
+              className="text-white/55 text-[17px] leading-relaxed mb-10 max-w-lg"
             >
-              {data.hero_body || 'A professional real estate consulting company dedicated to providing reliable and innovative property solutions for individuals, businesses, investors, and institutions.'}
+              {body}
             </motion.p>
 
             <motion.div
@@ -68,11 +74,11 @@ export default function Hero() {
             >
               <Link href="/contact"
                 className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-7 py-3.5 rounded-full hover:bg-[#b8911f] transition-all duration-300 text-sm sm:text-base">
-                {data.hero_cta_primary || 'Request Consultation'} <ArrowRight size={16} />
+                {ctaPrimary} <ArrowRight size={16} />
               </Link>
               <Link href="/services"
                 className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-7 py-3.5 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 text-sm sm:text-base">
-                {data.hero_cta_secondary || 'Explore Our Services'}
+                {ctaSecondary}
               </Link>
             </motion.div>
 

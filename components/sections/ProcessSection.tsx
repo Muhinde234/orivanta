@@ -2,16 +2,18 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { PROCESS_STEPS } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 export default function ProcessSection() {
+  const { t } = useLang();
   return (
     <section className="py-28 bg-white" aria-labelledby="process-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
-          badge="Our Approach"
-          title="How We Work"
-          highlight="We Work"
-          subtitle="A structured, professional process designed to deliver reliable results and support informed real estate decisions."
+          badge={t('process_badge')}
+          title={t('process_title')}
+          highlight="Process"
+          subtitle={t('process_subtitle')}
         />
 
         <div className="relative">
@@ -43,7 +45,7 @@ export default function ProcessSection() {
                   <h3 className="font-heading font-bold text-[#10243B] mb-3 text-base sm:text-lg">
                     {step.title}
                   </h3>
-                  <p className="text-gray-500 text-[15px] leading-relaxed">{step.desc}</p>
+                  <p className="text-gray-500 text-[17px] leading-relaxed">{step.desc}</p>
                 </motion.div>
               );
             })}

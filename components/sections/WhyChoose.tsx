@@ -2,18 +2,20 @@
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { WHY_CHOOSE } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 export default function WhyChoose() {
+  const { t } = useLang();
   return (
     <section className="py-28 bg-[#F8FAFC]" aria-labelledby="why-choose-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           <div>
             <SectionHeader
-              badge="Why AXIOM"
-              title="The AXIOM Advantage"
+              badge={t('why_badge')}
+              title={t('why_title')}
               highlight="AXIOM"
-              subtitle="At AXIOM, we believe successful real estate decisions require accurate information, professional expertise, and strategic thinking. We provide solutions designed around our clients' objectives."
+              subtitle={t('why_subtitle')}
               align="left"
             />
             <motion.div
@@ -23,8 +25,8 @@ export default function WhyChoose() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="mt-8 p-6 bg-[#10243B] rounded-sm"
             >
-              <p className="text-white/80 text-sm leading-relaxed italic">
-                &ldquo;Our approach combines valuation knowledge, market analysis, and innovative solutions to support clients throughout the real estate lifecycle.&rdquo;
+              <p className="text-white/80 text-[17px] leading-relaxed italic">
+                &ldquo;{t('why_quote')}&rdquo;
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="w-8 h-px bg-[#C9A227]" />
@@ -51,7 +53,7 @@ export default function WhyChoose() {
                   <h3 className="font-heading font-bold text-[#10243B] text-base mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-[17px] leading-relaxed">{item.desc}</p>
                 </motion.div>
               );
             })}

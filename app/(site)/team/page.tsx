@@ -3,9 +3,19 @@ import PageBanner from '@/components/ui/PageBanner';
 import CTASection from '@/components/sections/CTASection';
 import TeamContent from './TeamContent';
 
+const BASE_URL = 'https://www.axiomrealty.rw';
+
 export const metadata: Metadata = {
   title: 'Our Team',
-  description: 'Meet the professional team behind AXIOM Realty Consultant Ltd — experts in property valuation, real estate consultancy, investment advisory, and more.',
+  description:
+    'Meet the professional team behind AXIOM Realty Consultant Ltd — experts in property valuation, real estate consultancy, investment advisory, and more in Rwanda.',
+  alternates: { canonical: `${BASE_URL}/team` },
+  openGraph: {
+    url: `${BASE_URL}/team`,
+    title: 'Our Professional Team | AXIOM Realty Consultant Ltd',
+    description: 'Meet the experts behind Rwanda\'s leading real estate advisory firm — property valuation, consultancy, and investment advisory specialists.',
+    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'AXIOM Realty Team' }],
+  },
 };
 
 export default function TeamPage() {

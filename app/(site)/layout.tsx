@@ -9,8 +9,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
     <LangProvider>
       <ProgressBar />
       <Navbar />
-      <main className="flex-1">{children}</main>
-      <div className="h-16 bg-white" />
+      <main className="flex-1 pb-16">{children}</main>
       <Footer />
       <Chatbot />
     </LangProvider>

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Phone } from 'lucide-react';
+import { useLang } from '@/lib/LangContext';
 
 interface CTASectionProps {
   title?: string;
@@ -14,13 +15,18 @@ interface CTASectionProps {
 }
 
 export default function CTASection({
-  title = 'Need Professional Real Estate Advice?',
-  subtitle = 'Whether you are buying, selling, investing, developing, or managing property, AXIOM Realty Consultant Ltd is ready to provide expert guidance.',
-  primaryLabel = 'Talk With Our Experts',
+  title,
+  subtitle,
+  primaryLabel,
   primaryHref = '/contact',
-  secondaryLabel = 'Explore Our Services',
+  secondaryLabel,
   secondaryHref = '/services',
 }: CTASectionProps) {
+  const { t } = useLang();
+  const resolvedTitle = title ?? t('cta_title');
+  const resolvedSubtitle = subtitle ?? t('cta_subtitle');
+  const resolvedPrimary = primaryLabel ?? t('cta_primary');
+  const resolvedSecondary = secondaryLabel ?? t('cta_secondary');
   return (
     <section className="py-20 sm:py-24 bg-[#10243B] relative overflow-hidden" aria-labelledby="cta-heading">
       <Image src="/images/9.jpg" alt="" fill className="object-cover opacity-20" />
@@ -43,21 +49,20 @@ export default function CTASection({
           {/* h2 — section heading scale */}
           <h2 id="cta-heading"
             className="font-heading font-bold text-white leading-tight mb-5 text-2xl sm:text-3xl lg:text-4xl">
-            {title}
+            {resolvedTitle}
           </h2>
-          {/* Body — standard body */}
-          <p className="text-white/65 leading-relaxed mb-10 max-w-2xl mx-auto text-[15px] sm:text-base">
-            {subtitle}
+          <p className="text-white/65 leading-relaxed mb-10 max-w-2xl mx-auto text-[17px]">
+            {resolvedSubtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link href={primaryHref}
               className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-7 py-3.5 rounded-full hover:bg-[#b8911f] transition-all duration-300 text-sm sm:text-base">
               <Phone size={16} />
-              {primaryLabel}
+              {resolvedPrimary}
             </Link>
             <Link href={secondaryHref}
               className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-7 py-3.5 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 text-sm sm:text-base">
-              {secondaryLabel} <ArrowRight size={16} />
+              {resolvedSecondary} <ArrowRight size={16} />
             </Link>
           </div>
         </motion.div>

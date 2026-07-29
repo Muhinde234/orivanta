@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Script from 'next/script';
 import { CheckCircle } from 'lucide-react';
 import PageBanner from '@/components/ui/PageBanner';
 import FAQ from '@/components/ui/FAQ';
@@ -11,6 +12,8 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+const BASE_URL = 'https://www.axiomrealty.rw';
+
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
 }
@@ -19,7 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) return {};
-  return { title: service.title, description: service.shortDesc };
+  return {
+    title: service.title,
+    description: service.shortDesc,
+    alternates: { canonical: `${BASE_URL}/services/${slug}` },
+    openGraph: {
+      url: `${BASE_URL}/services/${slug}`,
+      title: `${service.title} | AXIOM Realty Consultant Ltd`,
+      description: service.shortDesc,
+      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: service.title }],
+    },
+  };
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -29,6 +42,27 @@ export default async function ServicePage({ params }: Props) {
 
   return (
     <>
+      <Script
+        id={`json-ld-service-${service.slug}`}
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'Service',
+            serviceType: service.title,
+            name: service.title,
+            description: service.shortDesc,
+            url: `${BASE_URL}/services/${service.slug}`,
+            provider: {
+              '@type': 'Organization',
+              name: 'AXIOM Realty Consultant Ltd',
+              url: BASE_URL,
+            },
+            areaServed: { '@type': 'Country', name: 'Rwanda' },
+          }),
+        }}
+        strategy="afterInteractive"
+      />
       <PageBanner
         title={service.title}
         subtitle={service.shortDesc}

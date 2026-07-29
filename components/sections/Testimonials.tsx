@@ -4,8 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { TESTIMONIALS } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 export default function Testimonials() {
+  const { t } = useLang();
   const [active, setActive] = useState(0);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -29,7 +31,7 @@ export default function Testimonials() {
     startTimer();
   };
 
-  const t = TESTIMONIALS[active];
+  const item = TESTIMONIALS[active];
 
   return (
     <section className="py-28 bg-white relative overflow-hidden" aria-labelledby="testimonials-heading">
@@ -39,10 +41,10 @@ export default function Testimonials() {
 
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeader
-          badge="Client Feedback"
-          title="What Our Clients Say"
+          badge={t('testimonials_badge')}
+          title={t('testimonials_title')}
           highlight="Clients"
-          subtitle="Trusted by individuals, investors, and organizations across Rwanda for professional real estate advisory services."
+          subtitle={t('testimonials_subtitle')}
           light={false}
         />
 
@@ -63,24 +65,24 @@ export default function Testimonials() {
             >
               {/* Stars */}
               <div className="flex items-center gap-1 mb-6">
-                {Array.from({ length: t.rating }).map((_, j) => (
+                {Array.from({ length: item.rating }).map((_, j) => (
                   <Star key={j} size={16} className="text-[#C9A227] fill-[#C9A227]" aria-hidden="true" />
                 ))}
               </div>
 
               {/* Quote text */}
               <p className="text-gray-600 text-lg sm:text-xl leading-relaxed italic max-w-2xl mb-10">
-                &ldquo;{t.quote}&rdquo;
+                &ldquo;{item.quote}&rdquo;
               </p>
 
               {/* Circle avatar + name */}
               <div className="flex flex-col items-center gap-3">
                 <div className="w-16 h-16 rounded-full bg-[#10243B] flex items-center justify-center ring-4 ring-[#10243B]/10">
-                  <span className="text-white font-black text-2xl">{t.name[0]}</span>
+                  <span className="text-white font-black text-2xl">{item.name[0]}</span>
                 </div>
                 <div>
-                  <div className="font-heading font-bold text-[#10243B] text-base">{t.name}</div>
-                  <div className="text-[#C9A227] text-sm font-medium mt-0.5">{t.role} · {t.company}</div>
+                  <div className="font-heading font-bold text-[#10243B] text-base">{item.name}</div>
+                  <div className="text-[#C9A227] text-[15px] font-medium mt-0.5">{item.role} · {item.company}</div>
                 </div>
               </div>
             </motion.div>

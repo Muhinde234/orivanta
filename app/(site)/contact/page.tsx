@@ -2,9 +2,19 @@ import type { Metadata } from 'next';
 import PageBanner from '@/components/ui/PageBanner';
 import ContactContent from './ContactContent';
 
+const BASE_URL = 'https://www.axiomrealty.rw';
+
 export const metadata: Metadata = {
   title: 'Contact Us',
-  description: 'Get in touch with AXIOM Realty Consultant Ltd for professional real estate advisory services. Request a consultation, ask questions, or visit our office in Kigali, Rwanda.',
+  description:
+    'Get in touch with AXIOM Realty Consultant Ltd for professional real estate advisory services in Rwanda. Request a consultation, ask questions, or visit our office in Kigali.',
+  alternates: { canonical: `${BASE_URL}/contact` },
+  openGraph: {
+    url: `${BASE_URL}/contact`,
+    title: 'Contact AXIOM Realty Consultant Ltd | Kigali, Rwanda',
+    description: 'Reach out to our professional team for real estate consultancy, property valuation, and advisory services in Rwanda.',
+    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'Contact AXIOM Realty' }],
+  },
 };
 
 export default function ContactPage() {

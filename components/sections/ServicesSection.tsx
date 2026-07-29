@@ -4,16 +4,18 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
 import { SERVICES } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 export default function ServicesSection() {
+  const { t } = useLang();
   return (
     <section className="py-28 bg-white" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
-          badge="What We Do"
-          title="Our Real Estate Services"
+          badge={t('services_badge')}
+          title={t('services_title')}
           highlight="Real Estate"
-          subtitle="Comprehensive real estate solutions designed to support property owners, investors, developers, businesses, and institutions throughout the entire property lifecycle."
+          subtitle={t('services_subtitle')}
         />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -41,7 +43,7 @@ export default function ServicesSection() {
                     <h3 className="font-heading font-bold text-[#10243B] group-hover:text-white mb-3 leading-snug transition-colors duration-300 text-base">
                       {service.title}
                     </h3>
-                    <p className="text-gray-500 group-hover:text-white/65 text-sm leading-relaxed mb-5 transition-colors duration-300">
+                    <p className="text-gray-500 group-hover:text-white/65 text-[15px] leading-relaxed mb-5 transition-colors duration-300">
                       {service.shortDesc}
                     </p>
                     <span className="inline-flex items-center gap-1.5 text-[#C9A227] text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all duration-300">
@@ -65,7 +67,7 @@ export default function ServicesSection() {
             href="/services"
             className="inline-flex items-center gap-2 border-2 border-[#10243B] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#10243B] hover:text-white transition-all duration-300 text-sm"
           >
-            View All Services <ArrowRight size={16} />
+            {t('services_view_all')} <ArrowRight size={16} />
           </Link>
         </motion.div>
       </div>

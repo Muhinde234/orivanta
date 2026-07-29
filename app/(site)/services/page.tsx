@@ -5,9 +5,19 @@ import PageBanner from '@/components/ui/PageBanner';
 import CTASection from '@/components/sections/CTASection';
 import { SERVICES } from '@/lib/data';
 
+const BASE_URL = 'https://www.axiomrealty.rw';
+
 export const metadata: Metadata = {
   title: 'Our Services',
-  description: 'Comprehensive real estate services from AXIOM Realty Consultant Ltd — property valuation, consultancy, management, brokerage, investment advisory, and more.',
+  description:
+    'Comprehensive real estate services from AXIOM Realty Consultant Ltd — property valuation, consultancy, management, brokerage, investment advisory, and land development in Rwanda.',
+  alternates: { canonical: `${BASE_URL}/services` },
+  openGraph: {
+    url: `${BASE_URL}/services`,
+    title: 'Real Estate Services | AXIOM Realty Consultant Ltd',
+    description: 'Property valuation, consultancy, management, brokerage, investment advisory, and land development services in Rwanda.',
+    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'AXIOM Realty Services' }],
+  },
 };
 
 export default function ServicesPage() {

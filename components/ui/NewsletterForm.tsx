@@ -13,7 +13,7 @@ export default function NewsletterForm() {
       />
       <button
         type="submit"
-        className="flex-shrink-0 bg-[#C9A227] text-[#10243B] w-10 h-10 rounded flex items-center justify-center hover:bg-[#b8911f] transition-colors"
+        className="flex-shrink-0 bg-[#C9A227] text-[#10243B] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#b8911f] transition-colors"
         aria-label="Subscribe to newsletter"
       >
         <ArrowRight size={15} />

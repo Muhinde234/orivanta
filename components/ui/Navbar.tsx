@@ -111,13 +111,8 @@ export default function Navbar() {
               ))}
             </nav>
 
-            {/* Desktop right: phone + lang + CTA */}
+            {/* Desktop right: lang + phone + CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <a href="tel:+250XXXXXXXXX" className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor}`}>
-                <Phone size={15} />
-                <span>+250 XXX XXX XXX</span>
-              </a>
-
               {/* Language switcher */}
               <div className="relative">
                 <button
@@ -149,6 +144,11 @@ export default function Navbar() {
                   )}
                 </AnimatePresence>
               </div>
+
+              <a href="tel:+250XXXXXXXXX" className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor}`}>
+                <Phone size={15} />
+                <span>+250 XXX XXX XXX</span>
+              </a>
 
               <Link href="/contact"
                 className="bg-[#C9A227] text-[#10243B] text-sm font-bold px-6 py-3 rounded-full hover:bg-[#b8911f] transition-colors">

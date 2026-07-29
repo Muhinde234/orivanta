@@ -43,7 +43,7 @@ export default function ProcessSection() {
                   <h3 className="font-heading font-bold text-[#10243B] mb-3 text-base sm:text-lg">
                     {step.title}
                   </h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-gray-500 text-[15px] leading-relaxed">{step.desc}</p>
                 </motion.div>
               );
             })}

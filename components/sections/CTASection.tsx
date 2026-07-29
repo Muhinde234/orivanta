@@ -46,7 +46,7 @@ export default function CTASection({
             {title}
           </h2>
           {/* Body — standard body */}
-          <p className="text-white/65 leading-relaxed mb-10 max-w-2xl mx-auto text-base sm:text-lg">
+          <p className="text-white/65 leading-relaxed mb-10 max-w-2xl mx-auto text-[15px] sm:text-base">
             {subtitle}
           </p>
           <div className="flex flex-wrap justify-center gap-4">

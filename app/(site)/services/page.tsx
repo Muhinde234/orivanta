@@ -38,7 +38,7 @@ export default function ServicesPage() {
                   <h2 className="font-heading font-bold text-[#10243B] text-lg mb-3 leading-snug" style={{ fontFamily: 'Poppins, sans-serif' }}>
                     {service.title}
                   </h2>
-                  <p className="text-gray-500 text-sm leading-relaxed mb-6">{service.shortDesc}</p>
+                  <p className="text-gray-500 text-[15px] leading-relaxed mb-6">{service.shortDesc}</p>
                   <span className="inline-flex items-center gap-2 text-[#10243B] group-hover:text-[#C9A227] text-xs font-bold uppercase tracking-wider transition-colors duration-300">
                     Learn More <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                   </span>

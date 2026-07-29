@@ -55,7 +55,7 @@ export default function ValuesSection() {
                   <h3 className="font-heading font-bold text-white text-base mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-white/55 text-sm leading-relaxed">{value.desc}</p>
+                  <p className="text-white/55 text-[15px] leading-relaxed">{value.desc}</p>
                 </div>
               </motion.div>
             );

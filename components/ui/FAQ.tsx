@@ -42,7 +42,7 @@ export default function FAQ({ items, title = 'Frequently Asked Questions' }: FAQ
                   exit={{ height: 0, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4">
+                  <div className="px-6 pb-5 text-gray-600 leading-relaxed border-t border-gray-100 pt-4 text-[15px]">
                     {item.a}
                   </div>
                 </motion.div>

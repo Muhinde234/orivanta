@@ -66,13 +66,13 @@ export default function AboutContent() {
                 style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)' }}>
                 A Professional Real Estate Advisory Company
               </h2>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-600 leading-relaxed text-[15px] mb-4">
                 {data.about_who_we_are || 'AXIOM Realty Consultant Ltd is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.'}
               </p>
-              <p className="text-gray-600 leading-relaxed mb-4">
+              <p className="text-gray-600 leading-relaxed text-[15px] mb-4">
                 {data.about_who_we_are_2 || 'We provide comprehensive real estate services including property valuation, real estate consultancy, property management, facility management, real estate brokerage, corporate real estate advisory, and investment advisory.'}
               </p>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 leading-relaxed text-[15px]">
                 Our company supports individuals, businesses, investors, developers, financial institutions, and organizations by providing professional expertise and strategic solutions.
               </p>
             </motion.div>
@@ -167,7 +167,7 @@ export default function AboutContent() {
                   style={{ fontSize: '6rem', fontFamily: 'Georgia, serif', lineHeight: 0.8 }}>
                   &ldquo;
                 </div>
-                <p className="text-gray-600 leading-relaxed text-base sm:text-lg">
+                <p className="text-gray-600 leading-relaxed text-[15px] sm:text-base">
                   {current.body}
                 </p>
               </div>
@@ -217,7 +217,7 @@ export default function AboutContent() {
                     </span>
                   </div>
                   <h3 className="font-heading font-bold text-[#10243B] text-base mb-2">{item.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-[15px] leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -248,7 +248,7 @@ export default function AboutContent() {
                   style={{ fontSize: 'clamp(2rem, 4vw, 3rem)' }}>
                   {stat.value}
                 </div>
-                <div className="text-white/60 text-sm">{stat.label}</div>
+                <div className="text-white/60 text-[15px]">{stat.label}</div>
               </motion.div>
             ))}
           </div>

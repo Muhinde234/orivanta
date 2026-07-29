@@ -57,7 +57,7 @@ export default function Hero() {
             {/* Body copy — standard body */}
             <motion.p
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-white/55 text-sm sm:text-base leading-relaxed mb-10 max-w-lg"
+              className="text-white/55 text-[15px] leading-relaxed mb-10 max-w-lg"
             >
               {data.hero_body || 'A professional real estate consulting company dedicated to providing reliable and innovative property solutions for individuals, businesses, investors, and institutions.'}
             </motion.p>

@@ -53,7 +53,7 @@ export default function PageBanner({ title, subtitle, breadcrumbs }: PageBannerP
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-4 text-white/65 max-w-2xl leading-relaxed text-base sm:text-lg">
+            <p className="mt-4 text-white/65 max-w-2xl leading-relaxed text-[15px] sm:text-base">
               {subtitle}
             </p>
           )}

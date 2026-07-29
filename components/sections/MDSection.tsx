@@ -60,10 +60,10 @@ export default function MDSection() {
             {/* Quote block */}
             <div className="relative bg-[#10243B] rounded-sm p-7 mb-7">
               <Quote size={32} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
-              <p className="text-white/80 leading-relaxed text-sm sm:text-base relative z-10 pl-4 italic">
+              <p className="text-white/80 leading-relaxed text-[15px] relative z-10 pl-4 italic">
                 {quote}
               </p>
-              <p className="text-white/60 leading-relaxed text-sm sm:text-base mt-4 pl-4">
+              <p className="text-white/60 leading-relaxed text-[15px] mt-4 pl-4">
                 {body}
               </p>
             </div>

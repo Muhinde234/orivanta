@@ -53,7 +53,7 @@ export default function ContactContent() {
                 <h2 className="font-heading font-bold text-[#10243B] text-2xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   We&apos;re Ready to Help
                 </h2>
-                <p className="text-gray-500 text-sm leading-relaxed">
+                <p className="text-gray-500 text-[15px] leading-relaxed">
                   Whether you require property valuation, consultancy, property management, investment advice, brokerage services, or corporate real estate solutions, our team is available to provide expert guidance.
                 </p>
               </div>
@@ -74,7 +74,7 @@ export default function ContactContent() {
                     </div>
                     <div>
                       <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1">{item.label}</div>
-                      <div className="text-[#10243B] font-medium text-sm">{item.value}</div>
+                      <div className="text-[#10243B] font-medium text-[15px]">{item.value}</div>
                     </div>
                   </div>
                 );
@@ -275,7 +275,7 @@ export default function ContactContent() {
             <h2 className="font-heading font-bold text-white text-3xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Let&apos;s Discuss Your Real Estate Goals
             </h2>
-            <p className="text-white/65 text-sm leading-relaxed mb-8 max-w-xl mx-auto">
+            <p className="text-white/65 text-[15px] leading-relaxed mb-8 max-w-xl mx-auto">
               Whether you are planning to invest, manage, develop, buy, or sell property, AXIOM Realty Consultant Ltd is ready to provide professional support and strategic guidance.
             </p>
             <div className="flex flex-wrap justify-center gap-4">

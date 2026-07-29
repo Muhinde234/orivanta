@@ -75,7 +75,7 @@ export default function TeamContent() {
                 <h2 className="font-heading font-bold text-[#10243B] text-3xl mb-5" style={{ fontFamily: 'Poppins, sans-serif' }}>
                   {member.name}
                 </h2>
-                <p className="text-gray-600 leading-relaxed mb-8">{member.bio}</p>
+                <p className="text-gray-600 leading-relaxed text-[15px] mb-8">{member.bio}</p>
 
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
@@ -84,7 +84,7 @@ export default function TeamContent() {
                     </h3>
                     <ul className="space-y-2">
                       {member.responsibilities.map((r, j) => (
-                        <li key={j} className="flex items-start gap-2 text-sm text-gray-600">
+                        <li key={j} className="flex items-start gap-2 text-[15px] text-gray-600">
                           <CheckCircle size={14} className="text-[#C9A227] mt-0.5 flex-shrink-0" />
                           {r}
                         </li>
@@ -140,10 +140,10 @@ export default function TeamContent() {
             <h2 className="font-heading font-bold text-[#10243B] text-2xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
               Our Team Commitment
             </h2>
-            <p className="text-gray-500 text-sm leading-relaxed italic mb-2">
+            <p className="text-gray-500 text-[15px] leading-relaxed italic mb-2">
               &ldquo;Working together to create real estate value&rdquo;
             </p>
-            <p className="text-gray-500 text-sm leading-relaxed max-w-2xl mx-auto">
+            <p className="text-gray-500 text-[15px] leading-relaxed max-w-2xl mx-auto">
               At AXIOM Realty Consultant Ltd, we continuously develop our knowledge, embrace innovation, and maintain professional standards to provide clients with trusted real estate solutions.
             </p>
           </motion.div>

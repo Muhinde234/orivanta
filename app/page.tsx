@@ -6,6 +6,7 @@ import ValuesSection from '@/components/sections/ValuesSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import MDSection from '@/components/sections/MDSection';
 import Testimonials from '@/components/sections/Testimonials';
+import GalleryStrip from '@/components/sections/GalleryStrip';
 import CTASection from '@/components/sections/CTASection';
 
 export const metadata: Metadata = {
@@ -42,6 +43,7 @@ export default function HomePage() {
       <ProcessSection />
       <MDSection />
       <Testimonials />
+      <GalleryStrip />
       <CTASection />
     </>
   );

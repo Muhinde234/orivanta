@@ -1,13 +1,21 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, ChevronDown, Building2, TrendingUp, Award } from 'lucide-react';
 import { STATS } from '@/lib/data';
+import { useCMS } from '@/lib/useCMS';
 
 export default function Hero() {
+  const { data } = useCMS(['hero_title','hero_tagline','hero_body','hero_cta_primary','hero_cta_secondary','hero_image']);
+
+  const heroImage = data.hero_image || '/images/1.jpg';
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-label="Hero">
-      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, #10243B 0%, #0d1e30 40%, #1a3a5c 100%)' }} />
+      {/* Background image */}
+      <Image src={heroImage} alt="" fill className="object-cover object-center" priority />
+      <div className="absolute inset-0" style={{ background: 'linear-gradient(135deg, rgba(16,36,59,0.92) 0%, rgba(13,30,48,0.88) 40%, rgba(26,58,92,0.85) 100%)' }} />
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: 'linear-gradient(#C9A227 1px, transparent 1px), linear-gradient(90deg, #C9A227 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
       <div className="absolute top-0 left-0 w-px h-full bg-gradient-to-b from-transparent via-[#C9A227]/40 to-transparent" />
@@ -33,7 +41,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
               className="font-heading font-bold text-white leading-[1.1] mb-5 text-4xl sm:text-5xl lg:text-6xl"
             >
-              AXIOM Realty
+              {data.hero_title || 'AXIOM Realty'}
               <br />
               <span className="text-[#C9A227]">Consultant</span> Ltd
             </motion.h1>
@@ -43,7 +51,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }}
               className="text-white/75 text-lg sm:text-xl font-medium mb-3"
             >
-              Where Property Meets Professional Expertise
+              {data.hero_tagline || 'Where Property Meets Professional Expertise'}
             </motion.p>
 
             {/* Body copy — standard body */}
@@ -51,7 +59,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.3 }}
               className="text-white/55 text-sm sm:text-base leading-relaxed mb-10 max-w-lg"
             >
-              A professional real estate consulting company dedicated to providing reliable and innovative property solutions for individuals, businesses, investors, and institutions.
+              {data.hero_body || 'A professional real estate consulting company dedicated to providing reliable and innovative property solutions for individuals, businesses, investors, and institutions.'}
             </motion.p>
 
             <motion.div
@@ -60,11 +68,11 @@ export default function Hero() {
             >
               <Link href="/contact"
                 className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-7 py-3.5 rounded-full hover:bg-[#b8911f] transition-all duration-300 text-sm sm:text-base">
-                Request Consultation <ArrowRight size={16} />
+                {data.hero_cta_primary || 'Request Consultation'} <ArrowRight size={16} />
               </Link>
               <Link href="/services"
                 className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-7 py-3.5 rounded-full hover:border-white hover:bg-white/5 transition-all duration-300 text-sm sm:text-base">
-                Explore Our Services
+                {data.hero_cta_secondary || 'Explore Our Services'}
               </Link>
             </motion.div>
 

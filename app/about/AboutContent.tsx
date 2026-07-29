@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { Eye, Target, BookOpen } from 'lucide-react';
+import { useCMS } from '@/lib/useCMS';
 
 const TIMELINE = [
   { year: 'Founded', title: 'AXIOM Established', desc: 'AXIOM Realty Consultant Ltd was established with a vision to transform how individuals, investors, and organizations approach real estate decisions.' },
@@ -10,6 +12,8 @@ const TIMELINE = [
 ];
 
 export default function AboutContent() {
+  const { data } = useCMS(['about_who_we_are','about_who_we_are_2','about_vision','about_mission']);
+
   return (
     <>
       {/* Who We Are */}
@@ -31,10 +35,10 @@ export default function AboutContent() {
                 A Professional Real Estate Advisory Company
               </h2>
               <p className="text-gray-600 leading-relaxed mb-5">
-                AXIOM Realty Consultant Ltd is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.
+                {data.about_who_we_are || 'AXIOM Realty Consultant Ltd is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.'}
               </p>
               <p className="text-gray-600 leading-relaxed mb-5">
-                We provide comprehensive real estate services including property valuation, real estate consultancy, property management, facility management, real estate brokerage, corporate real estate advisory, and investment advisory.
+                {data.about_who_we_are_2 || 'We provide comprehensive real estate services including property valuation, real estate consultancy, property management, facility management, real estate brokerage, corporate real estate advisory, and investment advisory.'}
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Our company supports individuals, businesses, investors, developers, financial institutions, and organizations by providing professional expertise and strategic solutions that help clients make informed property decisions and maximize the value of their real estate assets.
@@ -48,9 +52,24 @@ export default function AboutContent() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="space-y-5"
             >
+              {/* Image grid */}
+              <div className="grid grid-cols-2 gap-3 mb-5">
+                <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
+                  <Image src="/images/3.jpg" alt="AXIOM office" fill className="object-cover" />
+                </div>
+                <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
+                  <Image src="/images/4.jpg" alt="Property advisory" fill className="object-cover" />
+                </div>
+                <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
+                  <Image src="/images/5.jpg" alt="Real estate" fill className="object-cover" />
+                </div>
+                <div className="relative aspect-[4/3] rounded-sm overflow-hidden">
+                  <Image src="/images/6.jpg" alt="Kigali property" fill className="object-cover" />
+                </div>
+              </div>
               {[
-                { icon: Eye, title: 'Our Vision', color: '#C9A227', desc: 'To become Africa\'s most trusted real estate consulting firm, delivering innovative property solutions, sustainable developments, and professional advisory services that create lasting value for investors, businesses, communities, and future generations.' },
-                { icon: Target, title: 'Our Mission', color: '#10243B', desc: 'To provide reliable, ethical and innovative real estate solutions that empower clients to make informed decisions, maximize property value, and achieve sustainable investment growth.' },
+                { icon: Eye, title: 'Our Vision', color: '#C9A227', desc: data.about_vision || 'To become Africa\'s most trusted real estate consulting firm, delivering innovative property solutions, sustainable developments, and professional advisory services that create lasting value for investors, businesses, communities, and future generations.' },
+                { icon: Target, title: 'Our Mission', color: '#10243B', desc: data.about_mission || 'To provide reliable, ethical and innovative real estate solutions that empower clients to make informed decisions, maximize property value, and achieve sustainable investment growth.' },
                 { icon: BookOpen, title: 'Our Story', color: '#C9A227', desc: 'Established with a vision to transform the way individuals, investors, and organizations approach real estate decisions — bridging the gap between real estate opportunities and expert guidance.' },
               ].map((item, i) => {
                 const Icon = item.icon;

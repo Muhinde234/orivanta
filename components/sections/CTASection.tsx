@@ -1,5 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Phone } from 'lucide-react';
 
@@ -22,6 +23,7 @@ export default function CTASection({
 }: CTASectionProps) {
   return (
     <section className="py-20 sm:py-24 bg-[#10243B] relative overflow-hidden" aria-labelledby="cta-heading">
+      <Image src="/images/9.jpg" alt="" fill className="object-cover opacity-20" />
       <div className="absolute inset-0 opacity-[0.04]"
         style={{ backgroundImage: 'linear-gradient(#C9A227 1px, transparent 1px), linear-gradient(90deg, #C9A227 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/40 to-transparent" />

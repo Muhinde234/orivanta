@@ -1,6 +1,8 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Mail, User, CheckCircle } from 'lucide-react';
+import Image from 'next/image';
+import { Mail, CheckCircle } from 'lucide-react';
+import { useCMS } from '@/lib/useCMS';
 
 const TEAM = [
   {
@@ -22,12 +24,24 @@ const TEAM = [
 ];
 
 export default function TeamContent() {
+  const { data } = useCMS(['team_name','team_role','team_bio','team_photo','team_email','team_linkedin']);
+
+  const members = [{
+    name: data.team_name || TEAM[0].name,
+    role: data.team_role || TEAM[0].role,
+    bio: data.team_bio || TEAM[0].bio,
+    photo: data.team_photo || '/images/PXL_20231128_151335702.PORTRAIT~2.jpg',
+    responsibilities: TEAM[0].responsibilities,
+    expertise: TEAM[0].expertise,
+    linkedin: data.team_linkedin || TEAM[0].linkedin,
+    email: data.team_email || TEAM[0].email,
+  }];
   return (
     <>
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Featured member */}
-          {TEAM.map((member, i) => (
+              {members.map((member, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -39,14 +53,9 @@ export default function TeamContent() {
               {/* Portrait */}
               <div className="relative">
                 <div className="absolute -top-3 -left-3 w-full h-full border-2 border-[#C9A227]/20 rounded-sm" />
-                <div className="relative bg-gradient-to-br from-[#10243B] to-[#1a3a5c] rounded-sm aspect-[3/4] flex flex-col items-center justify-center overflow-hidden group">
-                  <div className="w-24 h-24 rounded-full bg-white/10 border-2 border-[#C9A227]/40 flex items-center justify-center mb-4 group-hover:scale-105 transition-transform duration-400">
-                    <User size={40} className="text-white/40" />
-                  </div>
-                  <div className="text-white/30 text-xs tracking-widest uppercase">Portrait Photo</div>
+                <div className="relative rounded-sm aspect-[3/4] overflow-hidden group">
+                  <Image src={member.photo} alt={member.name} fill className="object-cover object-top group-hover:scale-105 transition-transform duration-500" />
                   <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#C9A227]" />
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-[#C9A227]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
                 </div>
                 {/* Social */}
                 <div className="flex gap-3 mt-5 justify-center">

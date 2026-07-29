@@ -1,8 +1,18 @@
 'use client';
 import { motion } from 'framer-motion';
-import { Quote, User } from 'lucide-react';
+import Image from 'next/image';
+import { Quote } from 'lucide-react';
+import { useCMS } from '@/lib/useCMS';
 
 export default function MDSection() {
+  const { data } = useCMS(['md_name','md_role','md_quote','md_body','md_photo']);
+
+  const name = data.md_name || 'Daniel NGARUKIYIMANA';
+  const role = data.md_role || 'Founder & Managing Director';
+  const quote = data.md_quote || "Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.";
+  const body = data.md_body || 'At AXIOM, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.';
+  const photo = data.md_photo || '/images/PXL_20231128_151335702.PORTRAIT~2.jpg';
+
   return (
     <section className="py-28 bg-[#F8FAFC]" aria-labelledby="md-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -18,21 +28,17 @@ export default function MDSection() {
             <div className="relative w-full max-w-sm mx-auto lg:mx-0">
               {/* Gold frame accent */}
               <div className="absolute -top-4 -left-4 w-full h-full border-2 border-[#C9A227]/30 rounded-sm" />
-              {/* Portrait placeholder */}
-              <div className="relative bg-gradient-to-br from-[#10243B] to-[#1a3a5c] rounded-sm aspect-[3/4] flex flex-col items-center justify-center overflow-hidden">
-                <div className="w-28 h-28 rounded-full bg-white/10 border-2 border-[#C9A227]/40 flex items-center justify-center mb-4">
-                  <User size={48} className="text-white/40" />
-                </div>
-                <div className="text-white/30 text-xs tracking-widest uppercase">Portrait Photo</div>
-                {/* Decorative bottom */}
+              {/* Portrait */}
+              <div className="relative rounded-sm aspect-[3/4] overflow-hidden">
+                <Image src={photo} alt={name} fill className="object-cover object-top" />
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#C9A227]" />
               </div>
               {/* Name badge */}
               <div className="absolute -bottom-5 left-6 right-6 bg-white shadow-xl rounded-sm px-5 py-4 border-l-4 border-[#C9A227]">
                 <div className="font-heading font-bold text-[#10243B] text-sm" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  Daniel NGARUKIYIMANA
+                  {name}
                 </div>
-                <div className="text-[#C9A227] text-xs font-medium mt-0.5">Founder & Managing Director</div>
+                <div className="text-[#C9A227] text-xs font-medium mt-0.5">{role}</div>
               </div>
             </div>
           </motion.div>
@@ -55,10 +61,10 @@ export default function MDSection() {
             <div className="relative bg-[#10243B] rounded-sm p-7 mb-7">
               <Quote size={32} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
               <p className="text-white/80 leading-relaxed text-sm sm:text-base relative z-10 pl-4 italic">
-                Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.
+                {quote}
               </p>
               <p className="text-white/60 leading-relaxed text-sm sm:text-base mt-4 pl-4">
-                At AXIOM, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.
+                {body}
               </p>
             </div>
 
@@ -66,9 +72,9 @@ export default function MDSection() {
             <div className="flex items-center gap-4">
               <div>
                 <div className="font-heading font-bold text-[#10243B] text-lg sm:text-xl" style={{ fontStyle: 'italic' }}>
-                  Daniel NGARUKIYIMANA
+                  {name}
                 </div>
-                <div className="text-gray-500 text-sm sm:text-base">Founder & Managing Director, AXIOM Realty Consultant Ltd</div>
+                <div className="text-gray-500 text-sm sm:text-base">{role}, AXIOM Realty Consultant Ltd</div>
               </div>
             </div>
           </motion.div>

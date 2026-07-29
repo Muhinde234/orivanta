@@ -18,7 +18,7 @@ export default function ValuesSection() {
           light
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           {VALUES.map((value, i) => {
             const Icon = value.icon;
             return (
@@ -28,7 +28,7 @@ export default function ValuesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative bg-white/5 border border-white/10 rounded-sm p-7 hover:bg-white/10 hover:border-[#C9A227]/50 transition-all duration-400 cursor-default overflow-hidden"
+                className="group relative bg-white/5 border border-white/10 rounded-sm p-8 hover:bg-white/10 hover:border-[#C9A227]/50 transition-all duration-400 cursor-default overflow-hidden"
               >
                 {/* Letter watermark */}
                 <div

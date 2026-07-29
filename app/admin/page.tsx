@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
-import { supabase } from '@/lib/supabase';
+import { getSupabase } from '@/lib/supabase';
 import { Save, Lock, Eye, EyeOff, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -97,7 +97,9 @@ export default function AdminPage() {
 
   const load = useCallback(async () => {
     setLoading(true);
-    const { data: rows, error } = await supabase.from('cms_content').select('key, value');
+    const client = getSupabase();
+    if (!client) { setLoading(false); return; }
+    const { data: rows, error } = await client.from('cms_content').select('key, value');
     if (error) { showToast('Failed to load content: ' + error.message, false); }
     else {
       const map: Record<string, string> = {};
@@ -121,8 +123,10 @@ export default function AdminPage() {
   const saveSection = async (sectionIndex: number) => {
     const section = SECTIONS[sectionIndex];
     setSaving(section.label);
+    const client = getSupabase();
+    if (!client) { showToast('Supabase not available', false); setSaving(null); return; }
     const upserts = section.fields.map(f => ({ key: f.key, value: data[f.key] ?? '' }));
-    const { error } = await supabase.from('cms_content').upsert(upserts, { onConflict: 'key' });
+    const { error } = await client.from('cms_content').upsert(upserts, { onConflict: 'key' });
     if (error) showToast('Save failed: ' + error.message, false);
     else showToast(`"${section.label}" saved successfully!`, true);
     setSaving(null);

@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { supabase } from './supabase';
+import { getSupabase } from './supabase';
 
 export function useCMS(keys: string[]) {
   const [data, setData] = useState<Record<string, string>>({});
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    supabase
+    const client = getSupabase();
+    if (!client) { setReady(true); return; }
+    client
       .from('cms_content')
       .select('key, value')
       .in('key', keys)

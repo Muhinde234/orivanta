@@ -32,26 +32,24 @@ export default function Testimonials() {
   const t = TESTIMONIALS[active];
 
   return (
-    <section className="py-28 bg-[#10243B] relative overflow-hidden" aria-labelledby="testimonials-heading">
-      {/* Subtle grid */}
-      <div className="absolute inset-0 opacity-[0.03]"
-        style={{ backgroundImage: 'linear-gradient(#C9A227 1px, transparent 1px), linear-gradient(90deg, #C9A227 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/20 to-transparent" />
+    <section className="py-28 bg-white relative overflow-hidden" aria-labelledby="testimonials-heading">
+      {/* Soft gold radial glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] rounded-full opacity-[0.06] pointer-events-none"
+        style={{ background: 'radial-gradient(ellipse, #C9A227 0%, transparent 70%)' }} />
 
       <div className="max-w-4xl mx-auto px-6 lg:px-8 relative z-10">
         <SectionHeader
           badge="Client Feedback"
           title="What Our Clients Say"
           subtitle="Trusted by individuals, investors, and organizations across Rwanda for professional real estate advisory services."
-          light
+          light={false}
         />
 
         {/* Carousel */}
         <div className="relative flex flex-col items-center text-center min-h-[320px] justify-center">
 
           {/* Large quote icon */}
-          <Quote size={48} className="text-[#C9A227]/20 mb-6" aria-hidden="true" />
+          <Quote size={48} className="text-[#C9A227]/30 mb-6" aria-hidden="true" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -70,18 +68,18 @@ export default function Testimonials() {
               </div>
 
               {/* Quote text */}
-              <p className="text-white/85 text-lg sm:text-xl leading-relaxed italic max-w-2xl mb-10">
+              <p className="text-gray-600 text-lg sm:text-xl leading-relaxed italic max-w-2xl mb-10">
                 &ldquo;{t.quote}&rdquo;
               </p>
 
               {/* Circle avatar + name */}
               <div className="flex flex-col items-center gap-3">
-                <div className="w-16 h-16 rounded-full bg-[#C9A227] flex items-center justify-center ring-4 ring-[#C9A227]/20">
-                  <span className="text-[#10243B] font-black text-2xl">{t.name[0]}</span>
+                <div className="w-16 h-16 rounded-full bg-[#10243B] flex items-center justify-center ring-4 ring-[#10243B]/10">
+                  <span className="text-white font-black text-2xl">{t.name[0]}</span>
                 </div>
                 <div>
-                  <div className="font-heading font-bold text-white text-base">{t.name}</div>
-                  <div className="text-[#C9A227]/80 text-sm mt-0.5">{t.role} · {t.company}</div>
+                  <div className="font-heading font-bold text-[#10243B] text-base">{t.name}</div>
+                  <div className="text-[#C9A227] text-sm font-medium mt-0.5">{t.role} · {t.company}</div>
                 </div>
               </div>
             </motion.div>
@@ -93,7 +91,7 @@ export default function Testimonials() {
           <button
             onClick={() => go(-1)}
             aria-label="Previous testimonial"
-            className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300"
+            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300"
           >
             <ChevronLeft size={18} />
           </button>
@@ -106,7 +104,7 @@ export default function Testimonials() {
                 onClick={() => { setActive(i); startTimer(); }}
                 aria-label={`Go to testimonial ${i + 1}`}
                 className={`rounded-full transition-all duration-300 ${
-                  i === active ? 'w-6 h-2 bg-[#C9A227]' : 'w-2 h-2 bg-white/25 hover:bg-white/50'
+                  i === active ? 'w-6 h-2 bg-[#C9A227]' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'
                 }`}
               />
             ))}
@@ -115,7 +113,7 @@ export default function Testimonials() {
           <button
             onClick={() => go(1)}
             aria-label="Next testimonial"
-            className="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center text-white/60 hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300"
+            className="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:border-[#C9A227] hover:text-[#C9A227] transition-all duration-300"
           >
             <ChevronRight size={18} />
           </button>

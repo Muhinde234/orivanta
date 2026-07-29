@@ -10,6 +10,7 @@ export default function ProcessSection() {
         <SectionHeader
           badge="Our Approach"
           title="How We Work"
+          highlight="We Work"
           subtitle="A structured, professional process designed to deliver reliable results and support informed real estate decisions."
         />
 

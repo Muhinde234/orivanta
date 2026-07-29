@@ -12,6 +12,7 @@ export default function ServicesSection() {
         <SectionHeader
           badge="What We Do"
           title="Our Real Estate Services"
+          highlight="Real Estate"
           subtitle="Comprehensive real estate solutions designed to support property owners, investors, developers, businesses, and institutions throughout the entire property lifecycle."
         />
 

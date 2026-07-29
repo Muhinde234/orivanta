@@ -14,11 +14,12 @@ export default function ValuesSection() {
         <SectionHeader
           badge="Our Principles"
           title="The AXIOM Principles"
+          highlight="AXIOM"
           subtitle="Our name represents more than a brand — it represents the principles that guide our decisions, our services, and our relationships with clients."
           light
         />
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {VALUES.map((value, i) => {
             const Icon = value.icon;
             return (
@@ -28,25 +29,30 @@ export default function ValuesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
-                className="group relative bg-white/5 border border-white/10 rounded-sm p-8 hover:bg-white/10 hover:border-[#C9A227]/50 transition-all duration-400 cursor-default overflow-hidden"
+                className="group relative bg-white/5 border border-white/10 rounded-sm p-6 hover:bg-white/10 hover:border-[#C9A227]/50 transition-all duration-400 cursor-default overflow-hidden flex gap-5 items-start"
               >
                 {/* Letter watermark */}
                 <div
-                  className="absolute -top-4 -right-2 font-heading font-black text-8xl text-white/5 group-hover:text-[#C9A227]/10 transition-colors duration-400 select-none"
+                  className="absolute -bottom-3 -right-1 font-heading font-black text-[7rem] leading-none text-white/[0.04] group-hover:text-[#C9A227]/[0.07] transition-colors duration-400 select-none pointer-events-none"
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                   aria-hidden="true"
                 >
                   {value.letter}
                 </div>
 
-                <div className="relative z-10">
-                  <div className="w-11 h-11 rounded-sm bg-[#C9A227]/10 group-hover:bg-[#C9A227]/20 flex items-center justify-center mb-5 transition-colors duration-300">
+                {/* Left: icon + letter */}
+                <div className="flex-shrink-0 flex flex-col items-center gap-2">
+                  <div className="w-12 h-12 rounded-sm bg-[#C9A227]/10 group-hover:bg-[#C9A227]/20 flex items-center justify-center transition-colors duration-300">
                     <Icon size={20} className="text-[#C9A227]" />
                   </div>
-                  <div className="text-[#C9A227] font-heading font-black text-2xl sm:text-3xl mb-1">
+                  <div className="text-[#C9A227] font-heading font-black text-2xl leading-none">
                     {value.letter}
                   </div>
-                  <h3 className="font-heading font-bold text-white text-base mb-3">
+                </div>
+
+                {/* Right: text */}
+                <div className="relative z-10 min-w-0">
+                  <h3 className="font-heading font-bold text-white text-base mb-2">
                     {value.title}
                   </h3>
                   <p className="text-white/55 text-sm leading-relaxed">{value.desc}</p>

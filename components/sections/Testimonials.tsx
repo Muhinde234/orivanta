@@ -41,6 +41,7 @@ export default function Testimonials() {
         <SectionHeader
           badge="Client Feedback"
           title="What Our Clients Say"
+          highlight="Clients"
           subtitle="Trusted by individuals, investors, and organizations across Rwanda for professional real estate advisory services."
           light={false}
         />

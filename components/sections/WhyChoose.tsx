@@ -12,6 +12,7 @@ export default function WhyChoose() {
             <SectionHeader
               badge="Why AXIOM"
               title="The AXIOM Advantage"
+              highlight="AXIOM"
               subtitle="At AXIOM, we believe successful real estate decisions require accurate information, professional expertise, and strategic thinking. We provide solutions designed around our clients' objectives."
               align="left"
             />

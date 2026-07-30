@@ -4,12 +4,13 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
 import FAQ from '@/components/ui/FAQ';
 import { BRAND } from '@/lib/data';
+import { useLang } from '@/lib/LangContext';
 
 const CONTACT_FAQS = [
-  { q: 'How can I request AXIOM services?', a: 'You can contact us through our online form, email, phone, or WhatsApp. Our team will review your request and respond with the next steps.' },
-  { q: 'Can I schedule a meeting with an AXIOM consultant?', a: 'Yes. Clients can schedule physical or online consultations depending on their preference and availability.' },
-  { q: 'Do you provide services outside Kigali?', a: 'Yes. AXIOM provides real estate solutions across Rwanda depending on client requirements and project scope.' },
-  { q: 'How quickly will AXIOM respond?', a: 'We aim to respond to inquiries promptly and provide guidance on the appropriate next steps.' },
+  { q: 'How can I request ORIVANTA services?', a: 'You can contact us through our online form, email, phone, or WhatsApp. Our team will review your request and respond with the next steps.' },
+  { q: 'Can I schedule a meeting with an ORIVANTA consultant?', a: 'Yes. Clients can schedule physical or online consultations depending on their preference and availability.' },
+  { q: 'Do you provide services outside Kigali?', a: 'Yes. ORIVANTA provides real estate solutions across Rwanda depending on client requirements and project scope.' },
+  { q: 'How quickly will ORIVANTA respond?', a: 'We aim to respond to inquiries promptly and provide guidance on the appropriate next steps.' },
 ];
 
 const SERVICES_LIST = [
@@ -25,6 +26,7 @@ const SERVICES_LIST = [
 ];
 
 export default function ContactContent() {
+  const { t } = useLang();
   const [submitted, setSubmitted] = useState(false);
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', location: '', message: '' });
 
@@ -48,13 +50,13 @@ export default function ContactContent() {
               className="lg:col-span-2 space-y-6"
             >
               <div>
-                <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">Get In Touch</span>
+                <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">{t('contact_get_in_touch')}</span>
                 <div className="w-10 h-0.5 bg-[#C9A227] mt-3 mb-5" />
                 <h2 className="font-heading font-bold text-[#10243B] text-2xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  We&apos;re Ready to Help
+                  {t('contact_ready')}
                 </h2>
                 <p className="text-gray-500 text-[15px] leading-relaxed">
-                  Whether you require property valuation, consultancy, property management, investment advice, brokerage services, or corporate real estate solutions, our team is available to provide expert guidance.
+                  {t('contact_body')}
                 </p>
               </div>
 
@@ -89,7 +91,7 @@ export default function ContactContent() {
 
               {/* Social */}
               <div className="pt-2">
-                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Connect With AXIOM</div>
+                <div className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">{t('contact_connect')}</div>
                 <div className="flex gap-3">
                   {[
                     { title: 'LinkedIn', href: BRAND.linkedin, d: 'M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7H10v-7a6 6 0 0 1 6-6zM2 9h4v12H2z' },
@@ -122,7 +124,7 @@ export default function ContactContent() {
               <div className="bg-white border border-gray-100 rounded-sm shadow-lg p-8">
                 <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
                 <h3 className="font-heading font-bold text-[#10243B] text-xl mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                  Send Us a Message
+                  {t('contact_send_message')}
                 </h3>
 
                 {submitted ? (
@@ -131,16 +133,16 @@ export default function ContactContent() {
                       <Send size={28} className="text-[#C9A227]" />
                     </div>
                     <h4 className="font-heading font-bold text-[#10243B] text-lg mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Message Sent Successfully
+                      {t('contact_sent_title')}
                     </h4>
-                    <p className="text-gray-500 text-sm">Thank you for reaching out. Our team will respond to your inquiry promptly.</p>
+                    <p className="text-gray-500 text-sm">{t('contact_sent_body')}</p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label htmlFor="name" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                          Full Name <span className="text-[#C9A227]">*</span>
+                          {t('form_name')} <span className="text-[#C9A227]">*</span>
                         </label>
                         <input
                           id="name" type="text" required
@@ -151,7 +153,7 @@ export default function ContactContent() {
                       </div>
                       <div>
                         <label htmlFor="email" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                          Email Address <span className="text-[#C9A227]">*</span>
+                          {t('form_email')} <span className="text-[#C9A227]">*</span>
                         </label>
                         <input
                           id="email" type="email" required
@@ -165,7 +167,7 @@ export default function ContactContent() {
                     <div className="grid sm:grid-cols-2 gap-5">
                       <div>
                         <label htmlFor="phone" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                          Phone Number <span className="text-[#C9A227]">*</span>
+                          {t('form_phone')} <span className="text-[#C9A227]">*</span>
                         </label>
                         <input
                           id="phone" type="tel" required
@@ -176,7 +178,7 @@ export default function ContactContent() {
                       </div>
                       <div>
                         <label htmlFor="company" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                          Company Name <span className="text-gray-300">(Optional)</span>
+                          {t('form_company')} <span className="text-gray-300">({t('form_optional')})</span>
                         </label>
                         <input
                           id="company" type="text"
@@ -189,21 +191,21 @@ export default function ContactContent() {
 
                     <div>
                       <label htmlFor="service" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                        Service Required
+                        {t('form_service')}
                       </label>
                       <select
                         id="service"
                         value={form.service} onChange={e => setForm({ ...form, service: e.target.value })}
                         className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors bg-white"
                       >
-                        <option value="">Select a service...</option>
+                        <option value="">{t('form_select_service')}</option>
                         {SERVICES_LIST.map(s => <option key={s} value={s}>{s}</option>)}
                       </select>
                     </div>
 
                     <div>
                       <label htmlFor="location" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                        Property Location <span className="text-gray-300">(Optional)</span>
+                        {t('form_location')} <span className="text-gray-300">({t('form_optional')})</span>
                       </label>
                       <input
                         id="location" type="text"
@@ -215,7 +217,7 @@ export default function ContactContent() {
 
                     <div>
                       <label htmlFor="message" className="block text-xs font-semibold text-gray-600 uppercase tracking-wider mb-2">
-                        Message <span className="text-[#C9A227]">*</span>
+                        {t('form_message')} <span className="text-[#C9A227]">*</span>
                       </label>
                       <textarea
                         id="message" required rows={5}
@@ -230,7 +232,7 @@ export default function ContactContent() {
                       className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
                     >
                       <Send size={16} />
-                      Submit Inquiry
+                      {t('form_submit')}
                     </button>
                   </form>
                 )}
@@ -245,7 +247,7 @@ export default function ContactContent() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-16">
           <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
           <h3 className="font-heading font-bold text-[#10243B] text-xl mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Find Our Office
+            {t('contact_find_office')}
           </h3>
           <div className="w-full h-72 bg-[#F8FAFC] border border-gray-200 rounded-sm flex items-center justify-center">
             <div className="text-center">
@@ -277,21 +279,21 @@ export default function ContactContent() {
           >
             <div className="w-12 h-0.5 bg-[#C9A227] mx-auto mb-5" />
             <h2 className="font-heading font-bold text-white text-3xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Let&apos;s Discuss Your Real Estate Goals
+              {t('contact_cta_title')}
             </h2>
             <p className="text-white/65 text-[15px] leading-relaxed mb-8 max-w-xl mx-auto">
-              Whether you are planning to invest, manage, develop, buy, or sell property, AXIOM Realty Consultant Ltd is ready to provide professional support and strategic guidance.
+              {t('contact_cta_body')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href={`tel:${BRAND.phone}`}
                 className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#b8911f] transition-colors text-sm">
                 <Phone size={16} />
-                Book a Consultation
+                {t('contact_book')}
               </a>
               <a href={`mailto:${BRAND.email}`}
                 className="inline-flex items-center gap-2 border-2 border-white/30 text-white font-semibold px-8 py-4 rounded-full hover:border-white hover:bg-white/5 transition-all text-sm">
                 <Mail size={16} />
-                Request a Quote
+                {t('contact_quote')}
               </a>
             </div>
           </motion.div>

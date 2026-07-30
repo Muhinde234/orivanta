@@ -146,7 +146,7 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-[12px] text-white/30" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
-            © {year} AXIOM Realty Consultant Ltd. {t('footer_rights')}
+            © {year} ORIVANTA PROPERTY LTD. {t('footer_rights')}
           </p>
           <p className="text-[12px] text-white/30" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
             {t('footer_tagline')}

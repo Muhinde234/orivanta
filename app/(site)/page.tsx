@@ -9,18 +9,18 @@ import Testimonials from '@/components/sections/Testimonials';
 import GalleryStrip from '@/components/sections/GalleryStrip';
 import CTASection from '@/components/sections/CTASection';
 
-const BASE_URL = 'https://www.axiomrealty.rw';
+const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export const metadata: Metadata = {
-  title: 'AXIOM Realty Consultant Ltd | Professional Real Estate Advisory in Rwanda',
+  title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
   description:
-    'Where property meets professional expertise. AXIOM Realty Consultant Ltd provides property valuation, real estate consultancy, investment advisory, and more in Kigali, Rwanda.',
+    'Where property potential becomes lasting value. ORIVANTA PROPERTY LTD provides property valuation, real estate consultancy, investment advisory, and more in Kigali, Rwanda.',
   alternates: { canonical: BASE_URL },
   openGraph: {
     url: BASE_URL,
-    title: 'AXIOM Realty Consultant Ltd | Professional Real Estate Advisory in Rwanda',
+    title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
     description: 'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
-    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'AXIOM Realty Consultant Ltd' }],
+    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'ORIVANTA PROPERTY LTD' }],
   },
 };
 

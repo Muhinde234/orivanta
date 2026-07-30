@@ -12,7 +12,7 @@ export default function MDSection() {
   const name = data.md_name || 'Daniel NGARUKIYIMANA';
   const role = data.md_role || 'Founder & Managing Director';
   const quote = data.md_quote || "Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.";
-  const body = data.md_body || 'At AXIOM, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.';
+  const body = data.md_body || 'At ORIVANTA, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.';
   const photo = data.md_photo || '/images/PXL_20231128_151335702.PORTRAIT~2.jpg';
 
   return (
@@ -76,7 +76,7 @@ export default function MDSection() {
                 <div className="font-heading font-bold text-[#10243B] text-lg sm:text-xl" style={{ fontStyle: 'italic' }}>
                   {name}
                 </div>
-                <div className="text-gray-500 text-sm sm:text-base">{role}, AXIOM Realty Consultant Ltd</div>
+                <div className="text-gray-500 text-sm sm:text-base">{role}, ORIVANTA PROPERTY LTD</div>
               </div>
             </div>
           </motion.div>

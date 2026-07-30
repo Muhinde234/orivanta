@@ -16,16 +16,16 @@ const mulish = Mulish({
   display: 'swap',
 });
 
-const BASE_URL = 'https://www.axiomrealty.rw';
+const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
   title: {
-    default: 'AXIOM Realty Consultant Ltd | Professional Real Estate Advisory in Rwanda',
-    template: '%s | AXIOM Realty Consultant Ltd',
+    default: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
+    template: '%s | ORIVANTA PROPERTY LTD',
   },
   description:
-    'AXIOM Realty Consultant Ltd is Rwanda\'s trusted real estate advisory firm. We offer property valuation, real estate consultancy, property management, brokerage, investment advisory, and land development services in Kigali and across Rwanda.',
+    'ORIVANTA PROPERTY LTD is Rwanda\'s trusted real estate advisory firm. We offer property valuation, real estate consultancy, property management, brokerage, investment advisory, and land development services in Kigali and across Rwanda.',
   keywords: [
     'real estate Rwanda',
     'property valuation Kigali',
@@ -35,12 +35,12 @@ export const metadata: Metadata = {
     'land advisory Rwanda',
     'real estate brokerage Kigali',
     'facility management Rwanda',
-    'AXIOM Realty',
+    'ORIVANTA PROPERTY',
     'corporate real estate advisory',
   ],
-  authors: [{ name: 'AXIOM Realty Consultant Ltd', url: BASE_URL }],
-  creator: 'AXIOM Realty Consultant Ltd',
-  publisher: 'AXIOM Realty Consultant Ltd',
+  authors: [{ name: 'ORIVANTA PROPERTY LTD', url: BASE_URL }],
+  creator: 'ORIVANTA PROPERTY LTD',
+  publisher: 'ORIVANTA PROPERTY LTD',
   robots: {
     index: true,
     follow: true,
@@ -51,15 +51,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_RW',
     url: BASE_URL,
-    siteName: 'AXIOM Realty Consultant Ltd',
-    title: 'AXIOM Realty Consultant Ltd | Professional Real Estate Advisory in Rwanda',
+    siteName: 'ORIVANTA PROPERTY LTD',
+    title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
     description:
       'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
-    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'AXIOM Realty Consultant Ltd' }],
+    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'ORIVANTA PROPERTY LTD' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AXIOM Realty Consultant Ltd | Professional Real Estate Advisory in Rwanda',
+    title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
     description:
       'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
     images: ['/images/og-default.jpg'],
@@ -80,7 +80,7 @@ const jsonLd = {
     {
       '@type': ['Organization', 'LocalBusiness', 'RealEstateAgent'],
       '@id': `${BASE_URL}/#organization`,
-      name: 'AXIOM Realty Consultant Ltd',
+      name: 'ORIVANTA PROPERTY LTD',
       url: BASE_URL,
       logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo.png` },
       image: `${BASE_URL}/images/og-default.jpg`,
@@ -95,13 +95,13 @@ const jsonLd = {
         '@type': 'ContactPoint',
         telephone: '+250-XXX-XXX-XXX',
         contactType: 'customer service',
-        email: 'info@axiomrealty.rw',
+        email: 'olivantaproperty@gmail.com',
         availableLanguage: ['English', 'French', 'Kinyarwanda'],
       },
       sameAs: [
-        'https://www.linkedin.com/company/axiom-realty',
-        'https://www.facebook.com/axiomrealty',
-        'https://www.instagram.com/axiomrealty',
+        'https://www.linkedin.com/company/orivanta-property',
+        'https://www.facebook.com/orivantaproperty',
+        'https://www.instagram.com/orivantaproperty',
       ],
       areaServed: { '@type': 'Country', name: 'Rwanda' },
       priceRange: '$$',
@@ -110,7 +110,7 @@ const jsonLd = {
       '@type': 'WebSite',
       '@id': `${BASE_URL}/#website`,
       url: BASE_URL,
-      name: 'AXIOM Realty Consultant Ltd',
+      name: 'ORIVANTA PROPERTY LTD',
       publisher: { '@id': `${BASE_URL}/#organization` },
       potentialAction: {
         '@type': 'SearchAction',
@@ -129,7 +129,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="geo.placename" content="Kigali, Rwanda" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
-      <body suppressHydrationWarning className="min-h-screen flex flex-col antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
+      <body suppressHydrationWarning className="antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
         {children}
         <Script
           id="json-ld-org"

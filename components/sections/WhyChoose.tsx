@@ -14,7 +14,7 @@ export default function WhyChoose() {
             <SectionHeader
               badge={t('why_badge')}
               title={t('why_title')}
-              highlight="AXIOM"
+              highlight="ORIVANTA"
               subtitle={t('why_subtitle')}
               align="left"
             />
@@ -30,7 +30,7 @@ export default function WhyChoose() {
               </p>
               <div className="mt-4 flex items-center gap-3">
                 <div className="w-8 h-px bg-[#C9A227]" />
-                <span className="text-[#C9A227] text-xs font-semibold tracking-widest uppercase">AXIOM Realty</span>
+                <span className="text-[#C9A227] text-xs font-semibold tracking-widest uppercase">ORIVANTA PROPERTY</span>
               </div>
             </motion.div>
           </div>

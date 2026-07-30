@@ -38,7 +38,7 @@ export default function Hero() {
             >
               <div className="w-8 h-px bg-[#C9A227]" />
               <span className="text-[#C9A227] text-xs font-bold tracking-[0.25em] uppercase">
-                Professional Real Estate Advisory
+                {tagline}
               </span>
             </motion.div>
 
@@ -47,9 +47,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
               className="font-heading font-bold text-white leading-[1.1] mb-5 text-4xl sm:text-5xl lg:text-6xl"
             >
-              {data.hero_title || 'AXIOM Realty'}
+              {data.hero_title || 'ORIVANTA'}
               <br />
-              <span className="text-[#C9A227]">Consultant</span> Ltd
+              <span className="text-[#C9A227]">PROPERTY</span> LTD
             </motion.h1>
 
             {/* Tagline — body-lg */}
@@ -107,12 +107,12 @@ export default function Hero() {
                   <Building2 size={20} className="text-[#10243B]" />
                 </div>
                 <div>
-                  <div className="text-white font-semibold text-sm">Property Valuation</div>
-                  <div className="text-white/50 text-xs">Professional Standards</div>
+                  <div className="text-white font-semibold text-sm">{t('hero_card1_title')}</div>
+                  <div className="text-white/50 text-xs">{t('hero_card1_sub')}</div>
                 </div>
               </div>
               <p className="text-white/60 text-sm leading-relaxed">
-                Independent, accurate valuations for residential, commercial, and specialized properties.
+                {t('hero_card1_body')}
               </p>
             </motion.div>
 
@@ -124,9 +124,9 @@ export default function Hero() {
                 <div className="w-9 h-9 rounded-lg bg-[#C9A227]/20 flex items-center justify-center">
                   <TrendingUp size={18} className="text-[#C9A227]" />
                 </div>
-                <div className="text-white font-semibold text-sm">Investment Advisory</div>
+                <div className="text-white font-semibold text-sm">{t('hero_card2_title')}</div>
               </div>
-              <p className="text-white/50 text-sm">Strategic guidance for real estate investors across Rwanda and Africa.</p>
+              <p className="text-white/50 text-sm">{t('hero_card2_body')}</p>
             </motion.div>
 
             <motion.div
@@ -137,12 +137,12 @@ export default function Hero() {
                 <div className="w-9 h-9 rounded-lg bg-white/10 flex items-center justify-center">
                   <Award size={18} className="text-[#C9A227]" />
                 </div>
-                <div className="text-white font-semibold text-sm">Professional Excellence</div>
+                <div className="text-white font-semibold text-sm">{t('hero_card3_title')}</div>
               </div>
               <div className="flex gap-1 mt-2">
                 {[1,2,3,4,5].map(i => <div key={i} className="w-4 h-1 rounded-full bg-[#C9A227]" />)}
               </div>
-              <p className="text-white/50 text-xs mt-2">Trusted by clients across Rwanda</p>
+              <p className="text-white/50 text-xs mt-2">{t('hero_card3_sub')}</p>
             </motion.div>
 
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-[#C9A227]/10" />

@@ -7,7 +7,7 @@ import { useCMS } from '@/lib/useCMS';
 import { useLang } from '@/lib/LangContext';
 
 const TIMELINE = [
-  { year: 'Founded', title: 'AXIOM Established', desc: 'AXIOM Realty Consultant Ltd was established with a vision to transform how individuals, investors, and organizations approach real estate decisions.' },
+  { year: 'Founded', title: 'ORIVANTA Established', desc: 'ORIVANTA PROPERTY LTD was established with a vision to transform how individuals, investors, and organizations approach real estate decisions.' },
   { year: 'Growth', title: 'Expanding Services', desc: 'Expanded service offerings to cover the full real estate lifecycle — from valuation and consultancy to investment advisory and facility management.' },
   { year: 'Today', title: "Rwanda's Trusted Advisor", desc: 'Serving individuals, businesses, investors, and institutions across Rwanda with professional expertise and client-focused solutions.' },
   { year: 'Vision', title: 'Pan-African Reach', desc: "Working toward becoming Africa's most trusted real estate consulting firm, delivering innovative solutions that create lasting value." },
@@ -69,7 +69,7 @@ export default function AboutContent() {
                 {t('about_who_title')}
               </h2>
               <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
-                {data.about_who_we_are || 'AXIOM Realty Consultant Ltd is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.'}
+                {data.about_who_we_are || 'ORIVANTA PROPERTY LTD is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.'}
               </p>
               <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
                 {data.about_who_we_are_2 || 'We provide comprehensive real estate services including property valuation, real estate consultancy, property management, facility management, real estate brokerage, corporate real estate advisory, and investment advisory.'}
@@ -88,13 +88,13 @@ export default function AboutContent() {
               className="relative h-[480px]"
             >
               <div className="absolute top-0 right-0 w-[75%] h-[340px] rounded-sm overflow-hidden shadow-xl">
-                <Image src="/images/3.jpg" alt="AXIOM advisory" fill className="object-cover" />
+                <Image src="/images/3.jpg" alt="ORIVANTA advisory" fill className="object-cover" />
               </div>
               <div className="absolute bottom-0 left-0 w-[55%] h-[240px] rounded-sm overflow-hidden shadow-xl border-4 border-white">
                 <Image src="/images/4.jpg" alt="Property consulting" fill className="object-cover" />
               </div>
               <div className="absolute bottom-10 right-4 w-20 h-20 bg-[#C9A227] rounded-sm flex items-center justify-center shadow-lg">
-                <span className="text-[#10243B] font-black text-2xl" style={{ fontFamily: 'Poppins, sans-serif' }}>AX</span>
+                <span className="text-[#10243B] font-black text-2xl" style={{ fontFamily: 'Poppins, sans-serif' }}>OP</span>
               </div>
             </motion.div>
           </div>

@@ -85,7 +85,7 @@ export default function Navbar() {
                           animate={{ opacity: 1, y: 0 }}
                           exit={{ opacity: 0, y: 8 }}
                           transition={{ duration: 0.2 }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-72 bg-white rounded-sm shadow-xl border border-gray-100 py-2 z-50"
+                          className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-96 bg-white rounded-sm shadow-xl border border-gray-100 py-2 z-50"
                           onMouseEnter={() => setServicesOpen(true)}
                           onMouseLeave={() => setServicesOpen(false)}
                         >

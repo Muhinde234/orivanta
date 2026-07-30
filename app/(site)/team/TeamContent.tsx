@@ -3,12 +3,13 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Mail, User, CheckCircle } from 'lucide-react';
 import { useCMS } from '@/lib/useCMS';
+import { useLang } from '@/lib/LangContext';
 
 const TEAM = [
   {
     name: 'Daniel NGARUKIYIMANA',
     role: 'Founder & Managing Director',
-    bio: 'As the Founder and Managing Director of AXIOM Realty Consultant Ltd, Daniel provides strategic leadership and oversees the company\'s vision, operations, and professional service delivery. With a background in Estate Management and Valuation, he focuses on delivering innovative real estate solutions through professional advisory, market analysis, and client-focused strategies.',
+    bio: 'As the Founder and Managing Director of ORIVANTA PROPERTY LTD, Daniel provides strategic leadership and oversees the company\'s vision, operations, and professional service delivery. With a background in Estate Management and Valuation, he focuses on delivering innovative real estate solutions through professional advisory, market analysis, and client-focused strategies.',
     responsibilities: [
       'Company strategy and leadership',
       'Client relationship management',
@@ -19,12 +20,13 @@ const TEAM = [
     ],
     expertise: ['Property Valuation', 'Real Estate Consultancy', 'Investment Advisory', 'Market Analysis', 'Property Strategy'],
     linkedin: '#',
-    email: 'daniel@axiomrealty.rw',
+    email: 'olivantaproperty@gmail.com',
   },
 ];
 
 export default function TeamContent() {
   const { data } = useCMS(['team_name','team_role','team_bio','team_photo','team_email','team_linkedin']);
+  const { t } = useLang();
 
   const members = [{
     name: data.team_name || TEAM[0].name,
@@ -80,7 +82,7 @@ export default function TeamContent() {
                 <div className="grid md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="font-heading font-bold text-[#10243B] text-sm mb-4 uppercase tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Key Responsibilities
+                      {t('team_responsibilities')}
                     </h3>
                     <ul className="space-y-2">
                       {member.responsibilities.map((r, j) => (
@@ -93,7 +95,7 @@ export default function TeamContent() {
                   </div>
                   <div>
                     <h3 className="font-heading font-bold text-[#10243B] text-sm mb-4 uppercase tracking-wider" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      Areas of Expertise
+                      {t('team_expertise')}
                     </h3>
                     <div className="flex flex-wrap gap-2">
                       {member.expertise.map((e, j) => (
@@ -120,9 +122,9 @@ export default function TeamContent() {
               <User size={24} className="text-gray-300" />
             </div>
             <h3 className="font-heading font-bold text-gray-400 mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Growing Our Team
+              {t('team_growing')}
             </h3>
-            <p className="text-gray-400 text-sm">Additional team members will be featured here as AXIOM continues to grow.</p>
+            <p className="text-gray-400 text-sm">{t('team_growing_body')}</p>
           </motion.div>
         </div>
       </section>
@@ -138,13 +140,13 @@ export default function TeamContent() {
           >
             <div className="w-12 h-0.5 bg-[#C9A227] mx-auto mb-5" />
             <h2 className="font-heading font-bold text-[#10243B] text-2xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              Our Team Commitment
+              {t('team_commitment_title')}
             </h2>
             <p className="text-gray-500 text-[15px] leading-relaxed italic mb-2">
-              &ldquo;Working together to create real estate value&rdquo;
+              {t('team_commitment_quote')}
             </p>
             <p className="text-gray-500 text-[15px] leading-relaxed max-w-2xl mx-auto">
-              At AXIOM Realty Consultant Ltd, we continuously develop our knowledge, embrace innovation, and maintain professional standards to provide clients with trusted real estate solutions.
+              {t('team_commitment_body')}
             </p>
           </motion.div>
         </div>

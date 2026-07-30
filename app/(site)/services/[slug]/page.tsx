@@ -12,7 +12,7 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
-const BASE_URL = 'https://www.axiomrealty.rw';
+const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export async function generateStaticParams() {
   return SERVICES.map((s) => ({ slug: s.slug }));
@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: { canonical: `${BASE_URL}/services/${slug}` },
     openGraph: {
       url: `${BASE_URL}/services/${slug}`,
-      title: `${service.title} | AXIOM Realty Consultant Ltd`,
+      title: `${service.title} | ORIVANTA PROPERTY LTD`,
       description: service.shortDesc,
       images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: service.title }],
     },
@@ -55,7 +55,7 @@ export default async function ServicePage({ params }: Props) {
             url: `${BASE_URL}/services/${service.slug}`,
             provider: {
               '@type': 'Organization',
-              name: 'AXIOM Realty Consultant Ltd',
+              name: 'ORIVANTA PROPERTY LTD',
               url: BASE_URL,
             },
             areaServed: { '@type': 'Country', name: 'Rwanda' },
@@ -75,7 +75,7 @@ export default async function ServicePage({ params }: Props) {
 
       <ServiceContent slug={service.slug} />
 
-      <section className="py-20 bg-[#F8FAFC]">
+      <section className="py-14 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-10">
             <div className="bg-white rounded-sm border border-gray-100 p-8 shadow-sm">
@@ -111,7 +111,7 @@ export default async function ServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="py-20 bg-white">
+      <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
           <FAQ items={service.faqs} />
         </div>

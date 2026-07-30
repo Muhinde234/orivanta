@@ -21,8 +21,8 @@ create policy "Allow upsert" on cms_content
 
 -- Seed default values (optional — the site falls back to hardcoded defaults)
 insert into cms_content (key, value) values
-  ('hero_title',       'AXIOM Realty'),
-  ('hero_tagline',     'Where Property Meets Professional Expertise'),
+  ('hero_title',       'ORIVANTA'),
+  ('hero_tagline',     'Where property potential becomes lasting value'),
   ('hero_body',        'A professional real estate consulting company dedicated to providing reliable and innovative property solutions for individuals, businesses, investors, and institutions.'),
   ('hero_cta_primary', 'Request Consultation'),
   ('hero_cta_secondary','Explore Our Services'),
@@ -30,15 +30,15 @@ insert into cms_content (key, value) values
   ('md_name',          'Daniel NGARUKIYIMANA'),
   ('md_role',          'Founder & Managing Director'),
   ('md_quote',         'Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.'),
-  ('md_body',          'At AXIOM, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.'),
+  ('md_body',          'At ORIVANTA, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.'),
   ('md_photo',         '/images/PXL_20231128_151335702.PORTRAIT~2.jpg'),
   ('team_name',        'Daniel NGARUKIYIMANA'),
   ('team_role',        'Founder & Managing Director'),
   ('team_photo',       '/images/PXL_20231128_151335702.PORTRAIT~2.jpg'),
-  ('team_email',       'daniel@axiomrealty.rw'),
+  ('team_email',       'olivantaproperty@gmail.com'),
   ('team_linkedin',    '#'),
   ('brand_phone',      '+250 XXX XXX XXX'),
-  ('brand_email',      'info@axiomrealty.rw'),
+  ('brand_email',      'olivantaproperty@gmail.com'),
   ('brand_address',    'Kigali, Rwanda'),
   ('brand_hours',      'Monday – Friday: 9:00 AM – 5:00 PM')
 on conflict (key) do nothing;

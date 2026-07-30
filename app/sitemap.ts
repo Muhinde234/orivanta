@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { SERVICES } from '@/lib/data';
 
-const BASE_URL = 'https://www.axiomrealty.rw';
+const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

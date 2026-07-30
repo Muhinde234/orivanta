@@ -113,7 +113,7 @@ export default function AdminPage() {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (pw === (process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'axiom_admin_2024')) {
+    if (pw === (process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'orivanta_admin_2024')) {
       setAuthed(true);
     } else {
       setPwError('Incorrect password');
@@ -142,7 +142,7 @@ export default function AdminPage() {
               <Lock size={18} className="text-[#10243B]" />
             </div>
             <div>
-              <div className="font-bold text-[#10243B] text-sm">AXIOM CMS</div>
+              <div className="font-bold text-[#10243B] text-sm">ORIVANTA CMS</div>
               <div className="text-gray-400 text-xs">Content Management</div>
             </div>
           </div>
@@ -173,7 +173,7 @@ export default function AdminPage() {
             </button>
           </form>
           <p className="text-center text-xs text-gray-400 mt-6">
-            AXIOM Realty Consultant Ltd · Admin Panel
+            ORIVANTA PROPERTY LTD · Admin Panel
           </p>
         </div>
       </div>
@@ -188,7 +188,7 @@ export default function AdminPage() {
       {/* Sidebar */}
       <aside className="w-64 bg-[#10243B] text-white flex flex-col flex-shrink-0 min-h-screen">
         <div className="px-6 py-6 border-b border-white/10">
-          <div className="text-[#C9A227] font-bold text-sm tracking-wider uppercase">AXIOM CMS</div>
+          <div className="text-[#C9A227] font-bold text-sm tracking-wider uppercase">ORIVANTA CMS</div>
           <div className="text-white/40 text-xs mt-0.5">Content Management</div>
         </div>
         <nav className="flex-1 py-4">

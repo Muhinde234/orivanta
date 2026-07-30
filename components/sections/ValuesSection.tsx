@@ -16,7 +16,7 @@ export default function ValuesSection() {
         <SectionHeader
           badge={t('values_badge')}
           title={t('values_title')}
-          highlight="AXIOM"
+          highlight="ORIVANTA"
           subtitle={t('values_subtitle')}
           light
         />
@@ -26,7 +26,7 @@ export default function ValuesSection() {
             const Icon = value.icon;
             return (
               <motion.div
-                key={value.letter}
+                key={`${value.letter}-${i}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

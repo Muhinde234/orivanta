@@ -7,11 +7,13 @@ import { LangProvider } from '@/lib/LangContext';
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
     <LangProvider>
-      <ProgressBar />
-      <Navbar />
-      <main className="flex-1 pb-16">{children}</main>
-      <Footer />
-      <Chatbot />
+      <div className="min-h-screen flex flex-col">
+        <ProgressBar />
+        <Navbar />
+        <main className="flex-1 mb-16">{children}</main>
+        <Footer />
+        <Chatbot />
+      </div>
     </LangProvider>
   );
 }

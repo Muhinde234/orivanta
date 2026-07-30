@@ -49,3 +49,27 @@ p { line-height: 1.75; }
 ::-webkit-scrollbar-track { background: #F8FAFC; }
 ::-webkit-scrollbar-thumb { background: #10243B; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #C9A227; }
+
+/* Continuous testimonial marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.testimonial-track {
+  animation: marquee var(--marquee-duration, 36s) linear infinite;
+}
+
+.testimonial-track:hover,
+.testimonial-track:focus-within {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .testimonial-track { animation: none; }
+}
+
+.testimonial-fade-edges {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}

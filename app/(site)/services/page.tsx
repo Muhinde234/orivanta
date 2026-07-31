@@ -65,7 +65,7 @@ export default function ServicesPage() {
         primaryLabel="Book a Free Consultation"
         primaryHref="/contact"
         secondaryLabel="Meet Our Team"
-        secondaryHref="/team"
+        secondaryHref="/about#team"
       />
     </>
   );

@@ -50,8 +50,6 @@ export default function Navbar() {
     { label: t('nav_home'), href: '/' },
     { label: t('nav_about'), href: '/about' },
     { label: t('nav_services'), href: '/services', children: SERVICE_LINKS },
-    { label: t('nav_team'), href: '/team' },
-    { label: t('nav_contact'), href: '/contact' },
   ];
 
   const currentLang = LANGS.find(l => l.code === lang)!;

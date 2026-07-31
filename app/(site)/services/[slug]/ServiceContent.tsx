@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { CheckCircle, Users, ArrowRight, Info, UserCircle2, Mail, Quote } from 'lucide-react';
+import { CheckCircle, Users, ArrowRight, Info, Mail, Quote } from 'lucide-react';
 import { SERVICES, STATS, TESTIMONIALS } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
@@ -120,7 +120,6 @@ export default function ServiceContent({ slug }: { slug: string }) {
                 <div className="space-y-2">
                   {[
                     { href: '/about', icon: Info, label: t('sidebar_about'), sub: t('sidebar_about_sub') },
-                    { href: '/team', icon: UserCircle2, label: t('sidebar_team'), sub: t('sidebar_team_sub') },
                     { href: '/contact', icon: Mail, label: t('sidebar_contact'), sub: t('sidebar_contact_sub') },
                     { href: '/services', icon: ArrowRight, label: t('sidebar_all_services'), sub: t('sidebar_all_services_sub') },
                   ].map(({ href, icon: LinkIcon, label, sub }) => (

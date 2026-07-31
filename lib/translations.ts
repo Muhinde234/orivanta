@@ -55,6 +55,8 @@ export const translations = {
     about_story_tab: 'Our Story',
     about_journey_badge: 'Our Journey',
     about_journey_title: "Building Rwanda's Premier Real Estate Advisory Firm",
+    about_team_badge: 'Our Team',
+    about_team_title: 'Meet the People Behind ORIVANTA',
     // MD Section
     md_badge: 'Leadership',
     md_heading: 'A Message From Our Founder',
@@ -186,6 +188,8 @@ export const translations = {
     about_story_tab: 'Notre Histoire',
     about_journey_badge: 'Notre Parcours',
     about_journey_title: "Construire la première société de conseil immobilier du Rwanda",
+    about_team_badge: 'Notre Équipe',
+    about_team_title: "Rencontrez l'Équipe d'ORIVANTA",
     // Contact
     contact_title: 'Contacter ORIVANTA PROPERTY LTD',
     contact_subtitle: 'Nous sommes prêts à vous aider avec des solutions immobilières professionnelles adaptées à vos besoins.',
@@ -316,6 +320,8 @@ export const translations = {
     about_story_tab: 'Inkuru yacu',
     about_journey_badge: 'Urugendo rwacu',
     about_journey_title: "Kubaka Sosiyete y'Inama z'Umutungo Ikomeye mu Rwanda",
+    about_team_badge: 'Itsinda ryacu',
+    about_team_title: 'Menya Itsinda rya ORIVANTA',
     contact_title: 'Twandikire ORIVANTA PROPERTY LTD',
     contact_subtitle: 'Turi hafi gufasha mu bisubizo by\'umutungo by\'inzobere bigenewe ibyangombwa byawe.',
     // MD Section

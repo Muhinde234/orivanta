@@ -42,3 +42,42 @@ insert into cms_content (key, value) values
   ('brand_address',    'KN 82 St, Nyarugenge, NDAMAGE Building, 3rd Floor (opposite T2000 Building), Kigali, Rwanda'),
   ('brand_hours',      'Monday – Friday: 9:00 AM – 5:00 PM')
 on conflict (key) do nothing;
+
+-- ─── Property Listings ───────────────────────────────────────────────────────
+create table if not exists listings (
+  id            uuid primary key default gen_random_uuid(),
+  title         text not null,
+  slug          text not null unique,
+  property_type text not null check (property_type in ('land','house','apartment','commercial','office')),
+  purpose       text not null check (purpose in ('sale','rent')),
+  price         numeric,
+  price_period  text,                    -- e.g. 'month', 'year' — null for sale listings
+  currency      text not null default 'RWF',
+  location      text not null,
+  bedrooms      int,
+  bathrooms     int,
+  size_value    numeric,
+  size_unit     text,                    -- e.g. 'sqm', 'acres', 'ha'
+  description   text not null default '',
+  cover_image   text,
+  images        text[] not null default '{}',
+  featured      boolean not null default false,
+  status        text not null default 'published' check (status in ('published','draft')),
+  created_at    timestamptz not null default now(),
+  updated_at    timestamptz not null default now()
+);
+
+alter table listings enable row level security;
+
+-- Public read (site fetches this directly with the publishable key)
+create policy "Public read listings" on listings
+  for select using (true);
+
+-- Allow the admin panel (same publishable key, gated client-side by password) to write
+-- In production, restrict this to a service role key on a server action
+create policy "Allow listings upsert" on listings
+  for all using (true) with check (true);
+
+create index if not exists listings_status_idx on listings (status);
+create index if not exists listings_property_type_idx on listings (property_type);
+create index if not exists listings_purpose_idx on listings (purpose);

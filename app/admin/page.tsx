@@ -1,7 +1,8 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import { getSupabase } from '@/lib/supabase';
-import { Save, Lock, Eye, EyeOff, CheckCircle, AlertCircle, RefreshCw } from 'lucide-react';
+import { Save, Lock, Eye, EyeOff, CheckCircle, AlertCircle, RefreshCw, Building2 } from 'lucide-react';
+import ListingsManager from '@/components/admin/ListingsManager';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Row = { key: string; value: string };
@@ -89,6 +90,7 @@ export default function AdminPage() {
   const [saving, setSaving] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; ok: boolean } | null>(null);
   const [activeSection, setActiveSection] = useState(0);
+  const [mode, setMode] = useState<'content' | 'listings'>('content');
 
   const showToast = (msg: string, ok: boolean) => {
     setToast({ msg, ok });
@@ -192,12 +194,24 @@ export default function AdminPage() {
           <div className="text-white/40 text-xs mt-0.5">Content Management</div>
         </div>
         <nav className="flex-1 py-4">
+          <button
+            onClick={() => setMode('listings')}
+            className={`w-full flex items-center gap-2.5 text-left px-6 py-3 text-sm transition-colors ${
+              mode === 'listings'
+                ? 'bg-[#C9A227]/15 text-[#C9A227] border-r-2 border-[#C9A227]'
+                : 'text-white/60 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Building2 size={15} /> Property Listings
+          </button>
+          <div className="mx-6 my-3 h-px bg-white/10" />
+          <div className="px-6 pb-2 text-[10px] font-bold uppercase tracking-wider text-white/25">Site Content</div>
           {SECTIONS.map((s, i) => (
             <button
               key={i}
-              onClick={() => setActiveSection(i)}
+              onClick={() => { setMode('content'); setActiveSection(i); }}
               className={`w-full text-left px-6 py-3 text-sm transition-colors ${
-                activeSection === i
+                mode === 'content' && activeSection === i
                   ? 'bg-[#C9A227]/15 text-[#C9A227] border-r-2 border-[#C9A227]'
                   : 'text-white/60 hover:text-white hover:bg-white/5'
               }`}
@@ -207,9 +221,11 @@ export default function AdminPage() {
           ))}
         </nav>
         <div className="px-6 py-4 border-t border-white/10">
-          <button onClick={load} className="flex items-center gap-2 text-white/40 hover:text-white text-xs transition-colors">
-            <RefreshCw size={12} /> Reload from DB
-          </button>
+          {mode === 'content' && (
+            <button onClick={load} className="flex items-center gap-2 text-white/40 hover:text-white text-xs transition-colors">
+              <RefreshCw size={12} /> Reload from DB
+            </button>
+          )}
           <button onClick={() => setAuthed(false)} className="mt-2 text-white/30 hover:text-red-400 text-xs transition-colors">
             Sign out
           </button>
@@ -218,6 +234,10 @@ export default function AdminPage() {
 
       {/* Main */}
       <main className="flex-1 p-8 overflow-y-auto">
+        {mode === 'listings' ? (
+          <ListingsManager />
+        ) : (
+          <>
         {/* Toast */}
         {toast && (
           <div className={`fixed top-6 right-6 z-50 flex items-center gap-3 px-5 py-3 rounded-sm shadow-xl text-sm font-medium ${
@@ -289,6 +309,8 @@ export default function AdminPage() {
             </div>
           </div>
         </div>
+          </>
+        )}
       </main>
     </div>
   );

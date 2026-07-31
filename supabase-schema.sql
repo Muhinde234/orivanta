@@ -37,8 +37,8 @@ insert into cms_content (key, value) values
   ('team_photo',       '/images/PXL_20231128_151335702.PORTRAIT~2.jpg'),
   ('team_email',       'olivantaproperty@gmail.com'),
   ('team_linkedin',    '#'),
-  ('brand_phone',      '+250 XXX XXX XXX'),
+  ('brand_phone',      '+250 787 072 060'),
   ('brand_email',      'olivantaproperty@gmail.com'),
-  ('brand_address',    'Kigali, Rwanda'),
+  ('brand_address',    'KN 82 St, Nyarugenge, NDAMAGE Building, 3rd Floor (opposite T2000 Building), Kigali, Rwanda'),
   ('brand_hours',      'Monday – Friday: 9:00 AM – 5:00 PM')
 on conflict (key) do nothing;

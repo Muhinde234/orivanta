@@ -88,12 +88,13 @@ const jsonLd = {
         'Professional real estate advisory firm in Rwanda offering property valuation, consultancy, management, brokerage, and investment advisory services.',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'KN 82 St, Nyarugenge, NDAMAGE Building, 3rd Floor (opposite T2000 Building)',
         addressLocality: 'Kigali',
         addressCountry: 'RW',
       },
       contactPoint: {
         '@type': 'ContactPoint',
-        telephone: '+250-XXX-XXX-XXX',
+        telephone: '+250-787-072-060',
         contactType: 'customer service',
         email: 'olivantaproperty@gmail.com',
         availableLanguage: ['English', 'French', 'Kinyarwanda'],

@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import Logo from './Logo';
+import { BRAND } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 import { Lang } from '@/lib/translations';
 
@@ -143,9 +144,9 @@ export default function Navbar() {
                 </AnimatePresence>
               </div>
 
-              <a href="tel:+250XXXXXXXXX" className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor}`}>
+              <a href={`tel:${BRAND.phone.replace(/\s/g, '')}`} className={`flex items-center gap-2 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor}`}>
                 <Phone size={15} />
-                <span>+250 XXX XXX XXX</span>
+                <span>{BRAND.phone}</span>
               </a>
 
               <Link href="/contact"

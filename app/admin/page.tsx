@@ -1,8 +1,9 @@
 'use client';
 import { useState, useEffect, useCallback } from 'react';
 import { getSupabase } from '@/lib/supabase';
-import { Save, Lock, Eye, EyeOff, CheckCircle, AlertCircle, RefreshCw, Building2 } from 'lucide-react';
+import { Save, Lock, Eye, EyeOff, CheckCircle, AlertCircle, RefreshCw, Building2, Mail } from 'lucide-react';
 import ListingsManager from '@/components/admin/ListingsManager';
+import InquiriesManager from '@/components/admin/InquiriesManager';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Row = { key: string; value: string };
@@ -90,7 +91,7 @@ export default function AdminPage() {
   const [saving, setSaving] = useState<string | null>(null);
   const [toast, setToast] = useState<{ msg: string; ok: boolean } | null>(null);
   const [activeSection, setActiveSection] = useState(0);
-  const [mode, setMode] = useState<'content' | 'listings'>('content');
+  const [mode, setMode] = useState<'content' | 'listings' | 'inquiries'>('content');
 
   const showToast = (msg: string, ok: boolean) => {
     setToast({ msg, ok });
@@ -113,12 +114,24 @@ export default function AdminPage() {
 
   useEffect(() => { if (authed) load(); }, [authed, load]);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const [loggingIn, setLoggingIn] = useState(false);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (pw === (process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'orivanta_admin_2024')) {
-      setAuthed(true);
-    } else {
-      setPwError('Incorrect password');
+    setLoggingIn(true);
+    setPwError('');
+    try {
+      const res = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ password: pw }),
+      });
+      if (res.ok) setAuthed(true);
+      else setPwError('Incorrect password');
+    } catch {
+      setPwError('Could not reach the server. Please try again.');
+    } finally {
+      setLoggingIn(false);
     }
   };
 
@@ -169,9 +182,9 @@ export default function AdminPage() {
               </div>
               {pwError && <p className="text-red-500 text-xs mt-1">{pwError}</p>}
             </div>
-            <button type="submit"
-              className="w-full bg-[#C9A227] text-[#10243B] font-bold py-3 rounded-sm hover:bg-[#b8911f] transition-colors text-sm">
-              Sign In
+            <button type="submit" disabled={loggingIn}
+              className="w-full bg-[#C9A227] text-[#10243B] font-bold py-3 rounded-sm hover:bg-[#b8911f] transition-colors text-sm disabled:opacity-60">
+              {loggingIn ? 'Signing In…' : 'Sign In'}
             </button>
           </form>
           <p className="text-center text-xs text-gray-400 mt-6">
@@ -203,6 +216,16 @@ export default function AdminPage() {
             }`}
           >
             <Building2 size={15} /> Property Listings
+          </button>
+          <button
+            onClick={() => setMode('inquiries')}
+            className={`w-full flex items-center gap-2.5 text-left px-6 py-3 text-sm transition-colors ${
+              mode === 'inquiries'
+                ? 'bg-[#C9A227]/15 text-[#C9A227] border-r-2 border-[#C9A227]'
+                : 'text-white/60 hover:text-white hover:bg-white/5'
+            }`}
+          >
+            <Mail size={15} /> Inquiries
           </button>
           <div className="mx-6 my-3 h-px bg-white/10" />
           <div className="px-6 pb-2 text-[10px] font-bold uppercase tracking-wider text-white/25">Site Content</div>
@@ -236,6 +259,8 @@ export default function AdminPage() {
       <main className="flex-1 p-8 overflow-y-auto">
         {mode === 'listings' ? (
           <ListingsManager />
+        ) : mode === 'inquiries' ? (
+          <InquiriesManager password={pw} />
         ) : (
           <>
         {/* Toast */}

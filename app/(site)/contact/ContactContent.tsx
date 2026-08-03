@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle, AlertCircle } from 'lucide-react';
 import FAQ from '@/components/ui/FAQ';
 import { BRAND } from '@/lib/data';
+import { submitInquiry } from '@/lib/inquiries';
 import { useLang } from '@/lib/LangContext';
 
 const CONTACT_FAQS = [
@@ -28,11 +29,18 @@ const SERVICES_LIST = [
 export default function ContactContent() {
   const { t } = useLang();
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [form, setForm] = useState({ name: '', email: '', phone: '', company: '', service: '', location: '', message: '' });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setSubmitError(null);
+    const { error } = await submitInquiry(form);
+    if (error) setSubmitError(error);
+    else setSubmitted(true);
+    setSubmitting(false);
   };
 
   return (
@@ -227,12 +235,20 @@ export default function ContactContent() {
                       />
                     </div>
 
+                    {submitError && (
+                      <div className="flex items-start gap-2 bg-red-50 border border-red-100 text-red-600 text-sm rounded-sm px-4 py-3">
+                        <AlertCircle size={16} className="flex-shrink-0 mt-0.5" />
+                        <span>{submitError}</span>
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm"
+                      disabled={submitting}
+                      className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm disabled:opacity-60"
                     >
                       <Send size={16} />
-                      {t('form_submit')}
+                      {submitting ? 'Sending…' : t('form_submit')}
                     </button>
                   </form>
                 )}
@@ -242,19 +258,36 @@ export default function ContactContent() {
         </div>
       </section>
 
-      {/* Map placeholder */}
+      {/* Map */}
       <section className="py-0 bg-white" aria-label="Office location map">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 pb-16">
-          <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
-          <h3 className="font-heading font-bold text-[#10243B] text-xl mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            {t('contact_find_office')}
-          </h3>
-          <div className="w-full h-72 bg-[#F8FAFC] border border-gray-200 rounded-sm flex items-center justify-center">
-            <div className="text-center">
-              <MapPin size={32} className="text-[#C9A227] mx-auto mb-3" />
-              <p className="text-gray-400 text-sm font-medium">Google Maps — Kigali, Rwanda</p>
-              <p className="text-gray-300 text-xs mt-1">Map integration available with Google Maps API key</p>
+          <div className="flex items-center justify-between flex-wrap gap-4 mb-6">
+            <div>
+              <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
+              <h3 className="font-heading font-bold text-[#10243B] text-xl" style={{ fontFamily: 'Poppins, sans-serif' }}>
+                {t('contact_find_office')}
+              </h3>
             </div>
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND.address)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#10243B] hover:text-[#C9A227] transition-colors"
+            >
+              <MapPin size={15} className="text-[#C9A227]" />
+              Get Directions
+            </a>
+          </div>
+          <div className="w-full h-72 sm:h-[420px] rounded-sm overflow-hidden border border-gray-200">
+            <iframe
+              src={`https://www.google.com/maps?q=${encodeURIComponent(BRAND.address)}&output=embed`}
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="ORIVANTA PROPERTY LTD office location map"
+            />
           </div>
         </div>
       </section>

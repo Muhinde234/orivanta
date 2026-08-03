@@ -5,7 +5,8 @@ import WhyChoose from '@/components/sections/WhyChoose';
 import ValuesSection from '@/components/sections/ValuesSection';
 import ProcessSection from '@/components/sections/ProcessSection';
 import MDSection from '@/components/sections/MDSection';
-import Testimonials from '@/components/sections/Testimonials';
+// Testimonials hidden for now — company is newly launched, no client feedback yet.
+// import Testimonials from '@/components/sections/Testimonials';
 import GalleryStrip from '@/components/sections/GalleryStrip';
 import CTASection from '@/components/sections/CTASection';
 
@@ -34,7 +35,7 @@ export default function HomePage() {
       <ValuesSection />
       <ProcessSection />
       <MDSection />
-      <Testimonials />
+      {/* <Testimonials /> — re-enable once real client feedback is available */}
       <GalleryStrip />
       <CTASection />
     </>

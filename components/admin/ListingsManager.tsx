@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useCallback } from 'react';
 import {
-  Plus, Pencil, Trash2, X, Save, ArrowLeft, CheckCircle, AlertCircle, RefreshCw, Star,
+  Plus, Pencil, Trash2, Save, ArrowLeft, CheckCircle, AlertCircle, RefreshCw, Star,
 } from 'lucide-react';
 import {
   Listing, ListingInput, PROPERTY_TYPES, PURPOSES, PropertyType, Purpose, ListingStatus,

@@ -81,3 +81,42 @@ create policy "Allow listings upsert" on listings
 create index if not exists listings_status_idx on listings (status);
 create index if not exists listings_property_type_idx on listings (property_type);
 create index if not exists listings_purpose_idx on listings (purpose);
+
+-- ─── Contact Inquiries + Newsletter Subscribers ──────────────────────────────
+-- Unlike listings/cms_content (public data by design), these tables hold
+-- other people's names, emails, phone numbers, and messages. They must NOT
+-- be publicly readable via the anon/publishable key — only insertable.
+-- Reading them requires the service role key from a server-side route
+-- (see app/api/admin/inquiries and app/api/admin/newsletter).
+
+create table if not exists inquiries (
+  id         uuid primary key default gen_random_uuid(),
+  name       text not null,
+  email      text not null,
+  phone      text,
+  company    text,
+  service    text,
+  location   text,
+  message    text not null,
+  is_read    boolean not null default false,
+  created_at timestamptz not null default now()
+);
+
+alter table inquiries enable row level security;
+
+-- Public can submit an inquiry, but cannot read any (no select policy at all)
+create policy "Public insert inquiries" on inquiries
+  for insert with check (true);
+
+create table if not exists newsletter_subscribers (
+  id         uuid primary key default gen_random_uuid(),
+  email      text not null unique,
+  created_at timestamptz not null default now()
+);
+
+alter table newsletter_subscribers enable row level security;
+
+create policy "Public insert newsletter" on newsletter_subscribers
+  for insert with check (true);
+
+create index if not exists inquiries_created_at_idx on inquiries (created_at desc);

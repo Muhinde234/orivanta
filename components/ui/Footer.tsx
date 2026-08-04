@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { Mail, Phone, MapPin, ArrowRight, Clock } from 'lucide-react';
 import Logo from './Logo';
 import NewsletterForm from './NewsletterForm';
@@ -49,6 +49,8 @@ export default function Footer() {
                 <a
                   key={title}
                   href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={title}
                   className="w-8 h-8 rounded bg-white/8 border border-white/10 flex items-center justify-center text-white/60 hover:bg-[#C9A227] hover:text-[#10243B] hover:border-[#C9A227] transition-all duration-300"
                 >

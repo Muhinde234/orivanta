@@ -1,5 +1,5 @@
 'use client';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { ArrowLeft, MapPin, Bed, Bath, Maximize2, Phone, Mail, MessageCircle, Tag } from 'lucide-react';
 import CTASection from '@/components/sections/CTASection';
 import { BRAND } from '@/lib/data';

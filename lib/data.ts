@@ -13,12 +13,12 @@ export const BRAND = {
   phone: '+250 787 072 060',
   whatsapp: '+250 733 148 047',
   address: 'KN 82 St, Nyarugenge, NDAMAGE Building, 3rd Floor (opposite T2000 Building), Kigali, Rwanda',
-  hours: 'Monday – Friday: 9:00 AM – 5:00 PM',
-  linkedin: '#',
-  facebook: '#',
-  instagram: '#',
-  youtube: '#',
-  twitter: '#',
+  hours: 'Monday – Friday: 9:00 AM – 7:00 PM',
+  linkedin: 'https://www.linkedin.com/company/143042072/',
+  facebook: 'https://web.facebook.com/profile.php?id=61592361462367',
+  instagram: 'https://www.instagram.com/orivanta_property/',
+  youtube: 'https://www.youtube.com/@ORIVANTAPROPERTYLTD',
+  twitter: 'https://x.com/OrivantaPro',
 };
 
 export const SERVICES = [

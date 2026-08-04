@@ -1,24 +1,29 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { ArrowRight } from 'lucide-react';
 import PageBanner from '@/components/ui/PageBanner';
 import CTASection from '@/components/sections/CTASection';
 import { SERVICES } from '@/lib/data';
+import { Lang } from '@/lib/locales';
 
 const BASE_URL = 'https://www.orivantaproperty.rw';
 
-export const metadata: Metadata = {
-  title: 'Our Services',
-  description:
-    'Comprehensive real estate services from ORIVANTA PROPERTY LTD — property valuation, consultancy, management, brokerage, investment advisory, and land development in Rwanda.',
-  alternates: { canonical: `${BASE_URL}/services` },
-  openGraph: {
-    url: `${BASE_URL}/services`,
-    title: 'Real Estate Services | ORIVANTA PROPERTY LTD',
-    description: 'Property valuation, consultancy, management, brokerage, investment advisory, and land development services in Rwanda.',
-    images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'ORIVANTA PROPERTY Services' }],
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const url = `${BASE_URL}/${lang}/services`;
+  return {
+    title: 'Our Services',
+    description:
+      'Comprehensive real estate services from ORIVANTA PROPERTY LTD — property valuation, consultancy, management, brokerage, investment advisory, and land development in Rwanda.',
+    alternates: { canonical: url },
+    openGraph: {
+      url,
+      title: 'Real Estate Services | ORIVANTA PROPERTY LTD',
+      description: 'Property valuation, consultancy, management, brokerage, investment advisory, and land development services in Rwanda.',
+      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'ORIVANTA PROPERTY Services' }],
+    },
+  };
+}
 
 export default function ServicesPage() {
   return (

@@ -1,7 +1,7 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { ArrowRight, ChevronDown, Building2, TrendingUp, Award } from 'lucide-react';
 import { STATS } from '@/lib/data';
 import { useCMS } from '@/lib/useCMS';

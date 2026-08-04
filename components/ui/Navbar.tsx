@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
@@ -27,13 +27,13 @@ const SERVICE_LINKS = [
 ];
 
 export default function Navbar() {
-  const { lang, setLang, t } = useLang();
+  const { lang, setLang, t, pathWithoutLocale } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const pathname = usePathname();
-  const isHome = pathname === '/';
+  const isHome = pathWithoutLocale === '/';
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -69,7 +69,7 @@ export default function Navbar() {
                 link.children ? (
                   <div key={link.label} className="relative group">
                     <button
-                      className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor} ${pathname.startsWith('/services') ? 'text-[#C9A227]' : ''}`}
+                      className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor} ${pathWithoutLocale.startsWith('/services') ? 'text-[#C9A227]' : ''}`}
                       onMouseEnter={() => setServicesOpen(true)}
                       onMouseLeave={() => setServicesOpen(false)}
                       aria-haspopup="true"
@@ -104,7 +104,7 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <Link key={link.href} href={link.href}
-                    className={`text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor} ${pathname === link.href ? 'text-[#C9A227]' : ''}`}>
+                    className={`text-sm font-medium transition-colors hover:text-[#C9A227] ${linkColor} ${pathWithoutLocale === link.href ? 'text-[#C9A227]' : ''}`}>
                     {link.label}
                   </Link>
                 )
@@ -179,7 +179,7 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <div key={link.label}>
                   <Link href={link.href}
-                    className={`block py-4 text-lg font-semibold border-b border-white/10 transition-colors hover:text-[#C9A227] ${pathname === link.href ? 'text-[#C9A227]' : 'text-white'}`}>
+                    className={`block py-4 text-lg font-semibold border-b border-white/10 transition-colors hover:text-[#C9A227] ${pathWithoutLocale === link.href ? 'text-[#C9A227]' : 'text-white'}`}>
                     {link.label}
                   </Link>
                   {link.children && (

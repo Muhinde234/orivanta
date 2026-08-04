@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { motion } from 'framer-motion';
 import { MapPin, Bed, Bath, Maximize2 } from 'lucide-react';
 import { Listing, formatPrice, formatSize, propertyTypeLabel, purposeLabel } from '@/lib/listings';

@@ -1,4 +1,4 @@
-export type Lang = 'en' | 'fr' | 'rw';
+export type { Lang } from './locales';
 
 export const translations = {
   en: {
@@ -15,6 +15,10 @@ export const translations = {
     listings_badge: 'Property Listings',
     listings_title: 'Explore Our Property Listings',
     listings_subtitle: 'Browse available land, houses, apartments, and commercial properties for sale or rent across Rwanda.',
+    home_listings_badge: 'Featured Properties',
+    home_listings_title: 'Discover Our Latest Listings',
+    home_listings_subtitle: 'A selection of quality properties available for sale or rent across Kigali and beyond.',
+    home_listings_cta: 'View All Listings',
     listings_filter_type: 'Property Type',
     listings_filter_purpose: 'Purpose',
     listings_filter_all: 'All',
@@ -196,6 +200,10 @@ export const translations = {
     listings_badge: 'Annonces Immobilières',
     listings_title: 'Découvrez Nos Annonces Immobilières',
     listings_subtitle: 'Parcourez les terrains, maisons, appartements et propriétés commerciales disponibles à la vente ou à la location partout au Rwanda.',
+    home_listings_badge: 'Propriétés en Vedette',
+    home_listings_title: 'Découvrez Nos Dernières Annonces',
+    home_listings_subtitle: 'Une sélection de propriétés de qualité disponibles à la vente ou à la location à Kigali et au-delà.',
+    home_listings_cta: 'Voir Toutes les Annonces',
     listings_filter_type: 'Type de Bien',
     listings_filter_purpose: 'Objectif',
     listings_filter_all: 'Tous',
@@ -372,6 +380,10 @@ export const translations = {
     listings_badge: 'Imitungo Itanzwe',
     listings_title: 'Reba Imitungo Yacu Itanzwe',
     listings_subtitle: 'Reba ubutaka, amazu, apartimani, n\'imitungo ya ejo hazaza ihari kugurishwa cyangwa gukodeshwa hirya no hino mu Rwanda.',
+    home_listings_badge: 'Imitungo Yatoranyijwe',
+    home_listings_title: 'Menya Imitungo Yacu Nshya',
+    home_listings_subtitle: 'Amatoranyo y\'imitungo myiza ihari kugurishwa cyangwa gukodeshwa i Kigali no ahandi.',
+    home_listings_cta: 'Reba Imitungo Yose',
     listings_filter_type: 'Ubwoko bw\'Umutungo',
     listings_filter_purpose: 'Intego',
     listings_filter_all: 'Byose',

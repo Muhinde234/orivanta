@@ -6,28 +6,30 @@ import PageBanner from '@/components/ui/PageBanner';
 import FAQ from '@/components/ui/FAQ';
 import CTASection from '@/components/sections/CTASection';
 import { SERVICES } from '@/lib/data';
+import { LOCALES, Lang } from '@/lib/locales';
 import ServiceContent from './ServiceContent';
 
 interface Props {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ lang: Lang; slug: string }>;
 }
 
 const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export async function generateStaticParams() {
-  return SERVICES.map((s) => ({ slug: s.slug }));
+  return LOCALES.flatMap((lang) => SERVICES.map((s) => ({ lang, slug: s.slug })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) return {};
+  const url = `${BASE_URL}/${lang}/services/${slug}`;
   return {
     title: service.title,
     description: service.shortDesc,
-    alternates: { canonical: `${BASE_URL}/services/${slug}` },
+    alternates: { canonical: url },
     openGraph: {
-      url: `${BASE_URL}/services/${slug}`,
+      url,
       title: `${service.title} | ORIVANTA PROPERTY LTD`,
       description: service.shortDesc,
       images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: service.title }],
@@ -36,7 +38,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ServicePage({ params }: Props) {
-  const { slug } = await params;
+  const { lang, slug } = await params;
   const service = SERVICES.find((s) => s.slug === slug);
   if (!service) notFound();
 
@@ -52,7 +54,7 @@ export default async function ServicePage({ params }: Props) {
             serviceType: service.title,
             name: service.title,
             description: service.shortDesc,
-            url: `${BASE_URL}/services/${service.slug}`,
+            url: `${BASE_URL}/${lang}/services/${service.slug}`,
             provider: {
               '@type': 'Organization',
               name: 'ORIVANTA PROPERTY LTD',

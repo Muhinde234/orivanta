@@ -1,6 +1,6 @@
 'use client';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import Link from '@/components/ui/LocaleLink';
 import { CheckCircle, Users, ArrowRight, Info, Mail, Quote } from 'lucide-react';
 import { SERVICES, STATS, TESTIMONIALS } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';

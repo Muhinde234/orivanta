@@ -1,4 +1,7 @@
 import { getSupabase, getSupabaseServer } from './supabase';
+import { TranslationKey } from './translations';
+
+type Translate = (key: TranslationKey) => string;
 
 export type PropertyType = 'land' | 'house' | 'apartment' | 'commercial' | 'office';
 export type Purpose = 'sale' | 'rent';
@@ -42,16 +45,18 @@ export const PURPOSES: { value: Purpose; label: string }[] = [
   { value: 'rent', label: 'For Rent' },
 ];
 
-export function propertyTypeLabel(value: string): string {
+export function propertyTypeLabel(value: string, t?: Translate): string {
+  if (t) return t(`property_type_${value}` as TranslationKey);
   return PROPERTY_TYPES.find(p => p.value === value)?.label ?? value;
 }
 
-export function purposeLabel(value: string): string {
+export function purposeLabel(value: string, t?: Translate): string {
+  if (t) return t(`purpose_${value}` as TranslationKey);
   return PURPOSES.find(p => p.value === value)?.label ?? value;
 }
 
-export function formatPrice(listing: Pick<Listing, 'price' | 'price_period' | 'currency' | 'purpose'>): string {
-  if (listing.price == null) return 'Price on request';
+export function formatPrice(listing: Pick<Listing, 'price' | 'price_period' | 'currency' | 'purpose'>, t?: Translate): string {
+  if (listing.price == null) return t ? t('listing_price_on_request') : 'Price on request';
   const formatted = `${listing.currency} ${listing.price.toLocaleString()}`;
   if (listing.purpose === 'rent' && listing.price_period) return `${formatted} / ${listing.price_period}`;
   return formatted;

@@ -4,8 +4,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { MapPin, Bed, Bath, Maximize2 } from 'lucide-react';
 import { Listing, formatPrice, formatSize, propertyTypeLabel, purposeLabel } from '@/lib/listings';
+import { useLang } from '@/lib/LangContext';
 
 export default function ListingCard({ listing, index = 0 }: { listing: Listing; index?: number }) {
+  const { t } = useLang();
   const size = formatSize(listing);
   return (
     <motion.div
@@ -27,15 +29,15 @@ export default function ListingCard({ listing, index = 0 }: { listing: Listing; 
               className="object-cover group-hover:scale-105 transition-transform duration-500"
             />
           ) : (
-            <div className="absolute inset-0 flex items-center justify-center text-gray-300 text-sm">No image</div>
+            <div className="absolute inset-0 flex items-center justify-center text-gray-300 text-sm">{t('listing_no_image')}</div>
           )}
           <div className="absolute top-3 left-3 flex gap-2">
             <span className="bg-[#10243B] text-white text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-              {purposeLabel(listing.purpose)}
+              {purposeLabel(listing.purpose, t)}
             </span>
             {listing.featured && (
               <span className="bg-[#C9A227] text-[#10243B] text-[11px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-sm">
-                Featured
+                {t('listing_featured_badge')}
               </span>
             )}
           </div>
@@ -43,7 +45,7 @@ export default function ListingCard({ listing, index = 0 }: { listing: Listing; 
 
         <div className="p-5">
           <div className="text-[#C9A227] text-[11px] font-semibold uppercase tracking-widest mb-2">
-            {propertyTypeLabel(listing.property_type)}
+            {propertyTypeLabel(listing.property_type, t)}
           </div>
           <h3 className="font-heading font-bold text-[#10243B] text-base mb-2 leading-snug line-clamp-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {listing.title}
@@ -66,7 +68,7 @@ export default function ListingCard({ listing, index = 0 }: { listing: Listing; 
           </div>
 
           <div className="font-heading font-bold text-[#10243B] text-lg">
-            {formatPrice(listing)}
+            {formatPrice(listing, t)}
           </div>
         </div>
       </Link>

@@ -1,6 +1,4 @@
 import type { Metadata } from 'next';
-import PageBanner from '@/components/ui/PageBanner';
-import CTASection from '@/components/sections/CTASection';
 import ListingsContent from './ListingsContent';
 import { fetchPublishedListings } from '@/lib/listings';
 
@@ -23,25 +21,5 @@ export const metadata: Metadata = {
 
 export default async function ListingsPage() {
   const listings = await fetchPublishedListings();
-
-  return (
-    <>
-      <PageBanner
-        title="Property Listings"
-        subtitle="Browse available land, houses, apartments, and commercial properties for sale or rent across Rwanda."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'Listings' }]}
-      />
-
-      <ListingsContent listings={listings} />
-
-      <CTASection
-        title="Can't Find What You're Looking For?"
-        subtitle="Tell us what you need and our team will help you find the right property or list yours with us."
-        primaryLabel="Contact Our Team"
-        primaryHref="/contact"
-        secondaryLabel="View Our Services"
-        secondaryHref="/services"
-      />
-    </>
-  );
+  return <ListingsContent listings={listings} />;
 }

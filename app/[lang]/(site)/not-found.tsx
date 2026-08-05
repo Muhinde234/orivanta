@@ -1,7 +1,10 @@
+'use client';
 import Link from '@/components/ui/LocaleLink';
 import { ArrowRight } from 'lucide-react';
+import { useLang } from '@/lib/LangContext';
 
 export default function NotFound() {
+  const { t } = useLang();
   return (
     <div className="min-h-screen bg-[#10243B] flex items-center justify-center px-6">
       <div className="text-center">
@@ -10,16 +13,16 @@ export default function NotFound() {
         </div>
         <div className="w-12 h-0.5 bg-[#C9A227] mx-auto mb-6" />
         <h1 className="font-heading font-bold text-white text-2xl mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-          Page Not Found
+          {t('not_found_title')}
         </h1>
         <p className="text-white/60 text-sm mb-8 max-w-sm mx-auto leading-relaxed">
-          The page you are looking for does not exist or has been moved.
+          {t('not_found_body')}
         </p>
         <Link
           href="/"
           className="inline-flex items-center gap-2 bg-[#C9A227] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#b8911f] transition-colors text-sm"
         >
-          Return to Home <ArrowRight size={16} />
+          {t('return_home')} <ArrowRight size={16} />
         </Link>
       </div>
     </div>

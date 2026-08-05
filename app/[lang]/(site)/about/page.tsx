@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lang } from '@/lib/locales';
+import { translations } from '@/lib/translations';
 import PageBanner from '@/components/ui/PageBanner';
 import ValuesSection from '@/components/sections/ValuesSection';
 import ProcessSection from '@/components/sections/ProcessSection';
@@ -10,38 +11,40 @@ const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
   const { lang } = await params;
+  const tr = translations[lang];
   const url = `${BASE_URL}/${lang}/about`;
   return {
-    title: 'About Us',
-    description:
-      'Learn about ORIVANTA PROPERTY LTD — our story, vision, mission, values, and the professional team behind Rwanda\'s leading real estate advisory firm in Kigali.',
+    title: tr.meta_about_title,
+    description: tr.meta_about_desc,
     alternates: { canonical: url },
     openGraph: {
       url,
-      title: 'About ORIVANTA PROPERTY LTD | Rwanda Real Estate Advisory',
-      description: 'Our story, vision, mission, and the professional team behind Rwanda\'s leading real estate advisory firm.',
+      title: `${tr.about_banner_title} | Rwanda Real Estate Advisory`,
+      description: tr.meta_about_desc,
       images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'About ORIVANTA PROPERTY' }],
     },
   };
 }
 
-export default function AboutPage() {
+export default async function AboutPage({ params }: { params: Promise<{ lang: Lang }> }) {
+  const { lang } = await params;
+  const tr = translations[lang];
   return (
     <>
       <PageBanner
-        title="About ORIVANTA PROPERTY LTD"
-        subtitle="A professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions."
-        breadcrumbs={[{ label: 'Home', href: '/' }, { label: 'About Us' }]}
+        title={tr.about_banner_title}
+        subtitle={tr.about_banner_subtitle}
+        breadcrumbs={[{ label: tr.nav_home, href: '/' }, { label: tr.sidebar_about }]}
       />
       <AboutContent />
       <ValuesSection />
       <ProcessSection />
       <CTASection
-        title="Ready to Work With ORIVANTA?"
-        subtitle="Our experienced professionals are ready to discuss your property needs and provide solutions designed around your objectives."
-        primaryLabel="Contact Us Today"
+        title={tr.about_cta_title}
+        subtitle={tr.about_cta_subtitle}
+        primaryLabel={tr.about_cta_primary}
         primaryHref="/contact"
-        secondaryLabel="View Our Services"
+        secondaryLabel={tr.about_cta_secondary}
         secondaryHref="/services"
       />
     </>

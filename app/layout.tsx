@@ -66,7 +66,6 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: '/favicon.svg', type: 'image/svg+xml' },
       { url: '/images/orivanta-01-transparent.png', type: 'image/png' },
     ],
     shortcut: '/images/orivanta-01-transparent.png',

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { SERVICES } from '@/lib/data';
+import { SERVICE_SLUGS } from '@/lib/data';
 import { fetchPublishedListings } from '@/lib/listings';
 import { LOCALES } from '@/lib/locales';
 
@@ -23,8 +23,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency,
       priority,
     })),
-    ...SERVICES.map((s) => ({
-      url: `${BASE_URL}/${locale}/services/${s.slug}`,
+    ...SERVICE_SLUGS.map((slug) => ({
+      url: `${BASE_URL}/${locale}/services/${slug}`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
       priority: 0.85,

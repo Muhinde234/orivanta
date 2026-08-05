@@ -5,37 +5,67 @@ import Image from 'next/image';
 import { Eye, Target, BookOpen, Mail, User, CheckCircle } from 'lucide-react';
 import { useCMS } from '@/lib/useCMS';
 import { useLang } from '@/lib/LangContext';
+import type { Lang } from '@/lib/locales';
 
-const TIMELINE = [
-  { year: 'Founded', title: 'ORIVANTA Established', desc: 'ORIVANTA PROPERTY LTD was established with a vision to transform how individuals, investors, and organizations approach real estate decisions.' },
-  { year: 'Growth', title: 'Expanding Services', desc: 'Expanded service offerings to cover the full real estate lifecycle — from valuation and consultancy to investment advisory and facility management.' },
-  { year: 'Today', title: "Rwanda's Trusted Advisor", desc: 'Serving individuals, businesses, investors, and institutions across Rwanda with professional expertise and client-focused solutions.' },
-  { year: 'Vision', title: 'Pan-African Reach', desc: "Working toward becoming Africa's most trusted real estate consulting firm, delivering innovative solutions that create lasting value." },
-];
+const TIMELINE_I18N: Record<Lang, { year: string; title: string; desc: string }[]> = {
+  en: [
+    { year: 'Founded', title: 'ORIVANTA Established', desc: 'ORIVANTA PROPERTY LTD was established with a vision to transform how individuals, investors, and organizations approach real estate decisions.' },
+    { year: 'Growth', title: 'Expanding Services', desc: 'Expanded service offerings to cover the full real estate lifecycle — from valuation and consultancy to investment advisory and facility management.' },
+    { year: 'Today', title: "Rwanda's Trusted Advisor", desc: 'Serving individuals, businesses, investors, and institutions across Rwanda with professional expertise and client-focused solutions.' },
+    { year: 'Vision', title: 'Pan-African Reach', desc: "Working toward becoming Africa's most trusted real estate consulting firm, delivering innovative solutions that create lasting value." },
+  ],
+  fr: [
+    { year: 'Fondation', title: "Création d'ORIVANTA", desc: "ORIVANTA PROPERTY LTD a été créée avec la vision de transformer la façon dont les particuliers, investisseurs et organisations abordent les décisions immobilières." },
+    { year: 'Croissance', title: 'Élargissement des Services', desc: "Élargissement de l'offre de services pour couvrir l'ensemble du cycle de vie immobilier — de l'évaluation et du conseil au conseil en investissement et à la gestion des installations." },
+    { year: "Aujourd'hui", title: 'Le Conseiller de Confiance du Rwanda', desc: 'Au service des particuliers, entreprises, investisseurs et institutions à travers le Rwanda avec une expertise professionnelle et des solutions centrées sur le client.' },
+    { year: 'Vision', title: 'Rayonnement Panafricain', desc: "En marche vers devenir le cabinet de conseil immobilier le plus fiable d'Afrique, en offrant des solutions innovantes qui créent une valeur durable." },
+  ],
+  rw: [
+    { year: 'Ishingwa', title: 'Ishingwa rya ORIVANTA', desc: "ORIVANTA PROPERTY LTD yashinzwe ifite icyerekezo cyo guhindura uburyo abantu, abashoramari, n'imiryango bafata ibyemezo by'umutungo." },
+    { year: 'Iterambere', title: 'Kwagura Serivisi', desc: "Kwagura serivisi kugira ngo zirimbe inzira yose y'umutungo — kuva mu gusuzuma agaciro n'inama kugeza ku nama z'ishoramari no gucunga ibikorwa remezo." },
+    { year: 'Uyu munsi', title: 'Umujyanama Wizewe mu Rwanda', desc: "Dukorera abantu, amasosiyete, abashoramari, n'inzego mu Rwanda hose, dufite ubunararibonye bw'inzobere n'ibisubizo byibanda ku mukiriya." },
+    { year: 'Icyerekezo', title: 'Kugera muri Afurika Yose', desc: "Dukomeza kuba sosiyete y'inama z'umutungo yizewe cyane muri Afurika, dutanga ibisubizo bishya biremera agaciro karamba." },
+  ],
+};
 
-const TEAM = [
-  {
+const TEAM_I18N: Record<Lang, {
+  name: string; role: string; bio: string; responsibilities: string[]; expertise: string[]; linkedin: string; email: string;
+}[]> = {
+  en: [{
     name: 'Daniel NGARUKIYIMANA',
     role: 'Founder & Managing Director',
     bio: 'As the Founder and Managing Director of ORIVANTA PROPERTY LTD, Daniel provides strategic leadership and oversees the company\'s vision, operations, and professional service delivery. With a background in Estate Management and Valuation, he focuses on delivering innovative real estate solutions through professional advisory, market analysis, and client-focused strategies.',
-    responsibilities: [
-      'Company strategy and leadership',
-      'Client relationship management',
-      'Real estate consultancy',
-      'Property valuation oversight',
-      'Business development',
-      'Quality assurance of services',
-    ],
+    responsibilities: ['Company strategy and leadership', 'Client relationship management', 'Real estate consultancy', 'Property valuation oversight', 'Business development', 'Quality assurance of services'],
     expertise: ['Property Valuation', 'Real Estate Consultancy', 'Investment Advisory', 'Market Analysis', 'Property Strategy'],
     linkedin: '#',
     email: 'olivantaproperty@gmail.com',
-  },
-];
+  }],
+  fr: [{
+    name: 'Daniel NGARUKIYIMANA',
+    role: 'Fondateur & Directeur Général',
+    bio: "En tant que Fondateur et Directeur Général d'ORIVANTA PROPERTY LTD, Daniel assure un leadership stratégique et supervise la vision, les opérations et la prestation de services professionnels de l'entreprise. Fort d'une formation en gestion immobilière et en évaluation, il se concentre sur la fourniture de solutions immobilières innovantes grâce au conseil professionnel, à l'analyse de marché et à des stratégies centrées sur le client.",
+    responsibilities: ["Stratégie et leadership de l'entreprise", 'Gestion des relations clients', 'Conseil immobilier', "Supervision de l'évaluation immobilière", 'Développement commercial', 'Assurance qualité des services'],
+    expertise: ['Évaluation Immobilière', 'Conseil Immobilier', 'Conseil en Investissement', 'Analyse de Marché', 'Stratégie Immobilière'],
+    linkedin: '#',
+    email: 'olivantaproperty@gmail.com',
+  }],
+  rw: [{
+    name: 'Daniel NGARUKIYIMANA',
+    role: 'Uwashinze & Umuyobozi Mukuru',
+    bio: "Nk'Uwashinze kandi Umuyobozi Mukuru wa ORIVANTA PROPERTY LTD, Daniel atanga ubuyobozi bw'ingamba kandi akurikirana icyerekezo cy'isosiyete, imikorere yayo, no gutanga serivisi z'inzobere. Afite ubumenyi mu gucunga no gusuzuma agaciro k'umutungo, yibanda ku gutanga ibisubizo bishya by'umutungo binyuze mu nama z'inzobere, isesengura ry'isoko, n'ingamba zibanda ku mukiriya.",
+    responsibilities: ["Ingamba n'ubuyobozi by'isosiyete", 'Gucunga umubano n\'abakiriya', "Inama z'umutungo", "Kugenzura gusuzuma agaciro k'umutungo", "Iterambere ry'ubucuruzi", 'Kwemeza ubwiza bwa serivisi'],
+    expertise: ["Gusuzuma Agaciro k'Umutungo", "Inama z'Umutungo", "Inama z'Ishoramari", "Isesengura ry'Isoko", "Ingamba z'Umutungo"],
+    linkedin: '#',
+    email: 'olivantaproperty@gmail.com',
+  }],
+};
 
 export default function AboutContent() {
   const { data } = useCMS(['about_who_we_are', 'about_who_we_are_2', 'about_vision', 'about_mission', 'team_name', 'team_role', 'team_bio', 'team_photo', 'team_email', 'team_linkedin']);
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [activeTab, setActiveTab] = useState('vision');
+  const TIMELINE = TIMELINE_I18N[lang];
+  const TEAM = TEAM_I18N[lang];
 
   const teamMember = {
     name: data.team_name || TEAM[0].name,

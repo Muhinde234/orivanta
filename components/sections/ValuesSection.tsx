@@ -1,11 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { VALUES } from '@/lib/data';
+import { getValues } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function ValuesSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const VALUES = getValues(lang);
   return (
     <section className="py-28 bg-[#10243B] relative overflow-hidden" aria-labelledby="values-heading">
       {/* Background grid */}

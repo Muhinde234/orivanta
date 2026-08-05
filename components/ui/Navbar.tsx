@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown, Phone } from 'lucide-react';
 import Logo from './Logo';
-import { BRAND } from '@/lib/data';
+import { BRAND, getServices } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 import { Lang } from '@/lib/translations';
 
@@ -15,19 +15,9 @@ const LANGS: { code: Lang; label: string; flag: string }[] = [
   { code: 'rw', label: 'RW', flag: '🇷🇼' },
 ];
 
-const SERVICE_LINKS = [
-  { label: 'Property Valuation', href: '/services/property-valuation' },
-  { label: 'Real Estate Consultancy', href: '/services/real-estate-consultancy' },
-  { label: 'Property Management', href: '/services/property-management' },
-  { label: 'Facility Management', href: '/services/facility-management' },
-  { label: 'Real Estate Brokerage', href: '/services/real-estate-brokerage' },
-  { label: 'Corporate Real Estate Advisory', href: '/services/corporate-real-estate-advisory' },
-  { label: 'Investment Advisory', href: '/services/investment-advisory' },
-  { label: 'Land Advisory', href: '/services/land-advisory' },
-];
-
 export default function Navbar() {
   const { lang, setLang, t, pathWithoutLocale } = useLang();
+  const SERVICE_LINKS = getServices(lang).map((s) => ({ label: s.title, href: `/services/${s.slug}` }));
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
@@ -59,11 +49,11 @@ export default function Navbar() {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-32">
+          <div className="flex items-center justify-between h-24">
             <Logo size="lg" />
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
+            <nav className="hidden lg:flex items-center gap-8" aria-label={t('nav_main_aria')}>
               {navLinks.map((link) => (
                 link.children ? (
                   <div key={link.label} className="relative group">
@@ -157,7 +147,7 @@ export default function Navbar() {
 
             {/* Mobile toggle */}
             <button className={`lg:hidden p-2 ${linkColor}`} onClick={() => setMobileOpen(!mobileOpen)}
-              aria-label="Toggle menu" aria-expanded={mobileOpen}>
+              aria-label={t('nav_toggle_menu_aria')} aria-expanded={mobileOpen}>
               {mobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -172,7 +162,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 bg-[#10243B] flex flex-col pt-32 px-6 pb-8 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#10243B] flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
           >
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (

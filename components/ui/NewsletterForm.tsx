@@ -2,8 +2,10 @@
 import { useState } from 'react';
 import { ArrowRight, Check, Loader2 } from 'lucide-react';
 import { subscribeNewsletter } from '@/lib/inquiries';
+import { useLang } from '@/lib/LangContext';
 
 export default function NewsletterForm() {
+  const { t, lang } = useLang();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'done' | 'error'>('idle');
   const [error, setError] = useState('');
@@ -12,7 +14,7 @@ export default function NewsletterForm() {
     e.preventDefault();
     if (!email.trim()) return;
     setStatus('loading');
-    const { error: err } = await subscribeNewsletter(email.trim());
+    const { error: err } = await subscribeNewsletter(email.trim(), lang);
     if (err) { setError(err); setStatus('error'); }
     else { setStatus('done'); setEmail(''); }
   };
@@ -20,7 +22,7 @@ export default function NewsletterForm() {
   if (status === 'done') {
     return (
       <p className="flex items-center gap-2 text-[13px] text-[#C9A227]">
-        <Check size={14} /> Thanks for subscribing!
+        <Check size={14} /> {t('newsletter_thanks')}
       </p>
     );
   }
@@ -33,16 +35,16 @@ export default function NewsletterForm() {
           required
           value={email}
           onChange={e => setEmail(e.target.value)}
-          placeholder="Your email address"
+          placeholder={t('footer_email_placeholder')}
           className="flex-1 min-w-0 bg-white/[0.06] border border-white/[0.12] rounded-full px-4 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227] transition-colors"
           style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}
-          aria-label="Email for newsletter"
+          aria-label={t('newsletter_email_aria')}
         />
         <button
           type="submit"
           disabled={status === 'loading'}
           className="flex-shrink-0 bg-[#C9A227] text-[#10243B] w-10 h-10 rounded-full flex items-center justify-center hover:bg-[#b8911f] transition-colors disabled:opacity-60"
-          aria-label="Subscribe to newsletter"
+          aria-label={t('newsletter_subscribe_aria')}
         >
           {status === 'loading' ? <Loader2 size={15} className="animate-spin" /> : <ArrowRight size={15} />}
         </button>

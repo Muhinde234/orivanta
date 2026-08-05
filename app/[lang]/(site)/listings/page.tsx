@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lang } from '@/lib/locales';
+import { translations } from '@/lib/translations';
 import ListingsContent from './ListingsContent';
 import { fetchPublishedListings } from '@/lib/listings';
 
@@ -9,16 +10,16 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
   const { lang } = await params;
+  const tr = translations[lang];
   const url = `${BASE_URL}/${lang}/listings`;
   return {
-    title: 'Property Listings',
-    description:
-      'Browse land, houses, apartments, commercial, and office properties for sale or rent across Rwanda, listed by ORIVANTA PROPERTY LTD.',
+    title: tr.meta_listings_title,
+    description: tr.meta_listings_desc,
     alternates: { canonical: url },
     openGraph: {
       url,
-      title: 'Property Listings | ORIVANTA PROPERTY LTD',
-      description: 'Browse land, houses, apartments, commercial, and office properties for sale or rent across Rwanda.',
+      title: `${tr.meta_listings_title} | ORIVANTA PROPERTY LTD`,
+      description: tr.meta_listings_desc,
       images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'ORIVANTA PROPERTY Listings' }],
     },
   };

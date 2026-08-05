@@ -5,8 +5,9 @@ import { CheckCircle } from 'lucide-react';
 import PageBanner from '@/components/ui/PageBanner';
 import FAQ from '@/components/ui/FAQ';
 import CTASection from '@/components/sections/CTASection';
-import { SERVICES } from '@/lib/data';
+import { SERVICE_SLUGS, getService } from '@/lib/data';
 import { LOCALES, Lang } from '@/lib/locales';
+import { translations } from '@/lib/translations';
 import ServiceContent from './ServiceContent';
 
 interface Props {
@@ -16,12 +17,12 @@ interface Props {
 const BASE_URL = 'https://www.orivantaproperty.rw';
 
 export async function generateStaticParams() {
-  return LOCALES.flatMap((lang) => SERVICES.map((s) => ({ lang, slug: s.slug })));
+  return LOCALES.flatMap((lang) => SERVICE_SLUGS.map((slug) => ({ lang, slug })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { lang, slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = getService(lang, slug);
   if (!service) return {};
   const url = `${BASE_URL}/${lang}/services/${slug}`;
   return {
@@ -39,8 +40,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function ServicePage({ params }: Props) {
   const { lang, slug } = await params;
-  const service = SERVICES.find((s) => s.slug === slug);
+  const service = getService(lang, slug);
   if (!service) notFound();
+  const tr = translations[lang];
 
   return (
     <>
@@ -69,8 +71,8 @@ export default async function ServicePage({ params }: Props) {
         title={service.title}
         subtitle={service.shortDesc}
         breadcrumbs={[
-          { label: 'Home', href: '/' },
-          { label: 'Services', href: '/services' },
+          { label: tr.nav_home, href: '/' },
+          { label: tr.nav_services, href: '/services' },
           { label: service.title },
         ]}
       />
@@ -83,7 +85,7 @@ export default async function ServicePage({ params }: Props) {
             <div className="bg-white rounded-sm border border-gray-100 p-8 shadow-sm">
               <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
               <h3 className="font-heading font-bold text-[#10243B] text-xl mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                Client Requirements
+                {tr.service_requirements}
               </h3>
               <ul className="space-y-3">
                 {service.requirements.map((req, i) => (
@@ -98,7 +100,7 @@ export default async function ServicePage({ params }: Props) {
             <div className="bg-[#10243B] rounded-sm p-8">
               <div className="w-10 h-0.5 bg-[#C9A227] mb-4" />
               <h3 className="font-heading font-bold text-white text-xl mb-6" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                What You Will Receive
+                {tr.service_deliverables}
               </h3>
               <ul className="space-y-3">
                 {service.deliverables.map((d, i) => (
@@ -115,16 +117,16 @@ export default async function ServicePage({ params }: Props) {
 
       <section className="py-14 bg-white">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <FAQ items={service.faqs} />
+          <FAQ items={service.faqs} title={tr.faqs_default_title} />
         </div>
       </section>
 
       <CTASection
-        title={`Ready to Get Started with ${service.title}?`}
-        subtitle="Our professional team is ready to discuss your requirements and provide expert guidance tailored to your needs."
+        title={`${tr.service_ready_prefix} ${service.title}?`}
+        subtitle={tr.service_slug_cta_subtitle}
         primaryLabel={service.cta}
         primaryHref="/contact"
-        secondaryLabel="View All Services"
+        secondaryLabel={tr.services_view_all}
         secondaryHref="/services"
       />
     </>

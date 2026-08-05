@@ -1,11 +1,12 @@
 'use client';
 import { Star, Quote } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { TESTIMONIALS } from '@/lib/data';
+import { getTestimonials } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function Testimonials() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const TESTIMONIALS = getTestimonials(lang);
   const loop = [...TESTIMONIALS, ...TESTIMONIALS];
 
   return (

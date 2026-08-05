@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Lang } from '@/lib/locales';
+import { translations } from '@/lib/translations';
 import { fetchPublishedListings } from '@/lib/listings';
 import Hero from '@/components/sections/Hero';
 import ServicesSection from '@/components/sections/ServicesSection';
@@ -19,16 +20,16 @@ export const revalidate = 60;
 
 export async function generateMetadata({ params }: { params: Promise<{ lang: Lang }> }): Promise<Metadata> {
   const { lang } = await params;
+  const tr = translations[lang];
   const url = `${BASE_URL}/${lang}`;
   return {
-    title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
-    description:
-      'Where property potential becomes lasting value. ORIVANTA PROPERTY LTD provides property valuation, real estate consultancy, investment advisory, and more in Kigali, Rwanda.',
+    title: tr.meta_home_title,
+    description: tr.meta_home_desc,
     alternates: { canonical: url },
     openGraph: {
       url,
-      title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
-      description: 'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
+      title: tr.meta_home_title,
+      description: tr.meta_home_desc,
       images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'ORIVANTA PROPERTY LTD' }],
     },
   };

@@ -3,11 +3,12 @@ import { motion } from 'framer-motion';
 import Link from '@/components/ui/LocaleLink';
 import { ArrowRight } from 'lucide-react';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { SERVICES } from '@/lib/data';
+import { getServices } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function ServicesSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const SERVICES = getServices(lang);
   return (
     <section className="py-28 bg-white" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -47,7 +48,7 @@ export default function ServicesSection() {
                       {service.shortDesc}
                     </p>
                     <span className="inline-flex items-center gap-1.5 text-[#C9A227] text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all duration-300">
-                      Learn More <ArrowRight size={12} />
+                      {t('learn_more')} <ArrowRight size={12} />
                     </span>
                   </div>
                 </Link>

@@ -1,4 +1,5 @@
 import { getSupabase } from './supabase';
+import { translations, Lang } from './translations';
 
 export interface Inquiry {
   id: string;
@@ -31,16 +32,16 @@ export interface InquiryInput {
 
 // ── Public submissions (client-side, anon key — insert-only by RLS) ─────────
 
-export async function submitInquiry(input: InquiryInput): Promise<{ error: string | null }> {
+export async function submitInquiry(input: InquiryInput, lang: Lang = 'en'): Promise<{ error: string | null }> {
   const client = getSupabase();
-  if (!client) return { error: 'Service unavailable. Please contact us by phone or email directly.' };
+  if (!client) return { error: translations[lang].error_service_unavailable_contact };
   const { error } = await client.from('inquiries').insert(input);
   return { error: error?.message ?? null };
 }
 
-export async function subscribeNewsletter(email: string): Promise<{ error: string | null; alreadySubscribed?: boolean }> {
+export async function subscribeNewsletter(email: string, lang: Lang = 'en'): Promise<{ error: string | null; alreadySubscribed?: boolean }> {
   const client = getSupabase();
-  if (!client) return { error: 'Service unavailable, please try again later.' };
+  if (!client) return { error: translations[lang].error_service_unavailable_retry };
   const { error } = await client.from('newsletter_subscribers').insert({ email });
   if (error) {
     if (error.code === '23505') return { error: null, alreadySubscribed: true }; // unique_violation

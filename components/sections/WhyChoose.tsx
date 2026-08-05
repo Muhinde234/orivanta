@@ -1,11 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { WHY_CHOOSE } from '@/lib/data';
+import { getWhyChoose } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function WhyChoose() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const WHY_CHOOSE = getWhyChoose(lang);
   return (
     <section className="py-28 bg-[#F8FAFC]" aria-labelledby="why-choose-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

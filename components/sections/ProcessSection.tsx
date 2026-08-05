@@ -1,11 +1,12 @@
 'use client';
 import { motion } from 'framer-motion';
 import SectionHeader from '@/components/ui/SectionHeader';
-import { PROCESS_STEPS } from '@/lib/data';
+import { getProcessSteps } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function ProcessSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const PROCESS_STEPS = getProcessSteps(lang);
   return (
     <section className="py-28 bg-white" aria-labelledby="process-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">

@@ -100,7 +100,7 @@ export default function Chatbot() {
       {/* Floating button */}
       <button
         onClick={() => setOpen(o => !o)}
-        aria-label="Open chat"
+        aria-label={t('chat_open_aria')}
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#C9A227] text-[#10243B] shadow-xl flex items-center justify-center hover:bg-[#b8911f] transition-all duration-300 hover:scale-110"
       >
         <AnimatePresence mode="wait">
@@ -133,7 +133,7 @@ export default function Chatbot() {
               </div>
               <div className="ml-auto flex items-center gap-1">
                 <div className="w-2 h-2 rounded-full bg-green-400" />
-                <span className="text-white/40 text-xs">Online</span>
+                <span className="text-white/40 text-xs">{t('chat_online')}</span>
               </div>
             </div>
 

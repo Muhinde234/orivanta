@@ -3,11 +3,12 @@ import Link from '@/components/ui/LocaleLink';
 import { Mail, Phone, MapPin, ArrowRight, Clock } from 'lucide-react';
 import Logo from './Logo';
 import NewsletterForm from './NewsletterForm';
-import { BRAND, SERVICES } from '@/lib/data';
+import { BRAND, getServices } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const SERVICES = getServices(lang);
   const year = new Date().getFullYear();
 
   const QUICK_LINKS = [
@@ -32,7 +33,7 @@ export default function Footer() {
 
           {/* Brand — spans 4 cols on lg */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-5">
-            <Logo size="lg" />
+            <Logo size="xl" />
             <p className="text-white/55 text-[15px] leading-7" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
               {t('footer_desc')}
             </p>

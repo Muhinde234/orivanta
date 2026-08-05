@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from '@/components/ui/LocaleLink';
 import { ArrowRight, ChevronDown, Building2, TrendingUp, Award } from 'lucide-react';
-import { STATS } from '@/lib/data';
+import { getStats } from '@/lib/data';
 import { useCMS } from '@/lib/useCMS';
 import { useLang } from '@/lib/LangContext';
 
 export default function Hero() {
   const { data } = useCMS(['hero_title','hero_tagline','hero_body','hero_cta_primary','hero_cta_secondary','hero_image']);
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const STATS = getStats(lang);
 
   const heroImage = data.hero_image || '/images/1.jpg';
   const tagline = data.hero_tagline || t('hero_tagline');
@@ -155,7 +156,7 @@ export default function Hero() {
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-white/30 text-xs tracking-widest uppercase">Scroll</span>
+        <span className="text-white/30 text-xs tracking-widest uppercase">{t('scroll_label')}</span>
         <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>
           <ChevronDown size={18} className="text-[#C9A227]" />
         </motion.div>

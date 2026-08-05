@@ -2,12 +2,15 @@
 import { motion } from 'framer-motion';
 import Link from '@/components/ui/LocaleLink';
 import { CheckCircle, Users, ArrowRight, Info, Mail, Quote } from 'lucide-react';
-import { SERVICES, STATS, TESTIMONIALS } from '@/lib/data';
+import { getServices, getStats, getTestimonials } from '@/lib/data';
 import { useLang } from '@/lib/LangContext';
 
 export default function ServiceContent({ slug }: { slug: string }) {
+  const { t, lang } = useLang();
+  const SERVICES = getServices(lang);
+  const STATS = getStats(lang);
+  const TESTIMONIALS = getTestimonials(lang);
   const service = SERVICES.find((s) => s.slug === slug);
-  const { t } = useLang();
   if (!service) return null;
 
   const Icon = service.icon;

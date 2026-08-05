@@ -3,31 +3,36 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle, AlertCircle } from 'lucide-react';
 import FAQ from '@/components/ui/FAQ';
-import { BRAND } from '@/lib/data';
+import { BRAND, getServices } from '@/lib/data';
 import { submitInquiry } from '@/lib/inquiries';
 import { useLang } from '@/lib/LangContext';
+import type { Lang } from '@/lib/locales';
 
-const CONTACT_FAQS = [
-  { q: 'How can I request ORIVANTA services?', a: 'You can contact us through our online form, email, phone, or WhatsApp. Our team will review your request and respond with the next steps.' },
-  { q: 'Can I schedule a meeting with an ORIVANTA consultant?', a: 'Yes. Clients can schedule physical or online consultations depending on their preference and availability.' },
-  { q: 'Do you provide services outside Kigali?', a: 'Yes. ORIVANTA provides real estate solutions across Rwanda depending on client requirements and project scope.' },
-  { q: 'How quickly will ORIVANTA respond?', a: 'We aim to respond to inquiries promptly and provide guidance on the appropriate next steps.' },
-];
-
-const SERVICES_LIST = [
-  'Property Valuation',
-  'Real Estate Consultancy',
-  'Property Management',
-  'Facility Management',
-  'Real Estate Brokerage',
-  'Corporate Real Estate Advisory',
-  'Real Estate Investment Advisory',
-  'Land Advisory & Development Consultancy',
-  'Other',
-];
+const CONTACT_FAQS_I18N: Record<Lang, { q: string; a: string }[]> = {
+  en: [
+    { q: 'How can I request ORIVANTA services?', a: 'You can contact us through our online form, email, phone, or WhatsApp. Our team will review your request and respond with the next steps.' },
+    { q: 'Can I schedule a meeting with an ORIVANTA consultant?', a: 'Yes. Clients can schedule physical or online consultations depending on their preference and availability.' },
+    { q: 'Do you provide services outside Kigali?', a: 'Yes. ORIVANTA provides real estate solutions across Rwanda depending on client requirements and project scope.' },
+    { q: 'How quickly will ORIVANTA respond?', a: 'We aim to respond to inquiries promptly and provide guidance on the appropriate next steps.' },
+  ],
+  fr: [
+    { q: 'Comment puis-je demander les services d\'ORIVANTA?', a: "Vous pouvez nous contacter via notre formulaire en ligne, email, téléphone ou WhatsApp. Notre équipe examinera votre demande et vous répondra avec les prochaines étapes." },
+    { q: 'Puis-je planifier une rencontre avec un consultant ORIVANTA?', a: "Oui. Les clients peuvent planifier des consultations physiques ou en ligne selon leur préférence et disponibilité." },
+    { q: 'Fournissez-vous des services en dehors de Kigali?', a: "Oui. ORIVANTA fournit des solutions immobilières à travers le Rwanda selon les besoins du client et la portée du projet." },
+    { q: 'À quelle vitesse ORIVANTA répondra-t-elle?', a: "Nous visons à répondre aux demandes rapidement et à fournir des conseils sur les prochaines étapes appropriées." },
+  ],
+  rw: [
+    { q: 'Nasaba nte serivisi za ORIVANTA?', a: "Ushobora kutwandikira binyuze mu ifishi yacu iri kuri interineti, imeyili, telefoni, cyangwa WhatsApp. Itsinda ryacu rizasuzuma icyifuzo cyawe rikwereke intambwe zikurikira." },
+    { q: 'Nshobora gusaba inama n\'umujyanama wa ORIVANTA?', a: "Yego. Abakiriya bashobora gusaba inama zisanzwe cyangwa izo kuri interineti bitewe n'ibyifuzo n'igihe bafite." },
+    { q: 'Mutanga serivisi hanze ya Kigali?', a: "Yego. ORIVANTA itanga ibisubizo by'umutungo mu Rwanda hose bitewe n'ibyangombwa by'umukiriya n'ubunini bw'umushinga." },
+    { q: 'ORIVANTA isubiza vuba gute?', a: "Dushaka gusubiza ibibazo vuba no gutanga ubuyobozi ku ntambwe zikurikira zikwiye." },
+  ],
+};
 
 export default function ContactContent() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+  const CONTACT_FAQS = CONTACT_FAQS_I18N[lang];
+  const SERVICES_LIST = [...getServices(lang).map((s) => s.title), t('form_other')];
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
@@ -37,7 +42,7 @@ export default function ContactContent() {
     e.preventDefault();
     setSubmitting(true);
     setSubmitError(null);
-    const { error } = await submitInquiry(form);
+    const { error } = await submitInquiry(form, lang);
     if (error) setSubmitError(error);
     else setSubmitted(true);
     setSubmitting(false);
@@ -70,11 +75,11 @@ export default function ContactContent() {
 
               {/* Contact cards */}
               {[
-                { icon: MapPin, label: 'Office Location', value: BRAND.address, href: undefined },
-                { icon: Phone, label: 'Phone', value: BRAND.phone, href: `tel:${BRAND.phone}` },
-                { icon: Mail, label: 'Email', value: BRAND.email, href: `mailto:${BRAND.email}` },
-                { icon: MessageCircle, label: 'WhatsApp', value: BRAND.whatsapp, href: `https://wa.me/${BRAND.whatsapp.replace(/\s/g, '')}` },
-                { icon: Clock, label: 'Business Hours', value: BRAND.hours, href: undefined },
+                { icon: MapPin, label: t('contact_label_location'), value: BRAND.address, href: undefined },
+                { icon: Phone, label: t('contact_label_phone'), value: BRAND.phone, href: `tel:${BRAND.phone}` },
+                { icon: Mail, label: t('contact_label_email'), value: BRAND.email, href: `mailto:${BRAND.email}` },
+                { icon: MessageCircle, label: t('contact_label_whatsapp'), value: BRAND.whatsapp, href: `https://wa.me/${BRAND.whatsapp.replace(/\s/g, '')}` },
+                { icon: Clock, label: t('contact_label_hours'), value: BRAND.hours, href: undefined },
               ].map((item, i) => {
                 const Icon = item.icon;
                 const content = (
@@ -156,7 +161,7 @@ export default function ContactContent() {
                           id="name" type="text" required
                           value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
                           className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300"
-                          placeholder="Your full name"
+                          placeholder={t('placeholder_name')}
                         />
                       </div>
                       <div>
@@ -167,7 +172,7 @@ export default function ContactContent() {
                           id="email" type="email" required
                           value={form.email} onChange={e => setForm({ ...form, email: e.target.value })}
                           className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300"
-                          placeholder="your@email.com"
+                          placeholder={t('placeholder_email')}
                         />
                       </div>
                     </div>
@@ -181,7 +186,7 @@ export default function ContactContent() {
                           id="phone" type="tel" required
                           value={form.phone} onChange={e => setForm({ ...form, phone: e.target.value })}
                           className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300"
-                          placeholder="+250 XXX XXX XXX"
+                          placeholder={t('placeholder_phone')}
                         />
                       </div>
                       <div>
@@ -192,7 +197,7 @@ export default function ContactContent() {
                           id="company" type="text"
                           value={form.company} onChange={e => setForm({ ...form, company: e.target.value })}
                           className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300"
-                          placeholder="Your company"
+                          placeholder={t('placeholder_company')}
                         />
                       </div>
                     </div>
@@ -219,7 +224,7 @@ export default function ContactContent() {
                         id="location" type="text"
                         value={form.location} onChange={e => setForm({ ...form, location: e.target.value })}
                         className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300"
-                        placeholder="Property location or area"
+                        placeholder={t('placeholder_location')}
                       />
                     </div>
 
@@ -231,7 +236,7 @@ export default function ContactContent() {
                         id="message" required rows={5}
                         value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                         className="w-full border border-gray-200 rounded-sm px-4 py-3 text-sm text-[#10243B] focus:outline-none focus:border-[#C9A227] transition-colors placeholder-gray-300 resize-none"
-                        placeholder="Describe your request or inquiry..."
+                        placeholder={t('placeholder_message')}
                       />
                     </div>
 
@@ -248,7 +253,7 @@ export default function ContactContent() {
                       className="w-full bg-[#C9A227] text-[#10243B] font-bold py-4 rounded-full hover:bg-[#b8911f] transition-colors duration-300 flex items-center justify-center gap-2 text-sm disabled:opacity-60"
                     >
                       <Send size={16} />
-                      {submitting ? 'Sending…' : t('form_submit')}
+                      {submitting ? t('form_sending') : t('form_submit')}
                     </button>
                   </form>
                 )}
@@ -275,7 +280,7 @@ export default function ContactContent() {
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#10243B] hover:text-[#C9A227] transition-colors"
             >
               <MapPin size={15} className="text-[#C9A227]" />
-              Get Directions
+              {t('get_directions')}
             </a>
           </div>
           <div className="w-full h-72 sm:h-[420px] rounded-sm overflow-hidden border border-gray-200">
@@ -295,7 +300,7 @@ export default function ContactContent() {
       {/* FAQ */}
       <section className="py-20 bg-[#F8FAFC]">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <FAQ items={CONTACT_FAQS} title="Contact FAQs" />
+          <FAQ items={CONTACT_FAQS} title={t('contact_faqs_title')} />
         </div>
       </section>
 

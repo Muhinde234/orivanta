@@ -38,7 +38,7 @@ export default function Hero() {
             >
               <div className="w-8 h-px bg-[#C9A227]" />
               <span className="text-[#C9A227] text-xs font-bold tracking-[0.25em] uppercase">
-                {tagline}
+                {t('hero_tagline')}
               </span>
             </motion.div>
 

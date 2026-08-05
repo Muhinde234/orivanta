@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: 'Real Estate Services | ORIVANTA PROPERTY LTD',
       description: 'Property valuation, consultancy, management, brokerage, investment advisory, and land development services in Rwanda.',
-      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'ORIVANTA PROPERTY Services' }],
+      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'ORIVANTA PROPERTY Services' }],
     },
   };
 }

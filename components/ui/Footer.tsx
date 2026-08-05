@@ -32,7 +32,7 @@ export default function Footer() {
 
           {/* Brand — spans 4 cols on lg */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-5">
-            <Logo variant="light" />
+            <Logo size="lg" />
             <p className="text-white/55 text-[15px] leading-7" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
               {t('footer_desc')}
             </p>

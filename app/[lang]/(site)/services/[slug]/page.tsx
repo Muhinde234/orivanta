@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       title: `${service.title} | ORIVANTA PROPERTY LTD`,
       description: service.shortDesc,
-      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: service.title }],
+      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: service.title }],
     },
   };
 }

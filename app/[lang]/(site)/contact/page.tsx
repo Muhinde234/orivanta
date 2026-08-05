@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: 'Contact ORIVANTA PROPERTY LTD | Kigali, Rwanda',
       description: 'Reach out to our professional team for real estate consultancy, property valuation, and advisory services in Rwanda.',
-      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'Contact ORIVANTA PROPERTY' }],
+      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'Contact ORIVANTA PROPERTY' }],
     },
   };
 }

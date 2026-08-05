@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: 'About ORIVANTA PROPERTY LTD | Rwanda Real Estate Advisory',
       description: 'Our story, vision, mission, and the professional team behind Rwanda\'s leading real estate advisory firm.',
-      images: [{ url: '/images/og-default.jpg', width: 1200, height: 630, alt: 'About ORIVANTA PROPERTY' }],
+      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'About ORIVANTA PROPERTY' }],
     },
   };
 }

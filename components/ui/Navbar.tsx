@@ -45,7 +45,6 @@ export default function Navbar() {
 
   const navBg = scrolled || !isHome ? 'bg-white shadow-md border-b border-gray-100' : 'bg-transparent';
   const linkColor = scrolled || !isHome ? 'text-[#10243B]' : 'text-white';
-  const logoVariant = scrolled || !isHome ? 'dark' : 'light';
 
   const navLinks = [
     { label: t('nav_home'), href: '/' },
@@ -60,8 +59,8 @@ export default function Navbar() {
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="flex items-center justify-between h-20">
-            <Logo variant={logoVariant} />
+          <div className="flex items-center justify-between h-32">
+            <Logo size="lg" />
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8" aria-label="Main navigation">
@@ -173,7 +172,7 @@ export default function Navbar() {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
             transition={{ duration: 0.3, ease: 'easeInOut' }}
-            className="fixed inset-0 z-40 bg-[#10243B] flex flex-col pt-24 px-6 pb-8 overflow-y-auto"
+            className="fixed inset-0 z-40 bg-[#10243B] flex flex-col pt-32 px-6 pb-8 overflow-y-auto"
           >
             <nav className="flex flex-col gap-1">
               {navLinks.map((link) => (

@@ -65,11 +65,13 @@ export const metadata: Metadata = {
     images: ['/images/orivanta-social.png'],
   },
   icons: {
+    // Cache-busting query string — browsers cache favicons very aggressively,
+    // so a plain URL change alone often isn't enough to force a refresh.
     icon: [
-      { url: '/images/navy.png', type: 'image/png' },
+      { url: '/images/navy.png?v=2', type: 'image/png' },
     ],
-    shortcut: '/images/navy.png',
-    apple: '/images/navy.png',
+    shortcut: '/images/navy.png?v=2',
+    apple: '/images/navy.png?v=2',
   },
   verification: {
     google: 'REPLACE_WITH_GOOGLE_SITE_VERIFICATION',

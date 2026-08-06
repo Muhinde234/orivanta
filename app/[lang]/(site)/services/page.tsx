@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: `${tr.services_title} | ORIVANTA PROPERTY LTD`,
       description: tr.meta_services_desc,
-      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'ORIVANTA PROPERTY Services' }],
+      images: [{ url: '/images/orivanta-social.png', width: 800, height: 800, alt: 'ORIVANTA PROPERTY Services' }],
     },
   };
 }

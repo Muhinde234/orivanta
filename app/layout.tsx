@@ -55,21 +55,21 @@ export const metadata: Metadata = {
     title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
     description:
       'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
-    images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'ORIVANTA PROPERTY LTD' }],
+    images: [{ url: '/images/orivanta-social.png', width: 800, height: 800, alt: 'ORIVANTA PROPERTY LTD' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ORIVANTA PROPERTY LTD | Professional Real Estate Advisory in Rwanda',
     description:
       'Rwanda\'s trusted real estate advisory firm — property valuation, consultancy, management, brokerage, and investment advisory in Kigali.',
-    images: ['/images/orivanta-01.png'],
+    images: ['/images/orivanta-social.png'],
   },
   icons: {
     icon: [
-      { url: '/images/orivanta-01-transparent.png', type: 'image/png' },
+      { url: '/images/navy.png', type: 'image/png' },
     ],
-    shortcut: '/images/orivanta-01-transparent.png',
-    apple: '/images/orivanta-01-transparent.png',
+    shortcut: '/images/navy.png',
+    apple: '/images/navy.png',
   },
   verification: {
     google: 'REPLACE_WITH_GOOGLE_SITE_VERIFICATION',
@@ -84,8 +84,8 @@ const jsonLd = {
       '@id': `${BASE_URL}/#organization`,
       name: 'ORIVANTA PROPERTY LTD',
       url: BASE_URL,
-      logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/logo.png` },
-      image: `${BASE_URL}/images/orivanta-01.png`,
+      logo: { '@type': 'ImageObject', url: `${BASE_URL}/images/orivanta-social.png` },
+      image: `${BASE_URL}/images/orivanta-social.png`,
       description:
         'Professional real estate advisory firm in Rwanda offering property valuation, consultancy, management, brokerage, and investment advisory services.',
       address: {

@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: `${tr.about_banner_title} | Rwanda Real Estate Advisory`,
       description: tr.meta_about_desc,
-      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'About ORIVANTA PROPERTY' }],
+      images: [{ url: '/images/orivanta-social.png', width: 800, height: 800, alt: 'About ORIVANTA PROPERTY' }],
     },
   };
 }

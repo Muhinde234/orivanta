@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: Lan
       url,
       title: `${tr.contact_banner_title} | Kigali, Rwanda`,
       description: tr.meta_contact_desc,
-      images: [{ url: '/images/orivanta-01.png', width: 400, height: 400, alt: 'Contact ORIVANTA PROPERTY' }],
+      images: [{ url: '/images/orivanta-social.png', width: 800, height: 800, alt: 'Contact ORIVANTA PROPERTY' }],
     },
   };
 }

@@ -33,8 +33,9 @@ export default function Navbar() {
 
   useEffect(() => { setMobileOpen(false); }, [pathname]);
 
-  const navBg = scrolled || !isHome ? 'bg-white shadow-md border-b border-gray-100' : 'bg-transparent';
-  const linkColor = scrolled || !isHome ? 'text-[#10243B]' : 'text-white';
+  const isLightNav = scrolled || !isHome;
+  const navBg = isLightNav ? 'bg-white shadow-md border-b border-gray-100' : 'bg-transparent';
+  const linkColor = isLightNav ? 'text-[#10243B]' : 'text-white';
 
   const navLinks = [
     { label: t('nav_home'), href: '/' },
@@ -50,7 +51,7 @@ export default function Navbar() {
       <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${navBg}`}>
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-24">
-            <Logo size="lg" />
+            <Logo size="lg" variant={isLightNav ? 'navy' : 'gold'} />
 
             {/* Desktop Nav */}
             <nav className="hidden lg:flex items-center gap-8" aria-label={t('nav_main_aria')}>

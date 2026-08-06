@@ -12,11 +12,15 @@ export default function Hero() {
   const { t, lang } = useLang();
   const STATS = getStats(lang);
 
+  // CMS overrides are authored in English only, so only apply them for the
+  // default locale — other languages must always use the static translations.
+  const isDefaultLang = lang === 'en';
   const heroImage = data.hero_image || '/images/1.jpg';
-  const tagline = data.hero_tagline || t('hero_tagline');
-  const body = data.hero_body || t('hero_body');
-  const ctaPrimary = data.hero_cta_primary || t('hero_cta_primary');
-  const ctaSecondary = data.hero_cta_secondary || t('hero_cta_secondary');
+  const heroTitle = (isDefaultLang && data.hero_title) || t('hero_title');
+  const tagline = (isDefaultLang && data.hero_tagline) || t('hero_tagline');
+  const body = (isDefaultLang && data.hero_body) || t('hero_body');
+  const ctaPrimary = (isDefaultLang && data.hero_cta_primary) || t('hero_cta_primary');
+  const ctaSecondary = (isDefaultLang && data.hero_cta_secondary) || t('hero_cta_secondary');
 
   return (
     <section className="relative min-h-screen flex flex-col justify-center overflow-hidden" aria-label="Hero">
@@ -48,7 +52,7 @@ export default function Hero() {
               initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.1 }}
               className="font-heading font-bold text-white leading-[1.1] mb-5 text-4xl sm:text-5xl lg:text-6xl"
             >
-              {data.hero_title || 'ORIVANTA'}
+              {heroTitle}
               <br />
               <span className="text-[#C9A227]">PROPERTY</span> LTD
             </motion.h1>

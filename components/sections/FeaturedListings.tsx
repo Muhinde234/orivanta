@@ -17,7 +17,7 @@ export default function FeaturedListings({ listings }: { listings: Listing[] }) 
         <SectionHeader
           badge={t('home_listings_badge')}
           title={t('home_listings_title')}
-          highlight="Listings"
+          highlight={t('home_listings_title_highlight')}
           subtitle={t('home_listings_subtitle')}
         />
 

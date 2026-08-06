@@ -15,7 +15,7 @@ export default function ServicesSection() {
         <SectionHeader
           badge={t('services_badge')}
           title={t('services_title')}
-          highlight="Real Estate"
+          highlight={t('services_title_highlight')}
           subtitle={t('services_subtitle')}
         />
 

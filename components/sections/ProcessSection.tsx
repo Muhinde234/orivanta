@@ -13,7 +13,7 @@ export default function ProcessSection() {
         <SectionHeader
           badge={t('process_badge')}
           title={t('process_title')}
-          highlight="Process"
+          highlight={t('process_title_highlight')}
           subtitle={t('process_subtitle')}
         />
 
@@ -39,7 +39,7 @@ export default function ProcessSection() {
                       <Icon size={22} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-400" />
                     </div>
                     <span className="text-[#C9A227] font-heading font-black text-xs tracking-widest" style={{ fontFamily: 'Poppins, sans-serif' }}>
-                      STEP {step.step}
+                      {t('process_step_label')} {step.step}
                     </span>
                   </div>
 

@@ -88,13 +88,13 @@ export default function AboutContent() {
     vision: {
       icon: Eye,
       heading: t('about_vision_tab'),
-      body: data.about_vision || "To become Africa's most trusted real estate consulting firm, delivering innovative property solutions, sustainable developments, and professional advisory services that create lasting value for investors, businesses, communities, and future generations.",
+      body: data.about_vision || t('about_vision_body'),
       image: '/images/7.jpg',
     },
     mission: {
       icon: Target,
       heading: t('about_mission_tab'),
-      body: data.about_mission || 'To provide reliable, ethical and innovative real estate solutions that empower clients to make informed decisions, maximize property value, and achieve sustainable investment growth.',
+      body: data.about_mission || t('about_mission_body'),
       image: '/images/8.jpg',
     },
     story: {
@@ -129,10 +129,10 @@ export default function AboutContent() {
                 {t('about_who_title')}
               </h2>
               <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
-                {data.about_who_we_are || 'ORIVANTA PROPERTY LTD is a professional real estate advisory company committed to delivering reliable, innovative, and client-focused property solutions.'}
+                {data.about_who_we_are || t('about_who_body_1')}
               </p>
               <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
-                {data.about_who_we_are_2 || 'We provide comprehensive real estate services including property valuation, real estate consultancy, property management, facility management, real estate brokerage, corporate real estate advisory, and investment advisory.'}
+                {data.about_who_we_are_2 || t('about_who_body_2')}
               </p>
               <p className="text-gray-600 leading-relaxed text-[17px]">
                 {t('about_third_para')}

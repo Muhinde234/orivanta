@@ -10,7 +10,7 @@ interface FAQProps {
   title?: string;
 }
 
-export default function FAQ({ items, title = 'Frequently Asked Questions' }: FAQProps) {
+export default function FAQ({ items, title }: FAQProps) {
   const [open, setOpen] = useState<number | null>(null);
 
   return (

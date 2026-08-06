@@ -10,9 +10,9 @@ export default function MDSection() {
   const { t } = useLang();
 
   const name = data.md_name || 'Daniel NGARUKIYIMANA';
-  const role = data.md_role || 'Founder & Managing Director';
-  const quote = data.md_quote || "Real estate decisions are among the most important financial decisions individuals and organizations make. Our goal is to provide professional knowledge, accurate information, and strategic guidance that enables our clients to make confident decisions.";
-  const body = data.md_body || 'At ORIVANTA, we are committed to delivering excellence, building trust, and creating sustainable value through professional real estate solutions. We look forward to becoming your trusted partner in real estate.';
+  const role = data.md_role || t('md_role');
+  const quote = data.md_quote || t('md_quote');
+  const body = data.md_body || t('md_body');
   const photo = data.md_photo || '/images/PXL_20231128_151335702.PORTRAIT~2.jpg';
 
   return (

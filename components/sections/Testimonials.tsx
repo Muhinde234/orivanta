@@ -19,7 +19,7 @@ export default function Testimonials() {
         <SectionHeader
           badge={t('testimonials_badge')}
           title={t('testimonials_title')}
-          highlight="Clients"
+          highlight={t('testimonials_title_highlight')}
           subtitle={t('testimonials_subtitle')}
           light={false}
         />

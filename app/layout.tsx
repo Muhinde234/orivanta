@@ -67,11 +67,13 @@ export const metadata: Metadata = {
   icons: {
     // Cache-busting query string — browsers cache favicons very aggressively,
     // so a plain URL change alone often isn't enough to force a refresh.
+    // The main logo is a 3.7:1 lockup, which letterboxes to an unreadable
+    // sliver in a tab. Use the square icon-only card instead.
     icon: [
-      { url: '/images/navy.png?v=2', type: 'image/png' },
+      { url: '/images/orivanta-social.png?v=3', type: 'image/png' },
     ],
-    shortcut: '/images/navy.png?v=2',
-    apple: '/images/navy.png?v=2',
+    shortcut: '/images/orivanta-social.png?v=3',
+    apple: '/images/orivanta-social.png?v=3',
   },
   verification: {
     google: 'REPLACE_WITH_GOOGLE_SITE_VERIFICATION',

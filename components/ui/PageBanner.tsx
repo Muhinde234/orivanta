@@ -49,11 +49,11 @@ export default function PageBanner({ title, subtitle, breadcrumbs }: PageBannerP
           transition={{ duration: 0.6, delay: 0.1 }}
         >
           <div className="w-10 h-0.5 bg-[#C9A227] mb-5" />
-          <h1 className="font-heading font-bold text-white leading-tight text-3xl sm:text-4xl lg:text-5xl">
+          <h1 className="font-heading font-black text-white leading-tight text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
             {title}
           </h1>
           {subtitle && (
-            <p className="mt-4 text-white/65 max-w-2xl leading-relaxed text-[15px] sm:text-base">
+            <p className="mt-4 text-white/65 max-w-2xl leading-relaxed text-base sm:text-lg md:text-xl">
               {subtitle}
             </p>
           )}

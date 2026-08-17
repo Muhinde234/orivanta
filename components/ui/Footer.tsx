@@ -26,10 +26,15 @@ export default function Footer() {
       {/* Extra visual separator */}
       <div className="h-px bg-white/[0.06]" />
 
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-10">
+      {/* Gutters must match the Navbar and every page section (px-6 lg:px-8)
+          so the footer logo lines up with the header logo. */}
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
-        {/* Main grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 py-16 border-b border-white/[0.07]">
+        {/* Main grid. Top padding is deliberately larger than the bottom so the
+            preceding section never butts up against the footer content. It
+            lives INSIDE the footer, so the gap picks up the navy background
+            instead of showing the white page background. */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 pt-24 sm:pt-32 lg:pt-40 pb-16 border-b border-white/[0.07]">
 
           {/* Brand — spans 4 cols on lg */}
           <div className="sm:col-span-2 lg:col-span-4 space-y-5">

@@ -20,25 +20,6 @@ export interface NewsletterSubscriber {
   created_at: string;
 }
 
-export interface InquiryInput {
-  name: string;
-  email: string;
-  phone?: string;
-  company?: string;
-  service?: string;
-  location?: string;
-  message: string;
-}
-
-// ── Public submissions (client-side, anon key — insert-only by RLS) ─────────
-
-export async function submitInquiry(input: InquiryInput, lang: Lang = 'en'): Promise<{ error: string | null }> {
-  const client = getSupabase();
-  if (!client) return { error: translations[lang].error_service_unavailable_contact };
-  const { error } = await client.from('inquiries').insert(input);
-  return { error: error?.message ?? null };
-}
-
 export async function subscribeNewsletter(email: string, lang: Lang = 'en'): Promise<{ error: string | null; alreadySubscribed?: boolean }> {
   const client = getSupabase();
   if (!client) return { error: translations[lang].error_service_unavailable_retry };

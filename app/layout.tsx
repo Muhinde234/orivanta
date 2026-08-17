@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Poppins, Mulish } from 'next/font/google';
 import Script from 'next/script';
+import { BRAND } from '@/lib/data';
 import './globals.css';
 const poppins = Poppins({
   subsets: ['latin'],
@@ -98,6 +99,12 @@ const jsonLd = {
         addressLocality: 'Kigali',
         addressCountry: 'RW',
       },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: BRAND.coords.lat,
+        longitude: BRAND.coords.lng,
+      },
+      hasMap: `https://www.google.com/maps/search/?api=1&query=${BRAND.coords.lat},${BRAND.coords.lng}`,
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+250-787-072-060',

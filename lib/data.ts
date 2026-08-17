@@ -15,6 +15,10 @@ export const BRAND = {
   phone: '+250 787 072 060',
   whatsapp: '+250 733 148 047',
   address: 'KN 82 St, Nyarugenge, NDAMAGE Building, 3rd Floor (opposite T2000 Building), Kigali, Rwanda',
+  // Exact office pin. Searching Google Maps by the address string alone drops
+  // the marker on the wrong side of Nyarugenge, so map embeds and directions
+  // links use these coordinates instead.
+  coords: { lat: -1.9432884, lng: 30.0583393 },
   hours: 'Monday – Friday: 9:00 AM – 7:00 PM',
   linkedin: 'https://www.linkedin.com/company/143042072/',
   facebook: 'https://web.facebook.com/profile.php?id=61592361462367',

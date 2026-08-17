@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Clock, Send, MessageCircle, AlertCircle } from 'lucide-react';
 import FAQ from '@/components/ui/FAQ';
 import { BRAND, getServices } from '@/lib/data';
-import { submitInquiry } from '@/lib/inquiries';
 import { useLang } from '@/lib/LangContext';
 import type { Lang } from '@/lib/locales';
 
@@ -42,9 +41,18 @@ export default function ContactContent() {
     e.preventDefault();
     setSubmitting(true);
     setSubmitError(null);
-    const { error } = await submitInquiry(form, lang);
-    if (error) setSubmitError(error);
-    else setSubmitted(true);
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) setSubmitError(data.error ?? t('error_service_unavailable_contact'));
+      else setSubmitted(true);
+    } catch {
+      setSubmitError(t('error_service_unavailable_contact'));
+    }
     setSubmitting(false);
   };
 
@@ -274,7 +282,7 @@ export default function ContactContent() {
               </h3>
             </div>
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(BRAND.address)}`}
+              href={`https://www.google.com/maps/search/?api=1&query=${BRAND.coords.lat},${BRAND.coords.lng}`}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#10243B] hover:text-[#C9A227] transition-colors"
@@ -285,7 +293,7 @@ export default function ContactContent() {
           </div>
           <div className="w-full h-72 sm:h-[420px] rounded-sm overflow-hidden border border-gray-200">
             <iframe
-              src={`https://www.google.com/maps?q=${encodeURIComponent(BRAND.address)}&output=embed`}
+              src={`https://www.google.com/maps?q=${BRAND.coords.lat},${BRAND.coords.lng}&z=17&output=embed`}
               width="100%"
               height="100%"
               style={{ border: 0 }}

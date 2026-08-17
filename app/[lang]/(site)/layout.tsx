@@ -15,7 +15,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <div className="min-h-screen flex flex-col">
         <ProgressBar />
         <Navbar />
-        <main className="flex-1 mb-16">{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <Chatbot />
       </div>

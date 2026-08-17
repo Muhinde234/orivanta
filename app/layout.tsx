@@ -104,7 +104,7 @@ const jsonLd = {
         latitude: BRAND.coords.lat,
         longitude: BRAND.coords.lng,
       },
-      hasMap: `https://www.google.com/maps/search/?api=1&query=${BRAND.coords.lat},${BRAND.coords.lng}`,
+      hasMap: BRAND.googleMapsUrl,
       contactPoint: {
         '@type': 'ContactPoint',
         telephone: '+250-787-072-060',

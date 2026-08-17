@@ -19,6 +19,8 @@ export const BRAND = {
   // the marker on the wrong side of Nyarugenge, so map embeds and directions
   // links use these coordinates instead.
   coords: { lat: -1.9432884, lng: 30.0583393 },
+  // Verified office pin, as shared directly from Google Maps.
+  googleMapsUrl: 'https://maps.app.goo.gl/5m7uY4b4MKEjr8jEA',
   hours: 'Monday – Friday: 9:00 AM – 7:00 PM',
   linkedin: 'https://www.linkedin.com/company/143042072/',
   facebook: 'https://web.facebook.com/profile.php?id=61592361462367',

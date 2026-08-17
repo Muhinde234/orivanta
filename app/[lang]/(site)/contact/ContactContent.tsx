@@ -282,7 +282,7 @@ export default function ContactContent() {
               </h3>
             </div>
             <a
-              href={`https://www.google.com/maps/search/?api=1&query=${BRAND.coords.lat},${BRAND.coords.lng}`}
+              href={BRAND.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 text-sm font-semibold text-[#10243B] hover:text-[#C9A227] transition-colors"

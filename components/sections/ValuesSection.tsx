@@ -8,7 +8,7 @@ export default function ValuesSection() {
   const { t, lang } = useLang();
   const VALUES = getValues(lang);
   return (
-    <section className="py-28 bg-[#10243B] relative overflow-hidden" aria-labelledby="values-heading">
+    <section className="py-20 lg:py-24 bg-[#10243B] relative overflow-hidden" aria-labelledby="values-heading">
       {/* Background grid */}
       <div className="absolute inset-0 opacity-[0.03]"
         style={{ backgroundImage: 'linear-gradient(#C9A227 1px, transparent 1px), linear-gradient(90deg, #C9A227 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
@@ -31,12 +31,12 @@ export default function ValuesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="flex flex-wrap items-start justify-center gap-x-1 gap-y-6 mb-16 sm:mb-20"
+          className="flex flex-wrap items-start justify-center gap-x-1 gap-y-4 mb-12 sm:mb-14"
         >
           {VALUES.map((value, i) => (
             <div key={`letter-${i}`} className="flex flex-col items-center w-[11%] min-w-[58px]">
               <span
-                className="font-heading font-black leading-none text-[#C9A227] text-3xl sm:text-4xl lg:text-5xl"
+                className="font-heading font-black leading-none text-[#C9A227] text-2xl sm:text-3xl lg:text-4xl"
                 style={{ fontFamily: 'Poppins, sans-serif' }}
               >
                 {value.letter}

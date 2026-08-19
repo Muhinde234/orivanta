@@ -199,9 +199,9 @@ export default function AdminPage() {
   const section = SECTIONS[activeSection];
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC] flex">
+    <div className="h-screen overflow-hidden bg-[#F8FAFC] flex">
       {/* Sidebar */}
-      <aside className="w-64 bg-[#10243B] text-white flex flex-col flex-shrink-0 min-h-screen">
+      <aside className="sticky top-0 h-screen w-64 bg-[#10243B] text-white flex flex-col flex-shrink-0 overflow-y-auto">
         <div className="px-6 py-6 border-b border-white/10">
           <div className="text-[#C9A227] font-bold text-sm tracking-wider uppercase">ORIVANTA CMS</div>
           <div className="text-white/40 text-xs mt-0.5">Content Management</div>
@@ -256,7 +256,7 @@ export default function AdminPage() {
       </aside>
 
       {/* Main */}
-      <main className="flex-1 p-8 overflow-y-auto">
+      <main className="flex-1 min-w-0 h-screen overflow-y-auto p-5 lg:p-8">
         {mode === 'listings' ? (
           <ListingsManager />
         ) : mode === 'inquiries' ? (

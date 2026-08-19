@@ -12,9 +12,11 @@ export default function NewsletterForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    const normalizedEmail = email.trim().toLowerCase();
+    if (!normalizedEmail) return;
     setStatus('loading');
-    const { error: err } = await subscribeNewsletter(email.trim(), lang);
+    setError('');
+    const { error: err } = await subscribeNewsletter(normalizedEmail, lang);
     if (err) { setError(err); setStatus('error'); }
     else { setStatus('done'); setEmail(''); }
   };
@@ -29,12 +31,14 @@ export default function NewsletterForm() {
 
   return (
     <div>
-      <form className="flex gap-2" onSubmit={handleSubmit}>
+      <form className="flex gap-2" onSubmit={handleSubmit} aria-busy={status === 'loading'}>
         <input
           type="email"
           required
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          autoComplete="email"
+          inputMode="email"
+          onChange={e => { setEmail(e.target.value); if (status === 'error') { setStatus('idle'); setError(''); } }}
           placeholder={t('footer_email_placeholder')}
           className="flex-1 min-w-0 bg-white/[0.06] border border-white/[0.12] rounded-full px-4 py-2.5 text-[13px] text-white placeholder-white/30 focus:outline-none focus:border-[#C9A227] transition-colors"
           style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}
@@ -49,7 +53,7 @@ export default function NewsletterForm() {
           {status === 'loading' ? <Loader2 size={15} className="animate-spin" /> : <ArrowRight size={15} />}
         </button>
       </form>
-      {status === 'error' && <p className="text-red-400 text-xs mt-2">{error}</p>}
+      {status === 'error' && <p className="text-red-400 text-xs mt-2" role="alert">{error}</p>}
     </div>
   );
 }

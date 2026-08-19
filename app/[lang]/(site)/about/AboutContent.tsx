@@ -111,9 +111,9 @@ export default function AboutContent() {
   return (
     <>
       {/* ── Who We Are ─────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
 
             {/* Text */}
             <motion.div
@@ -123,18 +123,18 @@ export default function AboutContent() {
               transition={{ duration: 0.7 }}
             >
               <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">{t('about_who_badge')}</span>
-              <div className="w-10 h-0.5 bg-[#C9A227] mt-3 mb-6" />
+              <div className="w-10 h-0.5 bg-[#C9A227] mt-3 mb-5" />
               <h2 className="font-heading font-bold text-[#10243B] leading-tight mb-6"
-                style={{ fontSize: 'clamp(1.75rem, 3vw, 2.75rem)' }}>
+                style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.35rem)' }}>
                 {t('about_who_title')}
               </h2>
-              <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
+              <p className="text-gray-600 leading-relaxed text-[15px] mb-3">
                 {data.about_who_we_are || t('about_who_body_1')}
               </p>
-              <p className="text-gray-600 leading-relaxed text-[17px] mb-4">
+              <p className="text-gray-600 leading-relaxed text-[15px] mb-3">
                 {data.about_who_we_are_2 || t('about_who_body_2')}
               </p>
-              <p className="text-gray-600 leading-relaxed text-[17px]">
+              <p className="text-gray-600 leading-relaxed text-[15px]">
                 {t('about_third_para')}
               </p>
             </motion.div>
@@ -145,12 +145,12 @@ export default function AboutContent() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.2 }}
-              className="relative h-[480px]"
+              className="relative h-[400px] max-w-lg mx-auto w-full"
             >
-              <div className="absolute top-0 right-0 w-[75%] h-[340px] rounded-sm overflow-hidden shadow-xl">
+              <div className="absolute top-0 right-0 w-[75%] h-[285px] rounded-sm overflow-hidden shadow-xl">
                 <Image src="/images/3.jpg" alt="ORIVANTA advisory" fill className="object-cover" />
               </div>
-              <div className="absolute bottom-0 left-0 w-[55%] h-[240px] rounded-sm overflow-hidden shadow-xl border-4 border-white">
+              <div className="absolute bottom-0 left-0 w-[55%] h-[200px] rounded-sm overflow-hidden shadow-xl border-4 border-white">
                 <Image src="/images/4.jpg" alt="Property consulting" fill className="object-cover" />
               </div>
               <div className="absolute bottom-10 right-4 w-20 h-20 bg-[#C9A227] rounded-sm flex items-center justify-center shadow-lg">
@@ -162,7 +162,7 @@ export default function AboutContent() {
       </section>
 
       {/* ── Vision / Mission / Story tabs ──────────────────────────────────── */}
-      <section className="py-24 bg-[#F8FAFC]">
+      <section className="py-16 lg:py-20 bg-[#F8FAFC]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
 
           <motion.div
@@ -170,7 +170,7 @@ export default function AboutContent() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="flex flex-wrap justify-center gap-3 mb-14"
+            className="flex flex-wrap justify-center gap-2 mb-10"
           >
             {TABS.map(tab => {
               const TabIcon = tab.icon;
@@ -179,7 +179,7 @@ export default function AboutContent() {
                 <button
                   key={tab.key}
                   onClick={() => setActiveTab(tab.key)}
-                  className={`flex items-center gap-2.5 px-7 py-3.5 rounded-full text-sm font-semibold transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${
                     isActive
                       ? 'bg-[#10243B] text-white shadow-lg'
                       : 'bg-white border border-gray-200 text-gray-500 hover:border-[#C9A227] hover:text-[#10243B]'
@@ -199,7 +199,7 @@ export default function AboutContent() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.4 }}
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="grid lg:grid-cols-2 gap-10 items-center"
             >
               <div className="relative aspect-[4/3] rounded-sm overflow-hidden shadow-xl order-2 lg:order-1">
                 <Image src={current.image} alt={current.heading} fill className="object-cover" />
@@ -213,15 +213,15 @@ export default function AboutContent() {
 
               <div className="order-1 lg:order-2">
                 <div className="w-10 h-0.5 bg-[#C9A227] mb-5" />
-                <h2 className="font-heading font-bold text-[#10243B] mb-6"
-                  style={{ fontSize: 'clamp(1.75rem, 3vw, 2.5rem)' }}>
+                <h2 className="font-heading font-bold text-[#10243B] mb-5"
+                  style={{ fontSize: 'clamp(1.6rem, 2.6vw, 2.25rem)' }}>
                   {current.heading}
                 </h2>
                 <div className="text-[#C9A227]/20 font-black leading-none mb-2 select-none"
-                  style={{ fontSize: '6rem', fontFamily: 'Georgia, serif', lineHeight: 0.8 }}>
+                  style={{ fontSize: '4.5rem', fontFamily: 'Georgia, serif', lineHeight: 0.8 }}>
                   &ldquo;
                 </div>
-                <p className="text-gray-600 leading-relaxed text-[17px]">
+                <p className="text-gray-600 leading-relaxed text-[15px]">
                   {current.body}
                 </p>
               </div>
@@ -231,14 +231,14 @@ export default function AboutContent() {
       </section>
 
       {/* ── Timeline ───────────────────────────────────────────────────────── */}
-      <section className="py-24 bg-white">
+      <section className="py-16 lg:py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-16"
+            className="text-center mb-12"
           >
             <span className="text-[#C9A227] text-xs font-semibold tracking-[0.2em] uppercase">{t('about_journey_badge')}</span>
             <div className="w-12 h-0.5 bg-[#C9A227] mx-auto mt-3 mb-5" />
@@ -250,7 +250,7 @@ export default function AboutContent() {
 
           <div className="relative">
             <div className="hidden lg:block absolute top-8 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#C9A227]/40 to-transparent" />
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-7">
               {TIMELINE.map((item, i) => (
                 <motion.div
                   key={i}

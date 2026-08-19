@@ -10,7 +10,7 @@ export default function ServicesSection() {
   const { t, lang } = useLang();
   const SERVICES = getServices(lang);
   return (
-    <section className="py-28 bg-white" aria-labelledby="services-heading">
+    <section className="py-20 lg:py-24 bg-white" aria-labelledby="services-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
           badge={t('services_badge')}
@@ -62,11 +62,11 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-center mt-12"
+          className="text-center mt-9"
         >
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 border-2 border-[#10243B] text-[#10243B] font-bold px-8 py-4 rounded-full hover:bg-[#10243B] hover:text-white transition-all duration-300 text-sm"
+            className="inline-flex items-center gap-2 border-2 border-[#10243B] text-[#10243B] font-bold px-6 py-3 rounded-full hover:bg-[#10243B] hover:text-white transition-all duration-300 text-sm"
           >
             {t('services_view_all')} <ArrowRight size={16} />
           </Link>

@@ -72,6 +72,7 @@ export default function Chatbot() {
   const [input, setInput] = useState('');
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
 
   // Reset greeting when language changes
   useEffect(() => {
@@ -85,6 +86,34 @@ export default function Chatbot() {
   useEffect(() => {
     if (open) setTimeout(() => inputRef.current?.focus(), 300);
   }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handlePointerDown = (event: MouseEvent) => {
+      const target = event.target as Node;
+      const clickedInsidePanel = panelRef.current?.contains(target);
+      const clickedToggleButton = (event.target as HTMLElement)?.closest('button[aria-label="' + t('chat_open_aria') + '"]');
+
+      if (!clickedInsidePanel && !clickedToggleButton) {
+        setOpen(false);
+      }
+    };
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('mousedown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open, t]);
 
   const send = () => {
     const text = input.trim();
@@ -115,12 +144,13 @@ export default function Chatbot() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 24, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.95 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
-            className="fixed bottom-24 right-6 z-50 w-[340px] sm:w-[380px] bg-white rounded-xl shadow-2xl border border-gray-100 flex flex-col overflow-hidden"
-            style={{ maxHeight: '520px' }}
+            ref={panelRef}
+            initial={{ opacity: 0, y: 22, scale: 0.96, rotateX: -8 }}
+            animate={{ opacity: 1, y: 0, scale: 1, rotateX: 0 }}
+            exit={{ opacity: 0, y: 18, scale: 0.96, rotateX: -6 }}
+            transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed bottom-24 right-6 z-50 w-[340px] sm:w-[380px] bg-white rounded-xl shadow-[0_18px_60px_rgba(16,36,59,0.18)] border border-gray-100 flex flex-col overflow-hidden"
+            style={{ maxHeight: '520px', transformOrigin: 'bottom right' }}
           >
             {/* Header */}
             <div className="bg-[#10243B] px-5 py-4 flex items-center gap-3">

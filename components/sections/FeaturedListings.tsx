@@ -12,7 +12,7 @@ export default function FeaturedListings({ listings }: { listings: Listing[] }) 
   if (listings.length === 0) return null;
 
   return (
-    <section className="py-28 bg-[#F8FAFC]" aria-labelledby="featured-listings-heading">
+    <section className="py-20 lg:py-24 bg-[#F8FAFC]" aria-labelledby="featured-listings-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <SectionHeader
           badge={t('home_listings_badge')}

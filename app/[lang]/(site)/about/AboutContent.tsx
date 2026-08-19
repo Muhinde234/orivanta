@@ -357,22 +357,7 @@ export default function AboutContent() {
             </div>
           </motion.div>
 
-          {/* Placeholder for future team members */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="border-2 border-dashed border-gray-300 rounded-sm p-12 text-center bg-white"
-          >
-            <div className="w-16 h-16 rounded-full bg-[#F8FAFC] border-2 border-dashed border-gray-300 flex items-center justify-center mx-auto mb-4">
-              <User size={24} className="text-gray-300" />
-            </div>
-            <h4 className="font-heading font-bold text-gray-400 mb-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
-              {t('team_growing')}
-            </h4>
-            <p className="text-gray-400 text-sm">{t('team_growing_body')}</p>
-          </motion.div>
+         
         </div>
       </section>
     </>

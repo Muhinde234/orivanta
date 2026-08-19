@@ -43,19 +43,19 @@ export default function ListingCard({ listing, index = 0 }: { listing: Listing; 
           </div>
         </div>
 
-        <div className="p-5">
+        <div className="p-4 sm:p-5">
           <div className="text-[#C9A227] text-[11px] font-semibold uppercase tracking-widest mb-2">
             {propertyTypeLabel(listing.property_type, t)}
           </div>
           <h3 className="font-heading font-bold text-[#10243B] text-base mb-2 leading-snug line-clamp-2" style={{ fontFamily: 'Poppins, sans-serif' }}>
             {listing.title}
           </h3>
-          <div className="flex items-center gap-1.5 text-gray-500 text-sm mb-4">
+          <div className="flex items-center gap-1.5 text-gray-500 text-sm mb-3">
             <MapPin size={13} className="text-[#C9A227] flex-shrink-0" />
             <span className="truncate">{listing.location}</span>
           </div>
 
-          <div className="flex items-center gap-4 text-gray-500 text-xs mb-4 pb-4 border-b border-gray-100">
+          <div className="flex items-center gap-4 text-gray-500 text-xs mb-3 pb-3 border-b border-gray-100">
             {listing.bedrooms != null && (
               <span className="flex items-center gap-1"><Bed size={14} /> {listing.bedrooms}</span>
             )}

@@ -8,9 +8,9 @@ export default function WhyChoose() {
   const { t, lang } = useLang();
   const WHY_CHOOSE = getWhyChoose(lang);
   return (
-    <section className="py-28 bg-[#F8FAFC]" aria-labelledby="why-choose-heading">
+    <section className="py-20 lg:py-24 bg-[#F8FAFC]" aria-labelledby="why-choose-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div>
             <SectionHeader
               badge={t('why_badge')}
@@ -24,9 +24,9 @@ export default function WhyChoose() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="mt-8 p-6 bg-[#10243B] rounded-sm"
+              className="mt-6 p-5 sm:p-6 bg-[#10243B] rounded-sm"
             >
-              <p className="text-white/80 text-[17px] leading-relaxed italic">
+              <p className="text-white/80 text-sm sm:text-[15px] leading-relaxed italic">
                 &ldquo;{t('why_quote')}&rdquo;
               </p>
               <div className="mt-4 flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function WhyChoose() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white border border-gray-100 rounded-sm p-6 hover:shadow-lg hover:border-[#C9A227]/30 transition-all duration-300 group"
+                  className="bg-white border border-gray-100 rounded-sm p-5 hover:shadow-lg hover:border-[#C9A227]/30 transition-all duration-300 group"
                 >
                   <div className="w-10 h-10 rounded-sm bg-[#10243B]/5 group-hover:bg-[#C9A227]/10 flex items-center justify-center mb-4 transition-colors duration-300">
                     <Icon size={18} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-300" />
@@ -54,7 +54,7 @@ export default function WhyChoose() {
                   <h3 className="font-heading font-bold text-[#10243B] text-base mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-500 text-[17px] leading-relaxed">{item.desc}</p>
+                  <p className="text-gray-500 text-sm sm:text-[15px] leading-relaxed">{item.desc}</p>
                 </motion.div>
               );
             })}

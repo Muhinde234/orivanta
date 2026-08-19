@@ -49,7 +49,7 @@ export default function SectionHeader({
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6 }}
-      className={`mb-14 ${isCenter ? 'text-center' : 'text-left'}`}
+      className={`mb-10 lg:mb-12 ${isCenter ? 'text-center' : 'text-left'}`}
     >
       {badge && (
         <div className={`flex items-center gap-3 mb-5 ${isCenter ? 'justify-center' : 'justify-start'}`}>
@@ -76,7 +76,7 @@ export default function SectionHeader({
       )}
 
       <h2
-        className={`font-heading font-bold leading-tight text-3xl sm:text-4xl lg:text-[2.75rem] ${
+        className={`font-heading font-bold leading-tight text-2xl sm:text-3xl lg:text-4xl ${
           light ? 'text-white' : 'text-[#10243B]'
         }`}
       >
@@ -114,7 +114,7 @@ export default function SectionHeader({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className={`mt-5 text-[15px] leading-relaxed max-w-2xl ${isCenter ? 'mx-auto' : ''} ${
+          className={`mt-4 text-sm sm:text-[15px] leading-relaxed max-w-2xl ${isCenter ? 'mx-auto' : ''} ${
             light ? 'text-white/65' : 'text-gray-500'
           }`}
         >

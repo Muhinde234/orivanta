@@ -56,35 +56,34 @@ export default function ValuesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: (i % 4) * 0.08 }}
-                className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 rounded-sm p-6 hover:border-[#C9A227]/50 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/30 transition-all duration-400 cursor-default overflow-hidden"
+                className="group relative bg-gradient-to-b from-white/[0.07] to-white/[0.02] border border-white/10 rounded-sm p-5 hover:border-[#C9A227]/50 hover:-translate-y-1.5 hover:shadow-2xl hover:shadow-black/30 transition-all duration-400 cursor-default overflow-hidden"
               >
                 {/* Expanding top accent line */}
                 <div className="absolute top-0 left-0 h-[3px] w-0 bg-gradient-to-r from-[#C9A227] to-[#C9A227]/30 group-hover:w-full transition-all duration-500" />
 
                 {/* Letter watermark */}
                 <div
-                  className="absolute -bottom-4 -right-2 font-heading font-black text-[6rem] leading-none text-white/[0.04] group-hover:text-[#C9A227]/[0.08] transition-colors duration-400 select-none pointer-events-none"
+                  className="absolute -bottom-4 -right-2 font-heading font-black text-[5rem] leading-none text-white/[0.04] group-hover:text-[#C9A227]/[0.08] transition-colors duration-400 select-none pointer-events-none"
                   style={{ fontFamily: 'Poppins, sans-serif' }}
                   aria-hidden="true"
                 >
                   {value.letter}
                 </div>
 
-                <div className="relative z-10 flex items-center gap-3 mb-5">
-                  <div className="flex-shrink-0 w-13 h-13 rounded-full border-2 border-[#C9A227]/40 group-hover:border-[#C9A227] flex items-center justify-center transition-colors duration-300"
-                    style={{ width: '3.25rem', height: '3.25rem' }}>
-                    <span className="font-heading font-black text-lg text-[#C9A227]">{value.letter}</span>
+                <div className="relative z-10 flex items-center gap-3 mb-4">
+                  <div className="flex-shrink-0 w-[2.8rem] h-[2.8rem] rounded-full border-2 border-[#C9A227]/40 group-hover:border-[#C9A227] flex items-center justify-center transition-colors duration-300">
+                    <span className="font-heading font-black text-base text-[#C9A227]">{value.letter}</span>
                   </div>
-                  <div className="w-11 h-11 rounded-sm bg-[#C9A227]/10 group-hover:bg-[#C9A227] flex items-center justify-center flex-shrink-0 transition-colors duration-300">
-                    <Icon size={19} className="text-[#C9A227] group-hover:text-[#10243B] transition-colors duration-300" />
+                  <div className="w-10 h-10 rounded-sm bg-[#C9A227]/10 group-hover:bg-[#C9A227] flex items-center justify-center flex-shrink-0 transition-colors duration-300">
+                    <Icon size={17} className="text-[#C9A227] group-hover:text-[#10243B] transition-colors duration-300" />
                   </div>
                 </div>
 
                 <div className="relative z-10 min-w-0">
-                  <h3 className="font-heading font-bold text-white text-base mb-2">
+                  <h3 className="font-heading font-bold text-white text-sm sm:text-base mb-2">
                     {value.title}
                   </h3>
-                  <p className="text-white/55 text-[15px] leading-relaxed">{value.desc}</p>
+                  <p className="text-white/55 text-[14px] leading-relaxed">{value.desc}</p>
                 </div>
               </motion.div>
             );

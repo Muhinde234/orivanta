@@ -1,21 +1,7 @@
 import type { Metadata } from 'next';
-import { Poppins, Mulish } from 'next/font/google';
 import Script from 'next/script';
 import { BRAND } from '@/lib/data';
 import './globals.css';
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800'],
-  variable: '--font-poppins',
-  display: 'swap',
-});
-
-const mulish = Mulish({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-mulish',
-  display: 'swap',
-});
 
 const BASE_URL = 'https://www.orivantaproperty.rw';
 
@@ -137,13 +123,12 @@ const jsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${poppins.variable} ${mulish.variable}`}>
+    <html lang="en">
       <head>
         <meta name="geo.region" content="RW" />
         <meta name="geo.placename" content="Kigali, Rwanda" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
       </head>
-      <body suppressHydrationWarning className="antialiased" style={{ fontFamily: 'var(--font-mulish), Mulish, sans-serif' }}>
+      <body suppressHydrationWarning className="antialiased" style={{ fontFamily: 'Segoe UI, Arial, sans-serif' }}>
         {children}
         <Script
           id="json-ld-org"

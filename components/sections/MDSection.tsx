@@ -16,9 +16,9 @@ export default function MDSection() {
   const photo = data.md_photo || '/images/PXL_20231128_151335702.PORTRAIT~2.jpg';
 
   return (
-    <section className="py-28 bg-[#F8FAFC]" aria-labelledby="md-heading">
+    <section className="py-20 lg:py-24 bg-[#F8FAFC]" aria-labelledby="md-heading">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           {/* Portrait */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -60,12 +60,12 @@ export default function MDSection() {
             </h2>
 
             {/* Quote block */}
-            <div className="relative bg-[#10243B] rounded-sm p-7 mb-7">
-              <Quote size={32} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
-              <p className="text-white/80 leading-relaxed text-[17px] relative z-10 pl-4 italic">
+            <div className="relative bg-[#10243B] rounded-sm p-5 sm:p-6 mb-6">
+              <Quote size={28} className="text-[#C9A227]/30 absolute top-5 left-5" aria-hidden="true" />
+              <p className="text-white/80 leading-relaxed text-sm sm:text-[15px] relative z-10 pl-4 italic">
                 {quote}
               </p>
-              <p className="text-white/60 leading-relaxed text-[17px] mt-4 pl-4">
+              <p className="text-white/60 leading-relaxed text-sm sm:text-[15px] mt-4 pl-4">
                 {body}
               </p>
             </div>

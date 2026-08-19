@@ -16,7 +16,9 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
         <ProgressBar />
         <Navbar />
         <main className="flex-1">{children}</main>
-        <Footer />
+        <div className="mt-16">
+          <Footer />
+        </div>
         <Chatbot />
       </div>
     </LangProvider>

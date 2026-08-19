@@ -32,22 +32,22 @@ export default function ServicesSection() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group block h-full bg-white border border-gray-100 rounded-sm p-7 hover:border-[#C9A227]/40 hover:shadow-xl transition-all duration-400 relative overflow-hidden"
+                  className="group block h-full bg-white border border-gray-100 rounded-sm p-5 sm:p-6 hover:border-[#C9A227]/40 hover:shadow-xl transition-all duration-400 relative overflow-hidden"
                 >
                   {/* Hover background */}
                   <div className="absolute inset-0 bg-[#10243B] opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
 
                   <div className="relative z-10">
-                    <div className="w-12 h-12 rounded-sm bg-[#F8FAFC] group-hover:bg-[#C9A227]/20 flex items-center justify-center mb-5 transition-colors duration-300">
-                      <Icon size={22} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-300" />
+                    <div className="w-11 h-11 rounded-sm bg-[#F8FAFC] group-hover:bg-[#C9A227]/20 flex items-center justify-center mb-4 transition-colors duration-300">
+                      <Icon size={20} className="text-[#10243B] group-hover:text-[#C9A227] transition-colors duration-300" />
                     </div>
-                    <h3 className="font-heading font-bold text-[#10243B] group-hover:text-white mb-3 leading-snug transition-colors duration-300 text-base">
+                    <h3 className="font-heading font-bold text-[#10243B] group-hover:text-white mb-2.5 leading-snug transition-colors duration-300 text-sm sm:text-base">
                       {service.title}
                     </h3>
-                    <p className="text-gray-500 group-hover:text-white/65 text-[15px] leading-relaxed mb-5 transition-colors duration-300">
+                    <p className="text-gray-500 group-hover:text-white/65 text-[14px] leading-relaxed mb-4 transition-colors duration-300">
                       {service.shortDesc}
                     </p>
-                    <span className="inline-flex items-center gap-1.5 text-[#C9A227] text-xs font-semibold uppercase tracking-wider group-hover:gap-2.5 transition-all duration-300">
+                    <span className="inline-flex items-center gap-1.5 text-[#C9A227] text-[11px] font-semibold uppercase tracking-wider group-hover:gap-2 transition-all duration-300">
                       {t('learn_more')} <ArrowRight size={12} />
                     </span>
                   </div>
